@@ -4,7 +4,7 @@ Trabajo integrador de Laboratorio V
 
 Cosas a tener en cuenta:
 
-- Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs hasta ahora son puramente de ejemplo, a medida que se vayan llenando los PKG, los archivos de ejemplo estos irán eliminandose.
+- Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
 - Programación por capas:
   ○ En el PKG "datos" se crean las interfaces de las clases que más tarde tendrán las funciones ABML a implementar en cada clase del package "datosImpl". La nomenclatura para este es "<Nombre>Dao", ejemplo: "ClienteDao".
@@ -26,4 +26,4 @@ Consignas faltantes:
 
 - Las pantallas deberán realizarse con JSP.  Se evaluará que controles van a utilizar, por lo que es sumamente importante que se visualicen TODOS los controles. Ejemplo, si se va a editar sobre una grilla… dibujar una grilla y colocar en su interior el botón eliminar y modificar…. O si van a agregar sobre la grilla, dibujar los textbox respectivos.  No se pide entregar funcionalidad.
 
-Pantallas a realizar: En progreso.
+Pantallas a realizar y persona a cargo: En progreso.
