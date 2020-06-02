@@ -2,6 +2,9 @@
 
 Trabajo integrador de Laboratorio V
 
+Información útil:
+- Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
+
 Cosas a tener en cuenta:
 
 - Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
