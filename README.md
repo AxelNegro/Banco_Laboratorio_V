@@ -25,6 +25,8 @@ Cosas a tener en cuenta:
   
 Consignas faltantes:
 
+- La base de datos junto con las tablas y las relaciones serán creados a partir del proyecto mediante la utilización de Hibernate.
+
 - Crear un archivo llamado main. Dentro del mismo, se pide llenar la base de datos con mínimamente 10 registros válidos por cada tabla. Por ejemplo, si tienen que llenar la tabla clientes coloquen nombres y apellidos correctos… no nombre “fafssafs” y apellido “fdskkjfsd”.
 
 - Las pantallas deberán realizarse con JSP.  Se evaluará que controles van a utilizar, por lo que es sumamente importante que se visualicen TODOS los controles. Ejemplo, si se va a editar sobre una grilla… dibujar una grilla y colocar en su interior el botón eliminar y modificar…. O si van a agregar sobre la grilla, dibujar los textbox respectivos.  No se pide entregar funcionalidad.
