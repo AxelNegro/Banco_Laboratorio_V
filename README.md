@@ -5,23 +5,21 @@ Trabajo integrador de Laboratorio V
 Información útil:
 - Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
 
-Cosas a tener en cuenta:
+Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
-- Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
-
-- Programación por capas:
-  ○ En el PKG "datos" se crean las interfaces de las clases que más tarde tendrán las funciones ABML a implementar en cada clase del package "datosImpl". La nomenclatura para este es "<Nombre>Dao", ejemplo: "ClienteDao".
-  ○ En el PKG "datosImpl" se crean las clases que realizan acciones en la Base de datos. La nomenclatura de esto es <Nombre>DaoImpl, ejemplo: "ClienteDaoImpl".
-  ○ En el PKG "entidad" básicamente se guardan las clases. La nomenclatura de esto es <Nombre>, ejemplo: "Cliente".
-  ○ En el PKG "negocio" se guardan las interfaces de las clases que más tarde tendran funciones que harán uso de las clases del PKG "datosImpl". La nomenclatura de esto es <Nombre>NegImpl, ejemplo: "ClienteNegImpl".
-  ○ En el PKG "negocioImpl" se guardan las clases que tendrán funciones que harán uso de las clases del PKG "datosImpl", obteniendo o realizando acciones en la BD. La nomenclatura de esto sería <Nombre>Neg, ejemplo: "ClienteNeg".
-  ○ Aún no lo enseñaron, pero en el PKG "presentacion" irán todos los Servlets. La nomenclatura de esto es Servlet<NombrePlural>, ejemplo: "ServletClientes".
+Programación por capas:
+  - En el PKG "datos" se crean las interfaces de las clases que más tarde tendrán las funciones ABML a implementar en cada clase del package "datosImpl". La nomenclatura para este es "<Nombre>Dao", ejemplo: "ClienteDao".
+  - En el PKG "datosImpl" se crean las clases que realizan acciones en la Base de datos. La nomenclatura de esto es <Nombre>DaoImpl, ejemplo: "ClienteDaoImpl".
+  - En el PKG "entidad" básicamente se guardan las clases. La nomenclatura de esto es <Nombre>, ejemplo: "Cliente".
+  - En el PKG "negocio" se guardan las interfaces de las clases que más tarde tendran funciones que harán uso de las clases del PKG "datosImpl". La nomenclatura de esto es <Nombre>NegImpl, ejemplo: "ClienteNegImpl".
+  - En el PKG "negocioImpl" se guardan las clases que tendrán funciones que harán uso de las clases del PKG "datosImpl", obteniendo o realizando acciones en la BD. La nomenclatura de esto sería <Nombre>Neg, ejemplo: "ClienteNeg".
+  - Aún no lo enseñaron, pero en el PKG "presentacion" irán todos los Servlets. La nomenclatura de esto es Servlet<NombrePlural>, ejemplo: "ServletClientes".
   
-- Front-End:
-  ○ Las páginas (Archivos JSP) irán dentro de la carpeta "webapp".
-  ○ Los archivos CSS irán dentro de la carpeta "webapp\CSS".
-  ○ Los archivos JS irán dentro de la carpeta "webapp\JS".
-  ○ Los archivos de Multimedia (Imagenes, Audios, etc.) irán dentro de la carpeta "webapp\Multimedia".
+Front-End:
+  - Las páginas (Archivos JSP) irán dentro de la carpeta "webapp".
+  - Los archivos CSS irán dentro de la carpeta "webapp\CSS".
+  - Los archivos JS irán dentro de la carpeta "webapp\JS".
+  - Los archivos de Multimedia (Imagenes, Audios, etc.) irán dentro de la carpeta "webapp\Multimedia".
   
 Consignas faltantes:
 
