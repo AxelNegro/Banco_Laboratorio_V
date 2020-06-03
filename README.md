@@ -42,12 +42,48 @@ Pantallas a realizar y persona a cargo:
 - (Usuario Cliente) Menú de pago de prestamos.
 
 Clases:
-- Cliente: DNI -  Nombre - Apellido - Sexo - Nacionalidad - Fecha de Nacimiento - Direccion - Localidad - Provincia.
-- Cliente x Usuario: DNI - Usuario.
-- Usuario: Usuario - Contraseña - Tipo de usuario (Banco/Cliente).
-- Cliente x Cuentas: DNI - CBU.
-- Cuenta: CBU - Fecha de creación - Tipo de Cuenta - Numero de Cuenta - Nombre - Saldo.
-- Cuenta x Movimiento: CBU Origen - CBU Destino (Nulo si no es necesario) - Nro. Movimiento.
-  - Movimientos: Nro. Movimiento - Importe - Concepto - Fecha.
-- Cliente x Prestamos: Cliente - Nro. Prestamo.
-- Prestamo: Nro. Prestamo - Ult. Fecha de cuota Pagada - Importe prestado - Cuotas - Plazo de Pago en Meses - Monto a pagar por mes.
+- Cliente: 
+  - DNI.
+  - Nombre.
+  - Apellido.
+  - Sexo.
+  - Nacionalidad.
+  - Fecha de Nacimiento.
+  - Direccion.
+  - Localidad.
+  - Provincia.
+- Cliente x Usuario:
+  - DNI.
+  - Usuario.
+- Usuario: Usuario:
+  - Contraseña.
+  - Tipo de Usuario (Banco/Cliente).
+- Cliente x Cuentas:
+  - DNI.
+  - CBU.
+- Cuenta:
+  - CBU.
+  - Fecha de creación.
+  - Tipo de Cuenta.
+  - Numero de Cuenta.
+  - Nombre.
+  - Saldo.
+- Cuenta x Movimiento:
+  - CBU Origen.
+  - CBU Destino (Nulo si no es necesario).
+  - Nro. Movimiento.
+- Movimientos:
+  - Nro. Movimiento.
+  - Importe.
+  - Concepto.
+  - Fecha.
+- Cliente x Prestamos:
+  - Cliente.
+  - Nro. Prestamo.
+- Prestamo:
+  - Nro. Prestamo.
+  - Ult. Fecha de cuota Pagada.
+  - Importe prestado.
+  - Cuotas.
+  - Plazo de Pago en Meses.
+  - Monto a pagar por mes.
