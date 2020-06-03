@@ -29,4 +29,25 @@ Consignas faltantes:
 
 - Las pantallas deberán realizarse con JSP.  Se evaluará que controles van a utilizar, por lo que es sumamente importante que se visualicen TODOS los controles. Ejemplo, si se va a editar sobre una grilla… dibujar una grilla y colocar en su interior el botón eliminar y modificar…. O si van a agregar sobre la grilla, dibujar los textbox respectivos.  No se pide entregar funcionalidad.
 
-Pantallas a realizar y persona a cargo: En progreso.
+Pantallas a realizar y persona a cargo: 
+- Master Page que muestre el usuario logeado.
+- Login.
+- (Usuario Banco) ABML de clientes.
+- (Usuario Banco) ABML de cuentas y asignación de cuentas.
+- (Usuario Banco) Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
+- (Usuario Banco) Informe de actividades en un determinado rango de fechas.
+- (Usuario Cliente) Historial de movimientos de una cuenta seleccionada.
+- (Usuario Cliente) Transferencia a otros clientes.
+- (Usuario Cliente) Pedido de prestamos.
+- (Usuario Cliente) Menú de pago de prestamos.
+
+Clases:
+- Cliente: DNI -  Nombre - Apellido - Sexo - Nacionalidad - Fecha de Nacimiento - Direccion - Localidad - Provincia.
+- Cliente x Usuario: DNI - Usuario.
+- Usuario: Usuario - Contraseña - Tipo de usuario (Banco/Cliente).
+- Cliente x Cuentas: DNI - CBU.
+- Cuenta: CBU - Fecha de creación - Tipo de Cuenta - Numero de Cuenta - Nombre - Saldo.
+- Cuenta x Movimiento: CBU Origen - CBU Destino (Nulo si no es necesario) - Nro. Movimiento.
+  - Movimientos: Nro. Movimiento - Importe - Concepto - Fecha.
+- Cliente x Prestamos: Cliente - Nro. Prestamo.
+- Prestamo: Nro. Prestamo - Ult. Fecha de cuota Pagada - Importe prestado - Cuotas - Plazo de Pago en Meses - Monto a pagar por mes.
