@@ -30,16 +30,20 @@ Consignas faltantes:
 - Las pantallas deberán realizarse con JSP.  Se evaluará que controles van a utilizar, por lo que es sumamente importante que se visualicen TODOS los controles. Ejemplo, si se va a editar sobre una grilla… dibujar una grilla y colocar en su interior el botón eliminar y modificar…. O si van a agregar sobre la grilla, dibujar los textbox respectivos.  No se pide entregar funcionalidad.
 
 Pantallas a realizar y persona a cargo: 
-- Master Page que muestre el usuario logeado.
-- Login.
-- (Usuario Banco) ABML de clientes.
-- (Usuario Banco) ABML de cuentas y asignación de cuentas.
-- (Usuario Banco) Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
-- (Usuario Banco) Informe de actividades en un determinado rango de fechas.
-- (Usuario Cliente) Historial de movimientos de una cuenta seleccionada.
-- (Usuario Cliente) Transferencia a otros clientes.
-- (Usuario Cliente) Pedido de prestamos.
-- (Usuario Cliente) Menú de pago de prestamos.
+- Todos:
+  - Login.
+- Usuario Banco:
+  - Master Page de Banco que muestre el usuario logeado.
+  - ABML de clientes.
+  - ABML de cuentas y asignación de cuentas.
+  - Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
+  - Informe de actividades en un determinado rango de fechas.
+- Usuario Cliente:
+  - Master Page de Cliente que muestre el usuario logeado.
+  - Historial de movimientos de una cuenta seleccionada.
+  - Transferencia a otros clientes.
+  - Pedido de prestamos.
+  - Menú de pago de prestamos.
 
 Clases:
 - Cliente: 
