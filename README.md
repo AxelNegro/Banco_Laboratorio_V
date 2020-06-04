@@ -31,7 +31,9 @@ Consignas faltantes:
 
 Pantallas a realizar y persona a cargo: 
 - Todos:
+  - Masterpage.
   - Login.
+  - Pagina principal sin logear.
 - Usuario Banco:
   - Master Page de Banco que muestre el usuario logeado.
   - ABML de clientes.
@@ -44,6 +46,7 @@ Pantallas a realizar y persona a cargo:
   - Transferencia a otros clientes.
   - Pedido de prestamos.
   - Menú de pago de prestamos.
+  - Perfil de usuario.
 
 Clases:
 - Cliente: 
