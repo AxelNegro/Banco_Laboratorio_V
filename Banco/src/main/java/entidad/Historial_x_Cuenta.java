@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="Historial_x_Cuenta")
+@Table(name="HistorialCuenta")
 public class Historial_x_Cuenta implements Serializable{
 
 	/**

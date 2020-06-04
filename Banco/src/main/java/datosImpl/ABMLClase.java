@@ -9,10 +9,10 @@ public class ABMLClase {
 
 	public void Session() {
 		SessionFactory sessionFactory;
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		Configuration config = new Configuration();
+		config.configure();
+		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+		sessionFactory = config.buildSessionFactory(serviceRegistry);
 	}
 
 	

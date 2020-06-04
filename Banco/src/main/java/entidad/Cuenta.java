@@ -29,9 +29,9 @@ public class Cuenta implements Serializable{
 	@Column(name="Saldo")
 	private Double Saldo;
 	
-	public Cuenta(int cBU, Date fecha, int tipoCuenta, int numeroCuenta, String nombre, Double saldo) {
+	public Cuenta(int cbu, Date fecha, int tipoCuenta, int numeroCuenta, String nombre, Double saldo) {
 		super();
-		CBU = cBU;
+		CBU = cbu;
 		Fecha = fecha;
 		TipoCuenta = tipoCuenta;
 		NumeroCuenta = numeroCuenta;

@@ -30,10 +30,10 @@ public class Prestamos implements Serializable{
 	@Column(name="Importe_x_Mes")
 	private double Importe_x_Mes;
 	
-	public Prestamos(int codigoPrestamo, Date fecha, double importe, int cuotas, int plazo_x_Meses,
+	public Prestamos(int codPrestamo, Date fecha, double importe, int cuotas, int plazo_x_Meses,
 			double importe_x_Mes) {
 		super();
-		CodigoPrestamo = codigoPrestamo;
+		CodigoPrestamo = codPrestamo;
 		Fecha = fecha;
 		Importe = importe;
 		Cuotas = cuotas;
@@ -41,7 +41,7 @@ public class Prestamos implements Serializable{
 		Importe_x_Mes = importe_x_Mes;
 	}
 
-	public Cliente_x_Movimiento() {
+	public Prestamos() {
 		super();
 	}
 

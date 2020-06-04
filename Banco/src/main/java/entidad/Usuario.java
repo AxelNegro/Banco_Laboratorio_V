@@ -41,10 +41,10 @@ public class Usuario implements Serializable{
 	public Usuario() {
 		super();
 	}
-	public Usuario(int dNI, String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
+	public Usuario(int dni, String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
 			String direccion, String localidad, String provincia) {
 		super();
-		DNI = dNI;
+		DNI = dni;
 		Nombre = nombre;
 		Apellido = apellido;
 		Sexo = sexo;
