@@ -31,17 +31,17 @@ Consignas faltantes:
 
 Pantallas a realizar y persona a cargo: 
 - Todos:
-  - Masterpage.
-  - Login.
-  - Pagina principal sin logear.
+  - Masterpage. (Hecho)
+  - Login. (Hecho)
+  - Pagina principal sin logear. (Hecho)
 - Usuario Banco:
-  - Master Page de Banco que muestre el usuario logeado.
+  - Master Page de Banco que muestre el usuario logeado. (Hecho)
   - ABML de clientes.
   - ABML de cuentas y asignación de cuentas.
   - Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
   - Informe de actividades en un determinado rango de fechas.
 - Usuario Cliente:
-  - Master Page de Cliente que muestre el usuario logeado.
+  - Master Page de Cliente que muestre el usuario logeado. (Hecho)
   - Historial de movimientos de una cuenta seleccionada.
   - Transferencia a otros clientes.
   - Pedido de prestamos.
