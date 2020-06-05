@@ -62,7 +62,8 @@ Clases:
 - Cliente x Usuario:
   - DNI.
   - Usuario.
-- Usuario: Usuario:
+- Usuario: 
+  - Usuario.
   - Contraseña.
   - Tipo de Usuario (Banco/Cliente).
 - Cliente x Cuentas:
