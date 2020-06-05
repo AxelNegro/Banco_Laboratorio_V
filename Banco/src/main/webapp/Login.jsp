@@ -6,15 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="CSS/Login.css" type="text/css"><link>
 <jsp:include page="MasterPage.html" />
-<style>
-html { 
-  background: url(Multimedia/PagPrincipal.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-</style>
 <title>Iniciar sesión</title>
 </head>
 <body>
