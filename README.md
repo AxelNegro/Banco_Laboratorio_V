@@ -95,7 +95,6 @@ Clases:
   - Cuotas.
   - Plazo de Pago en Meses.
   - Monto a pagar por mes.
- - Tipo de Cuenta:
+- Tipo de Cuenta:
   - Cod. de tipo de cuenta.
   - Tipo de Cuenta.
- 
