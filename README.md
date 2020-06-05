@@ -66,11 +66,9 @@ Clases:
   - Usuario.
   - Contraseña.
   - Tipo de Usuario (Banco/Cliente).
-- Cliente x Cuentas:
-  - DNI.
-  - CBU.
 - Cuenta:
   - CBU.
+  - DNI.
   - Fecha de creación.
   - Cod. Tipo de Cuenta.
   - Numero de Cuenta.
