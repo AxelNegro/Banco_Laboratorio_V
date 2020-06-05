@@ -31,17 +31,17 @@ Consignas faltantes:
 
 Pantallas a realizar y persona a cargo: 
 - Todos:
-  - Masterpage.
-  - Login.
-  - Pagina principal sin logear.
+  - Masterpage. (Hecho)
+  - Login. (Hecho)
+  - Pagina principal sin logear. (Hecho)
 - Usuario Banco:
-  - Master Page de Banco que muestre el usuario logeado.
+  - Master Page de Banco que muestre el usuario logeado. (Hecho)
   - ABML de clientes.
   - ABML de cuentas y asignación de cuentas.
   - Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
   - Informe de actividades en un determinado rango de fechas.
 - Usuario Cliente:
-  - Master Page de Cliente que muestre el usuario logeado.
+  - Master Page de Cliente que muestre el usuario logeado. (Hecho)
   - Historial de movimientos de una cuenta seleccionada.
   - Transferencia a otros clientes.
   - Pedido de prestamos.
@@ -62,35 +62,39 @@ Clases:
 - Cliente x Usuario:
   - DNI.
   - Usuario.
-- Usuario: Usuario:
+- Usuario: 
+  - Usuario.
   - Contraseña.
   - Tipo de Usuario (Banco/Cliente).
-- Cliente x Cuentas:
-  - DNI.
+  - Estado.
+- Cliente x Cuenta:
   - CBU.
+  - DNI.
 - Cuenta:
   - CBU.
   - Fecha de creación.
-  - Tipo de Cuenta.
+  - Cod. Tipo de Cuenta.
   - Numero de Cuenta.
   - Nombre.
   - Saldo.
-- Cuenta x Movimiento:
-  - CBU Origen.
-  - CBU Destino (Nulo si no es necesario).
-  - Nro. Movimiento.
+  - Estado.
 - Movimientos:
   - Nro. Movimiento.
+  - CBU Origen.
+  - CBU Destino (Nulo si no es necesario).
   - Importe.
   - Concepto.
   - Fecha.
-- Cliente x Prestamos:
-  - Cliente.
-  - Nro. Prestamo.
 - Prestamo:
   - Nro. Prestamo.
+  - Cliente.
+  - CBU Destino en caso de ser aceptado.
   - Ult. Fecha de cuota Pagada.
   - Importe prestado.
   - Cuotas.
   - Plazo de Pago en Meses.
   - Monto a pagar por mes.
+  - Estado (-1 - Cancelado, 0 - Pendiente, 1 - Aceptado, 2 - Rechazado).
+- Tipo de Cuenta:
+  - Cod. de tipo de cuenta.
+  - Tipo de Cuenta.
