@@ -72,7 +72,7 @@ Clases:
 - Cuenta:
   - CBU.
   - Fecha de creación.
-  - Tipo de Cuenta.
+  - Cod. Tipo de Cuenta.
   - Numero de Cuenta.
   - Nombre.
   - Saldo.
@@ -95,3 +95,7 @@ Clases:
   - Cuotas.
   - Plazo de Pago en Meses.
   - Monto a pagar por mes.
+ - Tipo de Cuenta:
+  - Cod. de tipo de cuenta.
+  - Tipo de Cuenta.
+ 
