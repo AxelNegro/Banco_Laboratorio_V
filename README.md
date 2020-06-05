@@ -74,12 +74,10 @@ Clases:
   - Numero de Cuenta.
   - Nombre.
   - Saldo.
-- Cuenta x Movimiento:
-  - CBU Origen.
-  - CBU Destino (Nulo si no es necesario).
-  - Nro. Movimiento.
 - Movimientos:
   - Nro. Movimiento.
+  - CBU Origen.
+  - CBU Destino (Nulo si no es necesario).
   - Importe.
   - Concepto.
   - Fecha.
