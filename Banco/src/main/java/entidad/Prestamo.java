@@ -25,6 +25,9 @@ public class Prestamo implements Serializable{
 	@Column(name="CodPrestamo")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int CodPrestamo;
+	@ManyToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="CBU")
+	private Cuenta cuenta;
 	@Column(name="Fecha")
 	private Date Fecha;
 	@Column(name="Importe")

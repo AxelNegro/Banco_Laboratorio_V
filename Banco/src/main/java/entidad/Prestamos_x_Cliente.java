@@ -22,17 +22,13 @@ public class Prestamos_x_Cliente implements Serializable{
 	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="DNI")
 	private Cliente cliente;
-	@ManyToOne(cascade= {CascadeType.ALL})
-	@JoinColumn(name="CBU")
-	private Cuenta cuenta;
 	
 	public Prestamos_x_Cliente() {
 	}
 
-	public Prestamos_x_Cliente(Prestamo prestamo, Cliente cliente, Cuenta cuenta) {
+	public Prestamos_x_Cliente(Prestamo prestamo, Cliente cliente) {
 		this.prestamo = prestamo;
 		this.cliente = cliente;
-		this.cuenta = cuenta;
 	}
 
 	public Prestamo getPrestamo() {
@@ -51,12 +47,4 @@ public class Prestamos_x_Cliente implements Serializable{
 		this.cliente = cliente;
 	}
 
-	public Cuenta getCuenta() {
-		return cuenta;
-	}
-
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
-	}
-	
 }
