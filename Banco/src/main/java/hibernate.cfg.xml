@@ -10,14 +10,15 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">create</property>
-        <mapping class="entidad.Usuario"/>
-        <mapping class="entidad.Usuario_Cliente"/>
-        <mapping class="entidad.Tipo_Cuenta"/>
-        <mapping class="entidad.Prestamos"/>
-        <mapping class="entidad.Prestamos_x_Cliente"/>
-        <mapping class="entidad.Historial_x_Cuenta"/>
+        <mapping class="entidad.Cliente_x_Usuario"/>
+        <mapping class="entidad.Cliente"/>
         <mapping class="entidad.Cuenta"/>
-        <mapping class="entidad.Clientes_x_Cuenta"/>
-        <mapping class="entidad.Cliente_x_Movimiento"/>
-    </session-factory>
+        <mapping class="entidad.Cuentas_x_Cliente"/>
+        <mapping class="entidad.Movimientos_x_Cuenta"/>
+        <mapping class="entidad.Prestamos_x_Cliente"/>
+        <mapping class="entidad.Movimiento"/>
+        <mapping class="entidad.Prestamo"/>
+        <mapping class="entidad.TipoCuenta"/>
+        <mapping class="entidad.Usuario"/>
+  </session-factory>
 </hibernate-configuration>

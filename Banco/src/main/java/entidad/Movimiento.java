@@ -1,49 +1,51 @@
 package entidad;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
-@Table(name="HistorialCuenta")
-public class Historial_x_Cuenta implements Serializable{
+@Table(name="Movimiento")
+public class Movimiento implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name="CodigoMovimiento")
-	private int CodigoMovimiento;
+	@Column(name="CodMovimiento")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int CodMovimiento;
 	@Column(name="Importe")
 	private double Importe;
 	@Column(name="Concepto")
 	private String Concepto;
 	@Column(name="Fecha")
 	private Date Fecha;
-	
-	public Historial_x_Cuenta(int codigoMovimiento, double importe, String concepto, Date fecha) {
-		super();
-		CodigoMovimiento = codigoMovimiento;
+
+	public Movimiento(int codMovimiento, double importe, String concepto, Date fecha) {
+		CodMovimiento = codMovimiento;
 		Importe = importe;
 		Concepto = concepto;
 		Fecha = fecha;
 	}
 
-	public Historial_x_Cuenta() {
-		super();
+	public Movimiento() {
+
+	}
+	
+	public int getCodMovimiento() {
+		return CodMovimiento;
 	}
 
-	public int getCodigoMovimiento() {
-		return CodigoMovimiento;
+	public void setCodMovimiento(int codMovimiento) {
+		CodMovimiento = codMovimiento;
 	}
 
-	public void setCodigoMovimiento(int codigoMovimiento) {
-		CodigoMovimiento = codigoMovimiento;
-	}
 
 	public double getImporte() {
 		return Importe;
@@ -68,6 +70,7 @@ public class Historial_x_Cuenta implements Serializable{
 	public void setFecha(Date fecha) {
 		Fecha = fecha;
 	}
+	
 	
 	
 	
