@@ -73,7 +73,7 @@ Clases:
 - Cuentas x Usuario:
   - CBU.
   - Usuario.
-- Movimientos:
+- Movimiento:
   - Cod. Movimiento.
   - Importe.
   - Concepto.
