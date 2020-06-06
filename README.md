@@ -47,7 +47,6 @@ Pantallas a realizar y persona a cargo:
   - Transferencia a otros clientes.
   - Pedido de prestamos.
   - Menú de pago de prestamos.
-  - Perfil de usuario.
 
 Clases:
 - Cliente x Usuario:
