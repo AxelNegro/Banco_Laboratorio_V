@@ -11,23 +11,23 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import java.io.Serializable;
 
 @Entity
-@Table(name="Cuentas_x_Cliente")
-public class Cuentas_x_Cliente implements Serializable {
+@Table(name="Cuentas_x_Usuario")
+public class Cuentas_x_Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@OneToOne(cascade= {CascadeType.ALL})
 	@PrimaryKeyJoinColumn(name="CBU")
 	private Cuenta cuenta;
 	@ManyToOne(cascade= {CascadeType.ALL})
-	@PrimaryKeyJoinColumn(name="DNI")
-	private Cliente cliente;
+	@PrimaryKeyJoinColumn(name="Usuario")
+	private Usuario usuario;
 	
-	public Cuentas_x_Cliente() {
+	public Cuentas_x_Usuario() {
 	}
 
-	public Cuentas_x_Cliente(Cuenta cuenta, Cliente cliente) {
+	public Cuentas_x_Usuario(Cuenta cuenta, Usuario usuario) {
 		this.cuenta = cuenta;
-		this.cliente = cliente;
+		this.usuario = usuario;
 	}
 
 	public Cuenta getCuenta() {
@@ -38,12 +38,12 @@ public class Cuentas_x_Cliente implements Serializable {
 		this.cuenta = cuenta;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

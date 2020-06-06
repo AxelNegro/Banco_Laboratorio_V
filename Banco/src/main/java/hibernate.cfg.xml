@@ -13,7 +13,7 @@
         <mapping class="entidad.Cliente_x_Usuario"/>
         <mapping class="entidad.Cliente"/>
         <mapping class="entidad.Cuenta"/>
-        <mapping class="entidad.Cuentas_x_Cliente"/>
+        <mapping class="entidad.Cuentas_x_Usuario"/>
         <mapping class="entidad.Movimientos_x_Cuenta"/>
         <mapping class="entidad.Prestamos_x_Cliente"/>
         <mapping class="entidad.Movimiento"/>
