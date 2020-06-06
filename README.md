@@ -79,6 +79,7 @@ Clases:
   - Concepto.
   - Fecha.
 - Movimientos x Cuenta:
+  - Cod. Movimiento.
   - CBU Origen (Nulo en caso de Prestamos y Alta de Cuentas).
   - CBU Destino (Nulo en caso de pago de Prestamos).
 - Prestamo:
