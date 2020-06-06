@@ -14,10 +14,10 @@
 			<label>Iniciar sesión:</label>
 			<br>
 			<br>
-			Usuario:	<input id="txtUsuario" type="text"/>
+			Usuario:	<input id="txtUsuario" type="text" placeholder="Usuario"/>
 			<br>
 			<br>
-			Contraseña:	<input id="txtContrasenia" type="password"/>
+			Contraseña:	<input id="txtContrasenia" type="password" placeholder="Contraseña"/>
 			<br>
 			<br>
 			<input id="txtVolver" type="button" value="Volver"/>
