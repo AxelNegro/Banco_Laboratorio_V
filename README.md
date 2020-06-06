@@ -49,6 +49,9 @@ Pantallas a realizar y persona a cargo:
   - Perfil de usuario.
 
 Clases:
+- Cliente x Usuario:
+  - DNI.
+  - Usuario.
 - Cliente: 
   - DNI.
   - Nombre.
@@ -59,17 +62,6 @@ Clases:
   - Direccion.
   - Localidad.
   - Provincia.
-- Cliente x Usuario:
-  - DNI.
-  - Usuario.
-- Usuario: 
-  - Usuario.
-  - Contraseña.
-  - Tipo de Usuario (Banco/Cliente).
-  - Estado.
-- Cliente x Cuenta:
-  - CBU.
-  - DNI.
 - Cuenta:
   - CBU.
   - Fecha de creación.
@@ -78,23 +70,34 @@ Clases:
   - Nombre.
   - Saldo.
   - Estado.
+- Cuentas x Usuario:
+  - CBU.
+  - Usuario.
 - Movimientos:
-  - Nro. Movimiento.
-  - CBU Origen.
-  - CBU Destino (Nulo si no es necesario).
+  - Cod. Movimiento.
   - Importe.
   - Concepto.
   - Fecha.
+- Movimientos x Cuenta:
+  - CBU Origen (Nulo en caso de Prestamos y Alta de Cuentas).
+  - CBU Destino (Nulo en caso de pago de Prestamos).
 - Prestamo:
-  - Nro. Prestamo.
-  - Cliente.
-  - CBU Destino en caso de ser aceptado.
+  - Cod. Prestamo.
+  - CBU Destino.
   - Ult. Fecha de cuota Pagada.
   - Importe prestado.
   - Cuotas.
   - Plazo de Pago en Meses.
   - Monto a pagar por mes.
   - Estado (-1 - Cancelado, 0 - Pendiente, 1 - Aceptado, 2 - Rechazado).
+- Prestamos x Cliente:
+  - Cliente.
+  - CBU Destino en caso de ser aceptado.
 - Tipo de Cuenta:
   - Cod. de tipo de cuenta.
   - Tipo de Cuenta.
+- Usuario: 
+  - Usuario.
+  - Contraseña.
+  - Tipo de Usuario (Banco/Cliente).
+  - Estado.
