@@ -93,12 +93,13 @@ li #usuario{
 	height: 45px;
 	cursor: pointer; 
 }
-table {
+table  {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 20%;
+
 }
-td, th {
+  td ,th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;

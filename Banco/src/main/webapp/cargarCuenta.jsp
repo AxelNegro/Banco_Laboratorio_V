@@ -45,9 +45,62 @@
      			  min="1900-01-01">
 			<br>
 			<br>
- 
+ 			Dni Dueño cuenta : <input id="DniDuenoCuenta" disabled></input>
+ 			<br>  
+			<br> 
+ 				Nombre Dueño Cuenta:<input id="NombreDuenoCuenta" disabled ></input>
 			<br>  
 			<br> 
+		
+			<table >
+					  <tr>
+					    <th>Dni</th>
+					    <th>Nombre</th>
+					    <th>Apellido</th>
+					    <th>Fecha Nacimiento</th>
+					    <th>Direccion</th>
+					    <th>Localidad</th>
+					    <th>Provincia</th>
+					    <th>Seleccionar</th>
+					   
+					  </tr>
+					  <tr>
+					    <td>1549682</td>
+					    <td>Alfredo</td>
+					    <td>Torres</td>
+					    <td style="text-align: center;">16/2/1950</td>
+					    <td>calle falsa 123</td>
+					    <td>Avenida simpre viva</td>
+					    <td>Buenos aires</td>
+						<td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
+					  </tr>
+					  <tr>
+					    <td>1543242</td>
+					    <td>Diego</td>
+					    <td>Torres</td>
+					    <td style="text-align: center;">16/2/1934</td>
+					    <td>calle real 123</td>
+					    <td>Avenida simpre feliz</td>
+					    <td>Buenos aires</td>
+					    <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
+
+					  </tr>
+					  <tr>
+					    <td>1232682</td>
+					    <td>Martin</td>
+					    <td>Perez</td>
+					    <td style="text-align: center;">15/2/1930</td>
+					    <td>calle loca 123</td>
+					    <td>Avenida viva</td>
+					    <td>Buenos aires</td>
+					    <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
+					  
+					  </tr>
+				
+			</table>
+
+			
+			
 			
 			<input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
 			<input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>

@@ -30,6 +30,8 @@
 					    <th>Direccion</th>
 					    <th>Localidad</th>
 					    <th>Provincia</th>
+					    <th>Modificar</th>
+					     <th>Borrar</th>
 					  </tr>
 					  <tr>
 					    <td>1549682</td>
