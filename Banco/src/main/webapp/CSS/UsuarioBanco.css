@@ -90,7 +90,7 @@ li #usuario{
 	padding: 0px 10px 0px 10px;
 	width: 45px;
 	height: 45px;
-	cursor: pointer;
+	cursor: pointer; 
 }
 
 .opcion a:hover{

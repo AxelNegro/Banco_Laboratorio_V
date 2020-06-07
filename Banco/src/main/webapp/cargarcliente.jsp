@@ -45,7 +45,7 @@
 			<label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
 			<br>
 			<br>
-			Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start"
+			Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
      			  min="1900-01-01">
 			<br>
 			<br>
