@@ -42,7 +42,7 @@
 							  <option value="Hombre">Hombre</option>
 								<option value="Mujer">Mujer</option>
 							</select>
-			<label style="padding-left : 8%;"> Provincia:	<input id="TxtProvincia" type="text"/></label>
+			<label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
 			<br>
 			<br>
 			Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start"
