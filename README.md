@@ -4,6 +4,7 @@ Trabajo integrador de Laboratorio V
 
 Información útil:
 - Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
+- En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward"
 
 Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
@@ -46,9 +47,11 @@ Pantallas a realizar y persona a cargo:
   - Transferencia a otros clientes.
   - Pedido de prestamos.
   - Menú de pago de prestamos.
-  - Perfil de usuario.
 
 Clases:
+- Cliente x Usuario:
+  - DNI.
+  - Usuario.
 - Cliente: 
   - DNI.
   - Nombre.
@@ -59,17 +62,6 @@ Clases:
   - Direccion.
   - Localidad.
   - Provincia.
-- Cliente x Usuario:
-  - DNI.
-  - Usuario.
-- Usuario: 
-  - Usuario.
-  - Contraseña.
-  - Tipo de Usuario (Banco/Cliente).
-  - Estado.
-- Cliente x Cuenta:
-  - CBU.
-  - DNI.
 - Cuenta:
   - CBU.
   - Fecha de creación.
@@ -78,23 +70,35 @@ Clases:
   - Nombre.
   - Saldo.
   - Estado.
-- Movimientos:
-  - Nro. Movimiento.
-  - CBU Origen.
-  - CBU Destino (Nulo si no es necesario).
+- Cuentas x Usuario:
+  - CBU.
+  - Usuario.
+- Movimiento:
+  - Cod. Movimiento.
   - Importe.
   - Concepto.
   - Fecha.
+- Movimientos x Cuenta:
+  - Cod. Movimiento.
+  - CBU Origen (Nulo en caso de Prestamos y Alta de Cuentas).
+  - CBU Destino (Nulo en caso de pago de Prestamos).
 - Prestamo:
-  - Nro. Prestamo.
-  - Cliente.
-  - CBU Destino en caso de ser aceptado.
+  - Cod. Prestamo.
+  - CBU Destino.
   - Ult. Fecha de cuota Pagada.
   - Importe prestado.
   - Cuotas.
   - Plazo de Pago en Meses.
   - Monto a pagar por mes.
   - Estado (-1 - Cancelado, 0 - Pendiente, 1 - Aceptado, 2 - Rechazado).
+- Prestamos x Cliente:
+  - Cliente.
+  - CBU Destino en caso de ser aceptado.
 - Tipo de Cuenta:
   - Cod. de tipo de cuenta.
   - Tipo de Cuenta.
+- Usuario: 
+  - Usuario.
+  - Contraseña.
+  - Tipo de Usuario (Banco/Cliente).
+  - Estado.

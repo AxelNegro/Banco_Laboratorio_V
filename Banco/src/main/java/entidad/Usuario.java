@@ -5,109 +5,54 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
-@Table(name="Usuarios")
+@Table(name="Usuario")
 public class Usuario implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@Column(name="DNI")
-	private int DNI;
-	@Column(name="Nombre")
-	private String Nombre;
-	@Column(name="Apellido")
-	private String Apellido;
-	@Column(name="Sexo")
-	private String Sexo;
-	@Column(name="Nacionalidad")
-	private String Nacionalidad;
-	@Column(name="Fecha")
-	private Date Fecha;
-	@Column(name="Direccion")
-	private String Direccion;
-	@Column(name="Localidad")
-	private String Localidad;
-	@Column(name="Provincia")
-	private String Provincia;
+	@Column(name="Username")
+	private String Username;
+	@Column(name="Password")
+	private String Password;
+	@Column(name="Estado")
+	private Boolean Estado;
 	
-	
+	public Usuario(String username, String password, Boolean estado) {
+		Username = username;
+		Password = password;
+		Estado = estado;
+	}
 	
 	public Usuario() {
-		super();
 	}
-	public Usuario(int dni, String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
-			String direccion, String localidad, String provincia) {
-		super();
-		DNI = dni;
-		Nombre = nombre;
-		Apellido = apellido;
-		Sexo = sexo;
-		Nacionalidad = nacionalidad;
-		Fecha = fecha;
-		Direccion = direccion;
-		Localidad = localidad;
-		Provincia = provincia;
+	
+	public String getUsername() {
+		return Username;
 	}
-	public int getDNI() {
-		return DNI;
+
+	public void setUsername(String username) {
+		Username = username;
 	}
-	public void setDNI(int dNI) {
-		DNI = dNI;
+
+	public String getPassword() {
+		return Password;
 	}
-	public String getNombre() {
-		return Nombre;
+
+	public void setPassword(String password) {
+		Password = password;
 	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+
+	public Boolean getEstado() {
+		return Estado;
 	}
-	public String getApellido() {
-		return Apellido;
+
+	public void setEstado(Boolean estado) {
+		Estado = estado;
 	}
-	public void setApellido(String apellido) {
-		Apellido = apellido;
-	}
-	public String getSexo() {
-		return Sexo;
-	}
-	public void setSexo(String sexo) {
-		Sexo = sexo;
-	}
-	public String getNacionalidad() {
-		return Nacionalidad;
-	}
-	public void setNacionalidad(String nacionalidad) {
-		Nacionalidad = nacionalidad;
-	}
-	public Date getFecha() {
-		return Fecha;
-	}
-	public void setFecha(Date fecha) {
-		Fecha = fecha;
-	}
-	public String getDireccion() {
-		return Direccion;
-	}
-	public void setDireccion(String direccion) {
-		Direccion = direccion;
-	}
-	public String getLocalidad() {
-		return Localidad;
-	}
-	public void setLocalidad(String localidad) {
-		Localidad = localidad;
-	}
-	public String getProvincia() {
-		return Provincia;
-	}
-	public void setProvincia(String provincia) {
-		Provincia = provincia;
-	}
+	
 	
 	
 }

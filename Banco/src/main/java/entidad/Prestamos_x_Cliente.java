@@ -1,54 +1,50 @@
 package entidad;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
 
 import java.io.Serializable;
 
-@Entity
-@Table(name="PrestamosCliente")
-public class Prestamos_x_Cliente implements Serializable{
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
-	/**
-	 * 
-	 */
+@Entity
+@Table(name="Prestamos_x_Cliente")
+public class Prestamos_x_Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name="CodigoPrestamo")
-	private int CodigoPrestamo;
-	@Column(name="DNI")
-	private int DNI;
 	
-	
+	@OneToOne(cascade= {CascadeType.ALL},
+			  orphanRemoval = true)
+	@PrimaryKeyJoinColumn(name="CodPrestamo")
+	private Prestamo prestamo;
+	@ManyToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="DNI")
+	private Cliente cliente;
 	
 	public Prestamos_x_Cliente() {
-		super();
 	}
 
-	public Prestamos_x_Cliente(int codigoPrestamo, int dNI) {
-		super();
-		CodigoPrestamo = codigoPrestamo;
-		DNI = dNI;
+	public Prestamos_x_Cliente(Prestamo prestamo, Cliente cliente) {
+		this.prestamo = prestamo;
+		this.cliente = cliente;
 	}
 
-	public int getCodigoPrestamo() {
-		return CodigoPrestamo;
+	public Prestamo getPrestamo() {
+		return prestamo;
 	}
 
-	public void setCodigoPrestamo(int codigoPrestamo) {
-		CodigoPrestamo = codigoPrestamo;
+	public void setPrestamo(Prestamo prestamo) {
+		this.prestamo = prestamo;
 	}
 
-	public int getDNI() {
-		return DNI;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setDNI(int dNI) {
-		DNI = dNI;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	
-	
-	
 
 }

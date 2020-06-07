@@ -1,6 +1,8 @@
 package entidad;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
 
@@ -11,36 +13,35 @@ import java.util.Date;
 @Table(name="Cuenta")
 public class Cuenta implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="CBU")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int CBU;
-	@Column(name="Fecha")
-	private Date Fecha;
-	@Column(name="TipoCuenta")
-	private int TipoCuenta;
+	@Column(name="Fecha_Creacion")
+	private Date Fecha_Creacion;
+	@Column(name="CodTipoCuenta")
+	private int CodTipoCuenta;
 	@Column(name="NumeroCuenta")
 	private int NumeroCuenta;
 	@Column(name="Nombre")
 	private String Nombre;
 	@Column(name="Saldo")
 	private Double Saldo;
+	@Column(name="Estado")
+	private Boolean Estado;
 	
-	public Cuenta(int cbu, Date fecha, int tipoCuenta, int numeroCuenta, String nombre, Double saldo) {
-		super();
+	public Cuenta(int cbu, Date fecha, int codTipoCuenta, int numeroCuenta, String nombre, Double saldo, Boolean estado) {
 		CBU = cbu;
-		Fecha = fecha;
-		TipoCuenta = tipoCuenta;
+		Fecha_Creacion = fecha;
+		CodTipoCuenta = codTipoCuenta;
 		NumeroCuenta = numeroCuenta;
 		Nombre = nombre;
 		Saldo = saldo;
+		Estado = estado;
 	}
 
 	public Cuenta() {
-		super();
 	}
 
 	public int getCBU() {
@@ -52,19 +53,19 @@ public class Cuenta implements Serializable{
 	}
 
 	public Date getFecha() {
-		return Fecha;
+		return Fecha_Creacion;
 	}
 
 	public void setFecha(Date fecha) {
-		Fecha = fecha;
+		Fecha_Creacion = fecha;
 	}
 
-	public int getTipoCuenta() {
-		return TipoCuenta;
+	public int getCodTipoCuenta() {
+		return CodTipoCuenta;
 	}
 
-	public void setTipoCuenta(char tipoCuenta) {
-		TipoCuenta = tipoCuenta;
+	public void setCodTipoCuenta(int codTipoCuenta) {
+		CodTipoCuenta = codTipoCuenta;
 	}
 
 	public int getNumeroCuenta() {
@@ -91,5 +92,12 @@ public class Cuenta implements Serializable{
 		Saldo = saldo;
 	}
 
+	public Boolean getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		Estado = estado;
+	}
 	
 }

@@ -14,6 +14,16 @@
     margin-top:-145px;
 }
 
+@keyframes Cambio_Color{
+	from{border-bottom: 2px solid black;}
+	to{border-bottom: 2px solid red;}
+}
+
+@keyframes Sale_Color{
+	from{border-bottom: 2px solid red;}
+	to{border-bottom: 2px solid black;}
+}
+
 label{
 	font-size:50px;
 	font-weight:bold;
@@ -31,8 +41,20 @@ input[type="text"], input[type="password"]{
 }
 
 input[type="text"]:hover, input[type="password"]:hover{
-	border: 2px solid black;
+	animation-name: Cambio_Color;
+  	animation-duration: 1s;
+  	border-bottom: 2px solid red;
 }
+
+input[type="text"]:hover:after, input[type="password"]:hover:after{
+  	animation-name: Sale_Color;
+  	animation-duration: 1s;
+  	border-bottom: 2px solid black;
+}
+
+/*input[type="text"]:focus, input[type="password"]:focus{
+  	border-bottom: 2px solid red;
+}*/
 
 input[type="button"]{
 	padding:5px 100px 5px 100px;
