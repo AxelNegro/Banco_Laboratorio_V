@@ -47,7 +47,7 @@
 			<br>
 
 			<br>
-			<br>
+			<br> 
 			
 			<input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
 			<input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
