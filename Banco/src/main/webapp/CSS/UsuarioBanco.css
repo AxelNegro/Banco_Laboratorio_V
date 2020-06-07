@@ -20,7 +20,8 @@
 	color:black ;
 }
 
-input{
+.btntabla{
+text-align: center;
 
 }
 
@@ -33,7 +34,7 @@ input[type="text"]:hover{
 	border: 2px solid black;
 }
 
-input[type="button"]{
+.botoncargar{
 	padding:5px 100px 5px 100px;
 	cursor:pointer;
 	border:none;
@@ -91,6 +92,19 @@ li #usuario{
 	width: 45px;
 	height: 45px;
 	cursor: pointer; 
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 .opcion a:hover{

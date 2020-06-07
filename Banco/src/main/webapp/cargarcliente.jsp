@@ -22,7 +22,7 @@
 	</form>
 		<form style="padding-left:35%  ; ">
 		<div >
-			<label class="titulo" style="padding:6%">Cargar Cliente</label>
+			<label class="titulo" style="padding-left:6%">Cargar Cliente</label>
 			<br>
 			<br>
 			Documento:	<input id="TxtDocumento" type="text"/>
@@ -50,8 +50,8 @@
 			<br>
 			<br>
 			
-			<input id="txtVolver" type="button" value="Volver"/>
-			<input id="txtAceptar" type="button" value="Aceptar"/>
+			<input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
+			<input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
 		</div>
 	</form>
 	
