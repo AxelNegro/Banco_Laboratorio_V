@@ -37,7 +37,7 @@ Pantallas a realizar y persona a cargo:
   - Pagina principal sin logear. (Hecho)
 - Usuario Banco:
   - Master Page de Banco que muestre el usuario logeado. (Hecho)
-  - ABML de clientes.
+  - ABML de clientes. (Hecho)
   - ABML de cuentas y asignación de cuentas.
   - Autorización de préstamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
   - Informe de actividades en un determinado rango de fechas.
