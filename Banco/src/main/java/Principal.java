@@ -18,7 +18,6 @@ public class Principal {
 		//Pasar hibernate a Update
 		Insertar();
 		
-		
 	}
 	
 	public static void Crear() {
