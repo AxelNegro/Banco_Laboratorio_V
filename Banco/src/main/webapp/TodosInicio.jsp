@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="CSS/Inicio.css" type="text/css"><link>
-<jsp:include page="MasterPage.html" />
+<jsp:include page="TodosMasterPage.html" />
 <title>Página principal</title>
 </head>
 <body>

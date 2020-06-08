@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -15,9 +16,10 @@ import javax.persistence.Table;
 public class Prestamos_x_Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	@OneToOne(cascade= {CascadeType.ALL},
 			  orphanRemoval = true)
-	@PrimaryKeyJoinColumn(name="CodPrestamo")
+	@JoinColumn(name="CodPrestamo")
 	private Prestamo prestamo;
 	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name="DNI")

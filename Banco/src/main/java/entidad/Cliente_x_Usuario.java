@@ -14,8 +14,9 @@ import java.io.Serializable;
 public class Cliente_x_Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	@Id
 	@OneToOne(cascade= {CascadeType.ALL})
-	@PrimaryKeyJoinColumn(name="DNI")
+	@JoinColumn(name="DNI")
 	private Cliente cliente;
 	@OneToOne(cascade = {CascadeType.ALL},
 			  orphanRemoval = true)

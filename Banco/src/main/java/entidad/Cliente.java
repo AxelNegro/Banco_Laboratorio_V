@@ -33,7 +33,6 @@ public class Cliente implements Serializable{
 	@Column(name="Provincia")
 	private String Provincia;
 	
-	
 	public Cliente() {
 		
 	}
@@ -104,5 +103,11 @@ public class Cliente implements Serializable{
 		Provincia = provincia;
 	}
 	
+	@Override
+	public String toString() {
+		return "Cliente [DNI=" + DNI + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo=" + Sexo
+				+ ", Nacionalidad=" + Nacionalidad + ", Fecha_Nac=" + Fecha_Nac + ", Direccion=" + Direccion
+				+ ", Localidad=" + Localidad + ", Provincia=" + Provincia + "]";
+	}
 	
 }

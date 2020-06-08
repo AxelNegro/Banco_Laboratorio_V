@@ -15,8 +15,9 @@ import java.io.Serializable;
 public class Cuentas_x_Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Id
 	@OneToOne(cascade= {CascadeType.ALL})
-	@PrimaryKeyJoinColumn(name="CBU")
+	@JoinColumn(name="CBU")
 	private Cuenta cuenta;
 	@ManyToOne(cascade= {CascadeType.ALL})
 	@PrimaryKeyJoinColumn(name="Usuario")
