@@ -2,21 +2,21 @@ package datosImpl;
 
 import org.hibernate.Session;
 
-import datos.UsuarioDao;
-import entidad.Usuario;
+import datos.Cuotas_x_PrestamoDao;
+import entidad.Cuotas_x_Prestamo;
 
-public class UsuarioDaoImpl implements UsuarioDao{
-	
-	private Conexion con = new Conexion();
+public class Cuotas_x_PrestamoDaoImpl implements Cuotas_x_PrestamoDao{
+
+private Conexion con = new Conexion();
 	
 	@SuppressWarnings("finally")
-	public boolean agregarUno(Usuario user) {
+	public boolean agregarUna(Cuotas_x_Prestamo cuotxprest) {
 		Session session=con.abrirConexion();
 		Boolean res=false;
 		
 		try {
 			session.beginTransaction();
-			session.save(user);
+			session.save(cuotxprest);
 			session.getTransaction().commit();
 			
 			res=true;

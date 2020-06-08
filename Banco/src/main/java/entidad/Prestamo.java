@@ -16,9 +16,6 @@ import java.util.Date;
 @Table(name="Prestamo")
 public class Prestamo implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

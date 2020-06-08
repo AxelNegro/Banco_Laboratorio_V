@@ -52,10 +52,5 @@ public class Usuario implements Serializable{
 	public void setEstado(Boolean estado) {
 		Estado = estado;
 	}
-
-	@Override
-	public String toString() {
-		return "Usuario [Username=" + Username + ", Password=" + Password + ", Estado=" + Estado + "]";
-	}
 	
 }

@@ -2,21 +2,21 @@ package datosImpl;
 
 import org.hibernate.Session;
 
-import datos.UsuarioDao;
-import entidad.Usuario;
+import datos.MovimientoDao;
+import entidad.Movimiento;
 
-public class UsuarioDaoImpl implements UsuarioDao{
-	
-	private Conexion con = new Conexion();
+public class MovimientoDaoImpl implements MovimientoDao{
+
+private Conexion con = new Conexion();
 	
 	@SuppressWarnings("finally")
-	public boolean agregarUno(Usuario user) {
+	public boolean agregarUno(Movimiento mov) {
 		Session session=con.abrirConexion();
 		Boolean res=false;
 		
 		try {
 			session.beginTransaction();
-			session.save(user);
+			session.save(mov);
 			session.getTransaction().commit();
 			
 			res=true;
