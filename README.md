@@ -17,7 +17,7 @@ Programación por capas:
   - Aún no lo enseñaron, pero en el PKG "presentacion" irán todos los Servlets. La nomenclatura de esto es "ServletNombrePlural", ejemplo: "ServletClientes".
   
 Front-End:
-  - Las pÃ¡ginas (Archivos JSP) irán dentro de la carpeta "webapp".
+  - Las páginas (Archivos JSP) irán dentro de la carpeta "webapp".
   - Los archivos CSS irán dentro de la carpeta "webapp\CSS".
   - Los archivos JS irán dentro de la carpeta "webapp\JS".
   - Los archivos de Multimedia (Imagenes, Audios, etc.) irán dentro de la carpeta "webapp\Multimedia".
