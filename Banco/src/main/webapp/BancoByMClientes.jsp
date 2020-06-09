@@ -4,22 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<jsp:include page="BancoMasterPage.html" />
 <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
 <title>Cargar Clientes</title>
 </head>
 <body>
-		<form>
-		<div>
-			<ul name=”navbar”>
-				<li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-				 <li class="opcion"><a href=”#”>Clientes</a></li>
-				 <li class="opcion"><a href=”#”>Cuentas</a></li>
-				 <li class="opcion"><a href=”#”>Prestamos</a></li>
-				 <li class="opcion"><a href=”#”>Actividades</a></li>
-				 <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
-			</ul>
-		</div>
-	</form>
+
 	<form >	
 				<table>
 					  <tr>
