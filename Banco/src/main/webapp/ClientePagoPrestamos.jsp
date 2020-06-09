@@ -46,7 +46,7 @@
 			
 			
 		</table>
-
+		<input type="submit" value="Pagar">
 	</form>
 </body>
 </html>

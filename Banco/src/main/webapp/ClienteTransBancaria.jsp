@@ -40,6 +40,8 @@
 			<option>Varios</option>
 		</select>
 		<br>
+		
+		<input type="submit" value="Transferir">
 	</form>
 	
 </body>
