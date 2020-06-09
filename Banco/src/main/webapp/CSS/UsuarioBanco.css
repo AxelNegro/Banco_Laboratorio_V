@@ -1,3 +1,6 @@
+*{
+		font-family:Arial;
+}
 #divPadre{
 	font-size:30px;
 	font-family:Arial;
@@ -18,20 +21,24 @@
 	font-size:50px ;
 	font-weight:bold;
 	color:black ;
+		font-family:Arial;
 }
 
 .btntabla{
 text-align: center;
+	font-family:Arial;
 
 }
 
 input[type="text"]{
 	border: none;
 	border-bottom: 2px solid black;
+		font-family:Arial;
 }
 
 input[type="text"]:hover{
 	border: 2px solid black;
+		font-family:Arial;
 }
 
 .botoncargar{
@@ -40,6 +47,7 @@ input[type="text"]:hover{
 	border:none;
 	background-color:black;
 	color:white;
+		font-family:Arial;
 }
 
 input[type="button"]:hover{
@@ -47,6 +55,7 @@ input[type="button"]:hover{
 	-webkit-text-stroke: 2px white;
 	color:black;
 	border:2px solid black;
+	font-family:Arial
 }
 
 ul {
@@ -56,19 +65,23 @@ ul {
   overflow: hidden;
   background-color: black;
   text-align:center;
+  font-family:Arial;
 }
 
 .logo{
 	float:left;
 	padding: 0px 330px 0px 0px
+	font-family:Arial;
 }
 
 .opcion {
   float: left;
+  font-family:Arial;
 }
 
 .usuario{
 	float:right;
+	font-family:Arial;
 }
 
 .opcion a{
@@ -85,6 +98,7 @@ li #logo{
 	width: 120px;
 	height: 30px;
 	cursor: pointer;
+	font-family:Arial;
 }
 
 li #usuario{
@@ -92,20 +106,24 @@ li #usuario{
 	width: 45px;
 	height: 45px;
 	cursor: pointer; 
+	font-family:Arial;
 }
 table  {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 20%;
+  font-family:Arial;
 
 }
   td ,th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-family:Arial;
 }
 tr:nth-child(even) {
   background-color: #dddddd;
+  font-family:Arial;
 }
 
 .opcion a:hover{
@@ -120,6 +138,7 @@ tr:nth-child(even) {
 	left: 0;
 	right: 0;
 	bottom: 0;
+	font-family:Arial;
 }
 #footer ul {
 	display: flex;
@@ -127,6 +146,7 @@ tr:nth-child(even) {
 	justify-content: center;
 	font-size: 2em;
 	font-weight: 300;
+	font-family:Arial;
 }
 #footer ul li {
 	padding: 0 .5em;
