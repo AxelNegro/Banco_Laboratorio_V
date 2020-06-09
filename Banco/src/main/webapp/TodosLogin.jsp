@@ -13,7 +13,7 @@
 		<div id="divPadre">
 			<label>Iniciar sesión:</label>
 			<br>
-			<br>
+			<br>      
 			Usuario:	<input id="txtUsuario" type="text" placeholder="Usuario"/>
 			<br>
 			<br>
