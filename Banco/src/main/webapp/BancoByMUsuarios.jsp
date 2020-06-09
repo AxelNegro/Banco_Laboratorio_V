@@ -15,7 +15,7 @@
 	<div class="padre">
 	   <div class="hijo">
 	      <form style="width:100%;height:100%">
-	         <table >
+	         <table style="width:95%">
 	            <tr>
 	               <th>Username</th>
 	               <th>Password</th>

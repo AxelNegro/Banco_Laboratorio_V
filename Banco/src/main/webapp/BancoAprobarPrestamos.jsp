@@ -15,7 +15,7 @@
    <div class="padre">
       <div class="hijo">
          <form >
-            <table >
+            <table style="width:95%">
                <tr>
                   <th>Dni </th>
                   <th>Nombre</th>
