@@ -58,35 +58,10 @@ input[type="button"]:hover{
 	font-family:Arial
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
-  text-align:center;
-  font-family:Arial;
-}
-
-.opcion {
-  float: left;
-  font-family:Arial;
-}
-
 .usuario{
 	float:right;
 	font-family:Arial;
 }
-
-.opcion a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: Arial;
-}
-
 
 table  {
   font-family: arial, sans-serif;
@@ -104,10 +79,6 @@ table  {
 tr:nth-child(even) { 
   background-color: #dddddd;
   font-family:Arial;
-}
-
-.opcion a:hover{
-  background-color: #111;
 }
 
 .botonReportes{

@@ -20,7 +20,7 @@ ul {
 	float:right;
 }
 
-.opcion a{
+.opcion .menu{
   display: block;
   color: white;
   text-align: center;
@@ -43,8 +43,55 @@ li #usuario{
 	cursor: pointer;
 }
 
-.opcion a:hover{
+li #username{
+	color:white;
+	padding: 0px 10px 0px 10px;
+	font-family:Arial;
+	text-align:right;
+}
+
+.opcion .menu:hover{
   background-color: #111;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.submenu li {
+	font-family: Arial;
+}
+
+ul li ul{
+  display:none;
+  position:absolute;
+}
+
+ul li:hover > ul{
+  display:block;
+}
+
+ul li ul li{
+	position:relative;
+}
+
+ul li ul li a{
+	color:black;
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-family: Arial;
+	min-width:120px;
+}
+
+ul li ul li a:hover{
+	background-color:#111;
+	color:white;
 }
 
 #footer {
