@@ -18,9 +18,7 @@ public class Principal {
 		
 		//Crear BD
 		CrearBD();
-		
-		System.out.println("Base creada");
-		
+
 		//Luego de crear la BD, comentar la funcion "CrearBD", pasar hibernate.cfg.xml a Update y descomentar la funcion "Insertar"
 		//Insertar();
 		
@@ -28,6 +26,7 @@ public class Principal {
 	
 	public static void CrearBD() {
 		Conexion con=new Conexion();
+		System.out.println("Base creada");
 	}
 	
 	public static void Insertar() {
