@@ -4,7 +4,8 @@ Trabajo integrador de Laboratorio V
 
 Información útil:
 - Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
-- En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward"
+- En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward".
+- HTML Formatter: https://www.freeformatter.com/html-formatter.html
 
 Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
