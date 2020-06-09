@@ -9,40 +9,41 @@
 <title>Cargar Clientes</title>
 </head>
 <body>
-		<form style="padding-left:35%  ; ">
-		<div >
-			<label class="titulo" style="padding-left:6%">Cargar Cliente</label>
-			<br>
-			<br>
-			Documento:	<input id="TxtDocumento" type="text"/>
-			
-									&nbsp;&nbsp;  &nbsp;&nbsp;  Nacionalidad:	<input id="TxtNacionalidad" type="text"/>
-			<br>
-			<br>
-			Nombre : &nbsp;&nbsp;&nbsp;   <input id="TxtNombre " type="text"/>
-									&nbsp;&nbsp;  &nbsp;&nbsp;  Direccion:	<input id="TxtDireccion" type="text"/>	
-			<br>
-			<br>
-			Apellido : &nbsp;&nbsp;    	<input id="TxtApellido" type="text"/>
-									&nbsp;&nbsp;  &nbsp;&nbsp;  Localidad:	<input id="TxtLocalidad" type="text"/>
-			<br>
-			<br>
-			Sexo  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;		<select name="ddlSexo">
-							  <option value="Hombre">Hombre</option>
-								<option value="Mujer">Mujer</option>
-							</select>
-			<label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
-			<br>
-			<br>
-			Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
-     			  min="1900-01-01">
-			<br>
-			<br>
-			
-			<input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
-			<input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
-		</div>
-	</form>
-	
+	<div class="padre">
+	   <div class="hijo">
+	      <form>
+	         <label class="titulo" style="padding-left:6%">Cargar Cliente</label>
+	         <br>
+	         <br>
+	         Documento:	<input id="TxtDocumento" type="text"/>
+	         &nbsp;&nbsp;  &nbsp;&nbsp;
+	         Nacionalidad:	<input id="TxtNacionalidad" type="text"/>
+	         <br>
+	         <br>
+	         Nombre : &nbsp;&nbsp;&nbsp;   <input id="TxtNombre " type="text"/>
+	         &nbsp;&nbsp;  &nbsp;&nbsp;  Direccion:	<input id="TxtDireccion" type="text"/>	
+	         <br>
+	         <br>
+	         Apellido : &nbsp;&nbsp;    	<input id="TxtApellido" type="text"/>
+	         &nbsp;&nbsp;  &nbsp;&nbsp;  Localidad:	<input id="TxtLocalidad" type="text"/>
+	         <br>
+	         <br>
+	         Sexo  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;		
+	         <select name="ddlSexo">
+	            <option value="Hombre">Hombre</option>
+	            <option value="Mujer">Mujer</option>
+	         </select>
+	         <label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
+	         <br>
+	         <br>
+	         Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
+	            min="1900-01-01">
+	         <br>
+	         <br>
+	         <input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
+	         <input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
+	      </form>
+	   </div>
+	</div>
 </body>
 </html>
