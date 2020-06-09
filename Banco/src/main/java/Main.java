@@ -470,7 +470,7 @@ public class Main {
 			movimiento.setCodMovimiento(10);
 			movimiento.setFecha(Fecha);
 			movimiento.setConcepto("Concepto");
-			movimiento.setImporte(8754.5);							
+			movimiento.setImporte(8744.5);							
 			AgregarMovimiento(movimiento);
 			
 	}
@@ -523,7 +523,7 @@ public class Main {
 	}
 	
 	
-	
+
 	
 	public static void InsertarCuotas_x_Prestamo(Prestamo prestamo) {
 		Cuotas_x_Prestamo cuotas_x_Prestamo = new Cuotas_x_Prestamo();
