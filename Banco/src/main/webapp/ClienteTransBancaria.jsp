@@ -5,27 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Transferencia Bancaria</title>
+<link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
 </head>
 <body>
 	
+	<form>
+		<div>
+			<ul name=”navbar”>
+				<li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
+				 <li class="opcion"><a href=”#”>Clientes</a></li>
+				 <li class="opcion"><a href=”#”>Cuentas</a></li>
+				 <li class="opcion"><a href=”#”>Prestamos</a></li>
+				 <li class="opcion"><a href=”#”>Actividades</a></li>
+				 <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
+			</ul>
+		</div>
+	</form>
 	
-	<label>Transferencia Desde el CBU: </label>
-	<select>	
-			<option>Cuenta Corriente - CBU 156871278457</option>
-	</select>
-	<br>
-	<label>Transferencia al CBU: </label>
-	<input type="number"/>
-	<br>
-	<label>Importe a Transferir: </label>
-	<input type="number" min="1000"/>
-	<br>
-	<label>Concepto: </label>
-	<select>  
-		<option>Varios</option>
-	</select>
-	<br>
 
+	<form style="padding-left:35%  ; ">
+		Transferencia Desde el CBU:
+		<select>	 
+				<option>Cuenta Corriente - CBU 156871278457</option>
+		</select>
+		<br>
+		Transferencia al CBU:
+		<input type="number"/>
+		<br>
+		Importe a Transferir:
+		<input type="number" min="1000"/>
+		<br>
+		Concepto:
+		<select>  
+			<option>Varios</option>
+		</select>
+		<br>
+		
+		<input type="submit" value="Transferir">
+	</form>
 	
 </body>
 </html>

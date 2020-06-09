@@ -5,30 +5,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pago de Cuotas</title>
+<link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
 </head>
 <body>
-	<table>
-		<thead>
-			<tr>
-				<td> </td>
-				<td> Numero de Cuota </td>
-				<td> Monto </td>
-				<td> Fecha de Realizacion del Pago </td>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<tr>
-				<td><input type="checkbox"></td>
-				<td> 1 </td>
-				<td> $ 1833.33</td>
-				<td> No se Realizo el Pago </td>
-			</tr>
-		</tbody>
-		
-		
-	</table>
 
+	<form>
+		<div>
+			<ul name=”navbar”>
+				<li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
+				 <li class="opcion"><a href=”#”>Clientes</a></li>
+				 <li class="opcion"><a href=”#”>Cuentas</a></li>
+				 <li class="opcion"><a href=”#”>Prestamos</a></li>
+				 <li class="opcion"><a href=”#”>Actividades</a></li>
+				 <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
+			</ul>
+		</div>
+	</form>
+	
 
+	<form style="padding-left:35%  ; ">
+	
+	 	<table>
+			<thead>
+				<tr>
+					<td> </td>
+					<td> Numero de Cuota </td>
+					<td> Monto </td>
+					<td> Fecha de Realizacion del Pago </td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td> 1 </td>
+					<td> $ 1833.33</td>
+					<td> No se Realizo el Pago </td>
+				</tr>
+			</tbody>
+			
+			
+		</table>
+		<input type="submit" value="Pagar">
+	</form>
 </body>
 </html>
