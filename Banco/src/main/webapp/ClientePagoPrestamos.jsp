@@ -25,7 +25,7 @@
 
 	<form style="padding-left:35%  ; ">
 	
-		<table>
+	 	<table>
 			<thead>
 				<tr>
 					<td> </td>

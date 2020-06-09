@@ -17,7 +17,7 @@
 				 <li class="opcion"><a href=”#”>Clientes</a></li>
 				 <li class="opcion"><a href=”#”>Cuentas</a></li>
 				 <li class="opcion"><a href=”#”>Prestamos</a></li>
-				 <li class="opcion"><a href=”#”>Actividades</a></li>
+				 <li class="opcion"><a href=”#”>Actividades</a></li> 
 				 <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
 			</ul>
 		</div>

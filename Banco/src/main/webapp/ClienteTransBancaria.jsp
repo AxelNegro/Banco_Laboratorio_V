@@ -25,7 +25,7 @@
 
 	<form style="padding-left:35%  ; ">
 		Transferencia Desde el CBU:
-		<select>	
+		<select>	 
 				<option>Cuenta Corriente - CBU 156871278457</option>
 		</select>
 		<br>
