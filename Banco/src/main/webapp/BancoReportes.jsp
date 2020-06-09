@@ -9,19 +9,23 @@
 <title>Aprobar Creditos</title>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Reportes</label>
+	</div>
+
    <div class="padre">
       <div class="hijo">
-      <label class="titulo">Reportes</label>
+      
 	<form action="">
  		Buscar entre las fechas <input type="date"/> y <input type="date"/>	
 		<br>
-			<button type="button" class="botonReportes" >Pagos realizados<br />Entre fechas</button>
-			<button type="button" class="botonReportes" >Creditos aprobados <br />Entre fechas</button>
+			<button style="margin-top:2%;margin-bottom:2%" type="button" class="botonReportes" >Pagos realizados<br />Entre fechas</button>
+			<button style="margin-top:2%;margin-bottom:2%""type="button" class="botonReportes" >Creditos aprobados <br />Entre fechas</button>
 			<br>
 	
 		</form>
 		
-	<form style="padding-left: 9%;">	
+	<form">	
 			<table >
 		
 					  <tr>

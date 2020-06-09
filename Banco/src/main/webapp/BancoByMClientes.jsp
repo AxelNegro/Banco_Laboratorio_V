@@ -9,10 +9,12 @@
 <title>Cargar Clientes</title>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Baja y Modificación de Clientes</label>
+	</div>
 	<div class="padre">
 	   <div class="hijo">
-	   	  <label class="titulo">Baja y Modificación de Clientes</label>
-	      <form >
+	      <form>
 	         <table>
 	            <tr>
 	               <th>Dni</th>
@@ -46,6 +48,7 @@
 	               <td>calle real 123</td>
 	               <td>Avenida simpre feliz</td>
 	               <td>Buenos aires</td>
+	               <td>Diego456</td>
 	               <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	            </tr>
@@ -57,6 +60,7 @@
 	               <td>calle loca 123</td>
 	               <td>Avenida viva</td>
 	               <td>Buenos aires</td>
+	               <td>Martin789</td>
 	               <td><input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td><input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	            </tr>

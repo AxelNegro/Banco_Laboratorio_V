@@ -9,9 +9,11 @@
 <title>Dar Baja/Modificar Usuarios</title>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Baja y Modificación de Usuarios</label>
+	</div>
 	<div class="padre">
 	   <div class="hijo">
-	   	  <label class="titulo">Baja y Modificación de Usuarios</label>
 	      <form style="width:100%;height:100%">
 	         <table >
 	            <tr>

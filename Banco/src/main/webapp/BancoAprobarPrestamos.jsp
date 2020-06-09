@@ -9,9 +9,11 @@
 <title>Aprobar Creditos</title>
 </head>
 <body>
+   <div id="titulo">
+   	<label class="titulo">Aprobar prestamos</label>
+   </div>
    <div class="padre">
       <div class="hijo">
-      	<label class="titulo">Aprobar prestamos</label>
          <form >
             <table >
                <tr>
