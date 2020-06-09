@@ -47,53 +47,24 @@ input[type="text"]:hover{
 	border:none;
 	background-color:black;
 	color:white;
-		font-family:Arial;
+	font-family:Arial;
 }
 
 input[type="button"]:hover{
 	background-color:#111;
 	-webkit-text-stroke: 2px white;
 	color:black;
-	border:2px solid black;
+	border:1px solid black;
 	font-family:Arial
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
-  text-align:center;
-  font-family:Arial;
-}
-
-.opcion {
-  float: left;
-  font-family:Arial;
-}
-
-.usuario{
-	float:right;
-	font-family:Arial;
-}
-
-.opcion a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: Arial;
-}
-
-
 table  {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 20%;
-  font-family:Arial;
-
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 20%;
+	font-family:Arial;
+	align-items:center;
+	margin:auto;
 }
   td ,th {
   border: 1px solid #dddddd;
@@ -106,14 +77,21 @@ tr:nth-child(even) {
   font-family:Arial;
 }
 
-.opcion a:hover{
-  background-color: #111;
-}
-
 .botonReportes{
 	width:auto;
 	height: auto;
 	text-align: center;
+}
 
-	
+.padre {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	text-align:center;
+}
+
+.hijo{
+	width:100%;
+	padding:7% 0 0 0;
+	justify-content: center;
 }
