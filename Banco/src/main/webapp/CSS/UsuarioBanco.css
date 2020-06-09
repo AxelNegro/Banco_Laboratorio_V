@@ -130,6 +130,14 @@ tr:nth-child(even) {
   background-color: #111;
 }
 
+.botonReportes{
+	width:auto;
+	height: auto;
+	text-align: center;
+
+	
+}
+
 #footer {
 	background-color: black;
 	overflow: hidden;
