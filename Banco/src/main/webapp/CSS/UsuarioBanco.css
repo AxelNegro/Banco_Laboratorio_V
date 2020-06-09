@@ -68,12 +68,6 @@ ul {
   font-family:Arial;
 }
 
-.logo{
-	float:left;
-	padding: 0px 330px 0px 0px
-	font-family:Arial;
-}
-
 .opcion {
   float: left;
   font-family:Arial;
@@ -93,21 +87,7 @@ ul {
   font-family: Arial;
 }
 
-li #logo{
-	padding: 7px 10px 3px 10px;
-	width: 120px;
-	height: 30px;
-	cursor: pointer;
-	font-family:Arial;
-}
 
-li #usuario{
-	padding: 0px 10px 0px 10px;
-	width: 45px;
-	height: 45px;
-	cursor: pointer; 
-	font-family:Arial;
-}
 table  {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -136,28 +116,4 @@ tr:nth-child(even) {
 	text-align: center;
 
 	
-}
-
-#footer {
-	background-color: black;
-	overflow: hidden;
-	padding: 8px;
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	font-family:Arial;
-}
-#footer ul {
-	display: flex;
-	list-style: none;
-	justify-content: center;
-	font-size: 2em;
-	font-weight: 300;
-	font-family:Arial;
-}
-#footer ul li {
-	padding: 0 .5em;
-	color: white;
-	font-family: Arial;
 }
