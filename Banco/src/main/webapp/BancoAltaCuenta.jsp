@@ -12,7 +12,7 @@
 	<div class="padre">
 	   <form style="width:100% ">
 	      <div>
-	         <label class="titulo" style="padding-left:6%">Cargar Cuenta</label>
+	         <label class="titulo"> Alta de Cuentas</label>
 	         <br>
 	         <br>
 	         <div style="float:left">

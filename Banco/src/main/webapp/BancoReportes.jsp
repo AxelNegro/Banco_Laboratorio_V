@@ -9,9 +9,12 @@
 <title>Aprobar Creditos</title>
 </head>
 <body>
-	
-	<form action="" style="padding-top:1%; "><input type="date"></input><br>
-		<input type="date"></input>	&nbsp;&nbsp;
+   <div class="padre">
+      <div class="hijo">
+      <label class="titulo">Reportes</label>
+	<form action="">
+ 		Buscar entre las fechas <input type="date"/> y <input type="date"/>	
+		<br>
 			<button type="button" class="botonReportes" >Pagos realizados<br />Entre fechas</button>
 			<button type="button" class="botonReportes" >Creditos aprobados <br />Entre fechas</button>
 			<br>
@@ -51,5 +54,7 @@
 	
 	
 	</form>
+	</div>
+	</div>
 </body>
 </html>

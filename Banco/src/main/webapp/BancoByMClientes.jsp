@@ -11,6 +11,7 @@
 <body>
 	<div class="padre">
 	   <div class="hijo">
+	   	  <label class="titulo">Baja y Modificación de Clientes</label>
 	      <form >
 	         <table>
 	            <tr>
@@ -21,6 +22,7 @@
 	               <th>Direccion</th>
 	               <th>Localidad</th>
 	               <th>Provincia</th>
+	               <th>Usuario</th>
 	               <th>Modificar</th>
 	               <th>Borrar</th>
 	            </tr>
@@ -32,6 +34,7 @@
 	               <td>calle falsa 123</td>
 	               <td>Avenida simpre viva</td>
 	               <td>Buenos aires</td>
+	               <td>Alfredo123</td>
 	               <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	            </tr>

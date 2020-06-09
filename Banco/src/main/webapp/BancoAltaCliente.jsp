@@ -12,7 +12,7 @@
 	<div class="padre">
 	   <div class="hijo">
 	      <form>
-	         <label class="titulo" style="padding-left:6%">Cargar Cliente</label>
+	         <label class="titulo">Alta de Clientes</label>
 	         <br>
 	         <br>
 	         Documento:	<input id="TxtDocumento" type="text"/>
@@ -36,7 +36,8 @@
 	         <label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
 	         <br>
 	         <br>
-	         Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
+	         Usuario : &nbsp;&nbsp;    	<input id="TxtUsuario" type="text"/>
+	         &nbsp;&nbsp;  &nbsp;&nbsp; Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
 	            min="1900-01-01">
 	         <br>
 	         <br>

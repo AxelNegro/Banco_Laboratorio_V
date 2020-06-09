@@ -11,6 +11,7 @@
 <body>
 	<div class="padre">
 	   <div class="hijo">
+	   	  <label class="titulo">Baja y Modificación de Cuentas</label>
 	      <form style="width:100%;height:100%">
 	         <table >
 	            <tr>

@@ -3,7 +3,6 @@ import java.util.GregorianCalendar;
 
 import datosImpl.Conexion;
 import entidad.Cliente;
-import entidad.Cliente_x_Usuario;
 import entidad.Cuenta;
 import entidad.Usuario;
 import entidad.Movimiento;
@@ -13,10 +12,8 @@ import entidad.Prestamo;
 import entidad.TipoCuenta;
 import entidad.Cuotas_x_Prestamo;
 import negocio.ClienteNeg;
-import negocio.Cliente_x_UsuarioNeg;
 import negocio.UsuarioNeg;
 import negocioImpl.ClienteNegImpl;
-import negocioImpl.Cliente_x_UsuarioNegImpl;
 import negocioImpl.UsuarioNegImpl;
 import negocioImpl.CuentaNegImpl;
 import negocioImpl.Cuentas_x_UsuarioNegImpl;
@@ -54,7 +51,7 @@ public class Main {
 			tC.setTipoCuenta("Caja de ahorro en pesos");
 			AgregartC(tC);
 			tC.setCodTipoCuenta(2);
-			tC.setTipoCuenta("Caja de ahorro en dólares");
+			tC.setTipoCuenta("Caja de ahorro en dï¿½lares");
 			AgregartC(tC);
 			tC.setCodTipoCuenta(3);
 			tC.setTipoCuenta("Cuenta corriente");
@@ -63,7 +60,7 @@ public class Main {
 			tC.setTipoCuenta("Cuenta corriente especial en pesos");
 			AgregartC(tC);
 			tC.setCodTipoCuenta(5);
-			tC.setTipoCuenta("Cuenta corriente especial en dólares");
+			tC.setTipoCuenta("Cuenta corriente especial en dï¿½lares");
 			AgregartC(tC);
 		
 		}
@@ -695,18 +692,6 @@ public class Main {
 			System.out.println("No anduvo :(");
 		}
 		
-		Cliente_x_Usuario clixuser = new Cliente_x_Usuario();
-		Cliente_x_UsuarioNeg clixuserNeg = new Cliente_x_UsuarioNegImpl();
-		
-		clixuser.setCliente(cli);
-		clixuser.setUsuario(user);
-		
-		if(clixuserNeg.agregarUno(clixuser)) {
-			System.out.println("Anduvo!");
-		}
-		else {
-			System.out.println("No anduvo :(");
-		}
 	}
 	
 }
