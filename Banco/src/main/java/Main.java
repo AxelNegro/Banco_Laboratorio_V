@@ -12,9 +12,9 @@ import negocioImpl.ClienteNegImpl;
 import negocioImpl.Cliente_x_UsuarioNegImpl;
 import negocioImpl.UsuarioNegImpl;
 
-public class Principal {
+public class Main {
 	
-	public static void main(String[] args) {
+	public static void Principal(String[] args) {
 		
 		//Crear BD
 		CrearBD();
