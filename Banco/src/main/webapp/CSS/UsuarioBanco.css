@@ -101,7 +101,7 @@ table  {
   padding: 8px;
   font-family:Arial;
 }
-tr:nth-child(even) {
+tr:nth-child(even) { 
   background-color: #dddddd;
   font-family:Arial;
 }
