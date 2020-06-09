@@ -1,8 +1,11 @@
 package entidad;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +19,10 @@ public class Cliente implements Serializable{
 	@Id
 	@Column(name="DNI")
 	private int DNI;
+	@OneToOne(cascade = {CascadeType.ALL},
+			  orphanRemoval = true)
+	@JoinColumn(name="Username")
+	private Usuario usuario;
 	@Column(name="Nombre")
 	private String Nombre;
 	@Column(name="Apellido")
@@ -36,9 +43,10 @@ public class Cliente implements Serializable{
 	public Cliente() {
 		
 	}
-	public Cliente(int dni, String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
+	public Cliente(int dni, Usuario user , String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
 			String direccion, String localidad, String provincia) {
 		DNI = dni;
+		usuario = user;
 		Nombre = nombre;
 		Apellido = apellido;
 		Sexo = sexo;
@@ -102,5 +110,13 @@ public class Cliente implements Serializable{
 	public void setProvincia(String provincia) {
 		Provincia = provincia;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 	
 }

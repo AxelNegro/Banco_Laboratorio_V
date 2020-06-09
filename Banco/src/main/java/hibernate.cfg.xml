@@ -10,8 +10,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">create</property>
-        <property name="show_sql">true</property>
-        <mapping class="entidad.Cliente_x_Usuario"/>
+        <property name="show_sql">true</property>        
         <mapping class="entidad.Cliente"/>
         <mapping class="entidad.Cuenta"/>
         <mapping class="entidad.Cuentas_x_Usuario"/>
