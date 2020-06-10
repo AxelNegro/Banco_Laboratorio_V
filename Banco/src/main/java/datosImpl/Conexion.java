@@ -13,9 +13,14 @@ public class Conexion {
 	public Conexion()
 	{
 		Configuration configuration = new Configuration();
+		try {
         configuration.configure();
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Session abrirConexion()
