@@ -4,8 +4,9 @@ Trabajo integrador de Laboratorio V
 
 Información útil:
 - Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
-- En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward".
 - HTML Formatter: https://www.freeformatter.com/html-formatter.html
+- En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward".
+- Va a haber casos donde Hibernate, a pesar de tener el hbm2ddl.auto en create, no va a crear la base de datos y te va a decir "Unknown database 'nombre'", la manera que encontré de solucionar esto, fue creando la base de datos (y solo la base de datos) a mano en MySQL.
 
 Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
