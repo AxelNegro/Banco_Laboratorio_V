@@ -41,7 +41,7 @@ public class Main {
 	
 	public static void CrearBD() {
 		Conexion con=new Conexion();
-		Usuario user = new Usuario();
+		System.out.println("Base de datos creada.");
 	}
 	
 	static Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 
