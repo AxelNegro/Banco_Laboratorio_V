@@ -22,10 +22,19 @@
     </script>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Baja y Modificación de Clientes</label>
+	</div>
 	<div class="padre">
+<<<<<<< HEAD
 	   <div class="hijo">	
 	         <table id=tablaBancoCliente>
 	         <thead>
+=======
+	   <div class="hijo">
+	      <form>
+	         <table style="width:95%">
+>>>>>>> branch 'master' of https://github.com/AxelNegro/Banco_Laboratorio_V.git
 	            <tr>
 	               <th>Dni</th>
 	               <th>Nombre</th>
@@ -34,6 +43,7 @@
 	               <th>Direccion</th>
 	               <th>Localidad</th>
 	               <th>Provincia</th>
+	               <th>Usuario</th>
 	               <th>Modificar</th>
 	               <th>Borrar</th>
 	            </tr>
@@ -48,6 +58,7 @@
 	               <td>calle falsa 123</td>
 	               <td>Avenida simpre viva</td>
 	               <td>Buenos aires</td>
+	               <td>Alfredo123</td>
 	               <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	                </form>
@@ -61,6 +72,7 @@
 	               <td>calle real 123</td>
 	               <td>Avenida simpre feliz</td>
 	               <td>Buenos aires</td>
+	               <td>Diego456</td>
 	               <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	                </form>
@@ -74,6 +86,7 @@
 	               <td>calle loca 123</td>
 	               <td>Avenida viva</td>
 	               <td>Buenos aires</td>
+	               <td>Martin789</td>
 	               <td><input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
 	               <td><input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
 	             </form>

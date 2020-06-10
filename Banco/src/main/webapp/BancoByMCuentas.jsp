@@ -22,10 +22,19 @@
     </script>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Baja y Modificación de Cuentas</label>
+	</div>
 	<div class="padre">
+<<<<<<< HEAD
 	   <div class="hijo">	      
 	         <table id=tablaBancoCuenta>
 	             <thead>
+=======
+	   <div class="hijo">
+	      <form style="width:100%;height:100%">
+	         <table style="width:95%">
+>>>>>>> branch 'master' of https://github.com/AxelNegro/Banco_Laboratorio_V.git
 	            <tr>
 	               <th>Dni </th>
 	               <th>Nombre</th>

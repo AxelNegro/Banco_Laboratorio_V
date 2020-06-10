@@ -9,10 +9,12 @@
 <title>Cargar Clientes</title>
 </head>
 <body>
+	<div id="titulo">
+		<label class="titulo">Alta de Clientes</label>
+	</div>
 	<div class="padre">
 	   <div class="hijo">
 	      <form>
-	         <label class="titulo" style="padding-left:6%">Cargar Cliente</label>
 	         <br>
 	         <br>
 	         Documento:	<input id="TxtDocumento" type="text"/>
@@ -36,12 +38,13 @@
 	         <label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
 	         <br>
 	         <br>
-	         Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
+	         Usuario : &nbsp;&nbsp;    	<input id="TxtUsuario" type="text"/>
+	         &nbsp;&nbsp;  &nbsp;&nbsp; Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
 	            min="1900-01-01">
 	         <br>
 	         <br>
-	         <input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
-	         <input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
+	         <input style="margin-top:2%" class="botoncargar" id="txtVolver" type="button" value="Volver"/>
+	         <input style="margin-top:2%" class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
 	      </form>
 	   </div>
 	</div>

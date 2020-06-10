@@ -15,6 +15,7 @@
     margin-top:-145px;
 }
 
+<<<<<<< HEAD
 #tablaBancoCliente th{
     background-color: #2454cc;
     color:white;
@@ -55,6 +56,13 @@ table, th, td{
     border: 1px solid black;
     padding: 10px;
     border-collapse: collapse;
+=======
+#titulo{
+	width:100%;
+	text-align:center;
+	position:Absolute;
+	top:10%;
+>>>>>>> branch 'master' of https://github.com/AxelNegro/Banco_Laboratorio_V.git
 }
 
 .titulo{

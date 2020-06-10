@@ -25,7 +25,7 @@
 	<div class="padre">
 	   <form style="width:100% ">
 	      <div>
-	         <label class="titulo" style="padding-left:6%">Cargar Cuenta</label>
+	         <label class="titulo"> Alta de Cuentas</label>
 	         <br>
 	         <br>
 	         <div style="float:left">
@@ -39,6 +39,7 @@
 	                  <th>Direccion</th>
 	                  <th>Localidad</th>
 	                  <th>Provincia</th>
+	                  <th>Usuario</th>
 	                  <th>Seleccionar</th>
 	               </tr>
 	                  </thead>
@@ -51,6 +52,7 @@
 	                  <td>calle falsa 123</td>
 	                  <td>Avenida simpre viva</td>
 	                  <td>Buenos aires</td>
+	                  <td>Alfredo123</td>
 	                  <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
 	               </tr>
 	               <tr>
@@ -61,6 +63,7 @@
 	                  <td>calle real 123</td>
 	                  <td>Avenida simpre feliz</td>
 	                  <td>Buenos aires</td>
+	                  <td>Diego456</td>
 	                  <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
 	               </tr>
 	               <tr>
@@ -71,6 +74,7 @@
 	                  <td>calle loca 123</td>
 	                  <td>Avenida viva</td>
 	                  <td>Buenos aires</td>
+	                  <td>Martin789</td>
 	                  <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
 	               </tr>
 	                </tbody>
