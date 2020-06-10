@@ -12,10 +12,10 @@
       <jsp:include page="BancoMasterPage.html" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
-      <title>Cargar Clientes</title>
+      <title>Dar Baja/Modificar Usuarios</title>
       <script>
          $(document).ready(function () {
-             $('#tablaBancoCliente').DataTable(
+             $('#tablaUsuarios').DataTable(
                  {
                      "lengthChange": false,
                      "info": false
@@ -26,62 +26,36 @@
    </head>
    <body>
       <div id="titulo">
-         <label class="titulo">Baja y Modificación de Clientes</label>
+         <label class="titulo">Alta de Usuarios</label>
       </div>
       <div class="padre">
          <div class="hijo">
-            <form style="width:100%;height:100%">
-               <table style="width:95%" id=tablaBancoCliente>
+            <form >
+               <table style="width:95%" id="tablaUsuarios">
                   <thead>
                      <tr>
-                        <th>Dni</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Direccion</th>
-                        <th>Localidad</th>
-                        <th>Provincia</th>
-                        <th>Usuario</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Estado</th>
                         <th>Modificar</th>
                         <th>Borrar</th>
                      </tr>
                   </thead>
                   <tbody>
                      <tr>
-                        <td>1549682</td>
-                        <td>Alfredo</td>
-                        <td>Torres</td>
-                        <td style="text-align: center;">16/2/1950</td>
-                        <td>calle falsa 123</td>
-                        <td>Avenida simpre viva</td>
-                        <td>Buenos aires</td>
                         <td>Alfredo123</td>
+                        <td>1232</td>
+                        <td>Activa</td>
                         <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
                         <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
                      </tr>
                      <tr>
-                        <td>1543242</td>
-                        <td>Diego</td>
-                        <td>Torres</td>
-                        <td style="text-align: center;">16/2/1934</td>
-                        <td>calle real 123</td>
-                        <td>Avenida simpre feliz</td>
-                        <td>Buenos aires</td>
-                        <td>Diego456</td>
+                        <td>Hugo123</td>
+                        <td>1232</td>
+                        <td>Activa</td>
                         <td> <input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
                         <td> <input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
                      </tr>
-                     <tr>
-                        <td>1232682</td>
-                        <td>Martin</td>
-                        <td>Perez</td>
-                        <td style="text-align: center;">15/2/1930</td>
-                        <td>calle loca 123</td>
-                        <td>Avenida viva</td>
-                        <td>Buenos aires</td>
-                        <td>Martin789</td>
-                        <td><input class="btntabla" id="BtnModificar" type="button" value="Modificar"/></td>
-                        <td><input class="btntabla" id="BtnBorrar" type="button" value="Borrar"/></td>
                      </tr>
                   </tbody>
                </table>

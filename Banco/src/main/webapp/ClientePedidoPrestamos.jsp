@@ -12,7 +12,7 @@
 <body>
 
 	<form style="padding-left:35%  ; ">
-		<div class= "Xd">
+		<div>
 			<label class="titulo"  >Solicitar Prestamo</label> 
 			<br>
 			Prestamo para la Cuenta: 
