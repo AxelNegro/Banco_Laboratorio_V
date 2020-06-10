@@ -1,12 +1,10 @@
 *{
 		font-family:Arial;
 }
-#divPadre{
+.divPadre{
 	font-size:30px;
 	font-family:Arial;
-	text-align:center;
-	position: absolute;
-	width:596px;
+	text-align:center;	
 	height:290px;
     left: 50%;
     top: 50%;
@@ -15,6 +13,48 @@
     padding:10px;
     margin-left:-296px;
     margin-top:-145px;
+}
+
+#tablaBancoCliente th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaBancoCliente tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+#tablaBancoCuenta th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaBancoCuenta tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+#tablaBancoAltaCuenta th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaBancoAltaCuenta tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+#tablaUsuarios th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaUsuarios tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+table, th, td{
+    border: 1px solid black;
+    padding: 10px;
+    border-collapse: collapse;
 }
 
 .titulo{
@@ -91,7 +131,7 @@ tr:nth-child(even) {
 }
 
 .hijo{
-	width:100%;
+	width:70%;
 	padding:7% 0 0 0;
 	justify-content: center;
 }

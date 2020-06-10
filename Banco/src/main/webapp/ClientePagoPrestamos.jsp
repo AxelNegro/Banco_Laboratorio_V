@@ -4,24 +4,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <title>Pago de Cuotas</title>
 <jsp:include page="ClienteMasterPage.html" />
 <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
+<script>
+        $(document).ready(function () {
+            $('#tablaBancoCliente').DataTable(
+                {
+                    "lengthChange": false,
+                    "info": false
+                }
+            );
+        });
+    </script>
 </head>
 <body>
-
+<div class="padre">
+	
 	<form style="padding-left:35%  ; ">
 	
-	 	<table>
+	 	<table id=tablaBancoCliente>
 			<thead>
 				<tr>
-					<td> </td>
-					<td> Numero de Cuota </td>
-					<td> Monto </td>
-					<td> Fecha de Realizacion del Pago </td>
+					<th> </th>
+					<th> Numero de Cuota </th>
+					<th> Monto </th>
+					<th> Fecha de Realizacion del Pago </th>
 				</tr>
-			</thead>
-			
+			</thead>			
 			<tbody>
 				<tr>
 					<td><input type="checkbox"></td>
@@ -35,5 +48,6 @@
 		</table>
 		<input type="submit" value="Pagar">
 	</form>
+	</div>
 </body>
 </html>

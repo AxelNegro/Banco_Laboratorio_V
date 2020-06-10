@@ -4,9 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <jsp:include page="BancoMasterPage.html" />
 <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
 <title>Cargar Cuentas</title>
+<script>
+        $(document).ready(function () {
+            $('#tablaBancoAltaCuenta').DataTable(
+                {
+                    "lengthChange": false,
+                    "info": false
+                }
+            );
+        });
+    </script>
 </head>
 <body>
 	<div class="padre">
@@ -16,7 +29,8 @@
 	         <br>
 	         <br>
 	         <div style="float:left">
-	            <table >
+	            <table id="tablaBancoAltaCuenta">
+	              <thead>
 	               <tr>
 	                  <th>Dni</th>
 	                  <th>Nombre</th>
@@ -27,6 +41,8 @@
 	                  <th>Provincia</th>
 	                  <th>Seleccionar</th>
 	               </tr>
+	                  </thead>
+	            <tbody>
 	               <tr>
 	                  <td>1549682</td>
 	                  <td>Alfredo</td>
@@ -57,9 +73,10 @@
 	                  <td>Buenos aires</td>
 	                  <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
 	               </tr>
+	                </tbody>
 	            </table>
 	         </div>
-	         <div style="float:left; padding:2% 0 0 0">
+	         <div style="float:left; padding:2% 0px 0px 50px">
 	            Cbu:	<input id="TxtCbu" type="text"/>
 	            &nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;  &nbsp;&nbsp;  Numero Cuenta:	<input id="TxtNroCuenta" type="number"/>
 	            <br>
@@ -88,7 +105,7 @@
 	            <br> 
 	         </div>
 	      </div>
-	      <div style="clear:both;padding:20px">
+	      <div style="clear:both;padding:2% 0px 0px 270px">
 	         <input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
 	         <input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
 	      </div>

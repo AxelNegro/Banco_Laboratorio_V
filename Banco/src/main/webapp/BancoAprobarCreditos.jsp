@@ -4,14 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <jsp:include page="BancoMasterPage.html" />
 <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"><link>
 <title>Aprobar Creditos</title>
+<script>
+        $(document).ready(function () {
+            $('#tablaBancoCliente').DataTable(
+                {
+                    "lengthChange": false,
+                    "info": false
+                }
+            );
+        });
+    </script>
 </head>
 <body>
-
+	<div class="padre">
 	<form >	
-				<table >
+				<table id=tablaBancoCliente>
+				  <thead>
 					  <tr>
 					    <th>Dni </th>
 					    <th>Nombre</th>
@@ -26,6 +40,8 @@
 					    <th>Aprobar</th>
 					    <th>Rechazar</th>
 					  </tr>
+					    </thead>
+	            <tbody>
 					  <tr>
 					    <td>1549682</td>
 					    <td>Alfredo</td>
@@ -41,10 +57,11 @@
 					   <td> <input class="btntabla" id="btnRechazarCredito" type="button" value="Rechazar"/></td>
 					  </tr>
 					  
-				
+				      </tbody>
 			</table>
 	
 	
 	</form>
+	</div>
 </body>
 </html>
