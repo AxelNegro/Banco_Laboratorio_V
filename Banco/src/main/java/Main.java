@@ -49,13 +49,6 @@ public class Main {
 	public static void CrearBD() {
 		Conexion con=new Conexion();
 		System.out.println("Base de datos creada.");
-		
-		Usuario user = new Usuario();
-		
-		user.setUsername("Hugo123");
-		user.setPassword("Hugo1234");
-		user.setEstado(true);
-		AgregarUsuario(user);
 	}
 	
 	static Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 
@@ -72,10 +65,10 @@ public class Main {
 	public static void InsertarUsuario() {
 		Usuario user = new Usuario();
 	
-			//user.setUsername("Hugo123");
-//			user.setPassword("Hugo1234");
-//			user.setEstado(true);
-//			AgregarUsuario(user);
+			user.setUsername("Hugo123");
+			user.setPassword("Hugo1234");
+			user.setEstado(true);
+			AgregarUsuario(user);
 			
 			user = new Usuario();
 			
