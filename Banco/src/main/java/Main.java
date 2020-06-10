@@ -13,7 +13,14 @@ import entidad.Prestamos_x_Cliente;
 import entidad.TipoCuenta;
 import entidad.Cuotas_x_Prestamo;
 import negocio.ClienteNeg;
+import negocio.CuentaNeg;
+import negocio.Cuentas_x_UsuarioNeg;
+import negocio.Cuotas_x_PrestamoNeg;
+import negocio.MovimientoNeg;
+import negocio.Movimientos_x_CuentaNeg;
+import negocio.PrestamoNeg;
 import negocio.Prestamos_x_ClienteNeg;
+import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 import negocioImpl.ClienteNegImpl;
 import negocioImpl.UsuarioNegImpl;
@@ -32,16 +39,23 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Crear BD
-		CrearBD();
+		//CrearBD();
 
 		//Luego de crear la BD, comentar la funcion "CrearBD", pasar hibernate.cfg.xml a Update y descomentar la funcion "Insertar"
-		//Insertar();
+		Insertar();
 		
 	}
 	
 	public static void CrearBD() {
 		Conexion con=new Conexion();
 		System.out.println("Base de datos creada.");
+		
+		Usuario user = new Usuario();
+		
+		user.setUsername("Hugo123");
+		user.setPassword("Hugo1234");
+		user.setEstado(true);
+		AgregarUsuario(user);
 	}
 	
 	static Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 
@@ -58,10 +72,10 @@ public class Main {
 	public static void InsertarUsuario() {
 		Usuario user = new Usuario();
 	
-			user.setUsername("Hugo123");
-			user.setPassword("Hugo1234");
-			user.setEstado(true);
-			AgregarUsuario(user);
+			//user.setUsername("Hugo123");
+//			user.setPassword("Hugo1234");
+//			user.setEstado(true);
+//			AgregarUsuario(user);
 			
 			user = new Usuario();
 			
@@ -458,7 +472,7 @@ public class Main {
 	
 	public static void InsertarCuentas_x_Usuario(Usuario user, Cuenta c) {
 		Cuentas_x_Usuario cuentasUsuario = new Cuentas_x_Usuario();
-		Cuentas_x_UsuarioNegImpl cuentasUsuarioNeg = new Cuentas_x_UsuarioNegImpl();
+		Cuentas_x_UsuarioNeg cuentasUsuarioNeg = new Cuentas_x_UsuarioNegImpl();
 
 			cuentasUsuario.setCuenta(c);
 			cuentasUsuario.setUsuario(user); 
@@ -586,7 +600,7 @@ public class Main {
 	
 	public static void InsertarMovimientos_x_Cuenta(Movimiento m, Cuenta CBUDestino, Cuenta CBUOrigen) {
 		Movimientos_x_Cuenta movimientos_x_Cuenta = new Movimientos_x_Cuenta();
-		Movimientos_x_CuentaNegImpl movimientoCuentaNeg = new Movimientos_x_CuentaNegImpl();
+		Movimientos_x_CuentaNeg movimientoCuentaNeg = new Movimientos_x_CuentaNegImpl();
 
 
 			movimientos_x_Cuenta.setMovimiento(m);
@@ -738,7 +752,6 @@ public class Main {
 			AgregarPrestamo(prestamo);
 			InsertarCuotas_x_Prestamo(prestamo);
 			
-			AgregarCliente(cli);
 			
 			cli = new Cliente();
 			user = new Usuario();
@@ -754,7 +767,6 @@ public class Main {
 			cli.setSexo("Masculino");
 			cli.setDireccion("Direccion");
 			cli.setUsuario(user);
-			AgregarCliente(cli);
 			
 			prestamo = new Prestamo();
 			
@@ -838,7 +850,6 @@ public class Main {
 			cli.setSexo("Femenino");
 			cli.setDireccion("Direccion");
 			cli.setUsuario(user);
-			AgregarCliente(cli);
 			
 			prestamo = new Prestamo();
 			
@@ -884,7 +895,7 @@ public class Main {
 	
 	public static void InsertarCuotas_x_Prestamo(Prestamo prestamo) {
 		Cuotas_x_Prestamo cuotas_x_Prestamo = new Cuotas_x_Prestamo();
-		Cuotas_x_PrestamoNegImpl cuotaPrestamoNeg = new Cuotas_x_PrestamoNegImpl();
+		Cuotas_x_PrestamoNeg cuotaPrestamoNeg = new Cuotas_x_PrestamoNegImpl();
 
 			cuotas_x_Prestamo.setPrestamo(prestamo);
 			cuotas_x_Prestamo.setImporte_Mensual(2500);
@@ -917,7 +928,7 @@ public class Main {
 	}
 	
 	public static void AgregarUsuario(Usuario u) {
-		UsuarioNegImpl userNeg = new UsuarioNegImpl(); 
+		UsuarioNeg userNeg = new UsuarioNegImpl(); 
 		if(userNeg.agregarUno(u)) {
 			System.out.println("Anduvo!");
 		}
@@ -927,7 +938,7 @@ public class Main {
 	}
 	
 	public static void AgregarCliente(Cliente cli) {
-		ClienteNegImpl cliNeg = new ClienteNegImpl(); 
+		ClienteNeg cliNeg = new ClienteNegImpl(); 
 		if(cliNeg.agregarUno(cli)) {
 			System.out.println("Anduvo!");
 		}
@@ -937,7 +948,7 @@ public class Main {
 	}
 	
 	public static void AgregartC(TipoCuenta tC) {
-		TipoCuentaNegImpl tCNeg = new TipoCuentaNegImpl();
+		TipoCuentaNeg tCNeg = new TipoCuentaNegImpl();
 		if(tCNeg.agregarUna(tC)) {
 			System.out.println("Anduvo!");
 		}
@@ -947,7 +958,7 @@ public class Main {
 	}
 	
 	public static void AgregarCuenta(Cuenta c) {
-		CuentaNegImpl cuentaNeg = new CuentaNegImpl(); 
+		CuentaNeg cuentaNeg = new CuentaNegImpl(); 
 		if(cuentaNeg.agregarUna(c)) {
 			System.out.println("Anduvo!");
 		}
@@ -957,7 +968,7 @@ public class Main {
 	}
 	
 	public static void AgregarMovimiento(Movimiento movimiento) {
-		MovimientoNegImpl movimientoNeg = new MovimientoNegImpl();
+		MovimientoNeg movimientoNeg = new MovimientoNegImpl();
 		if(movimientoNeg.agregarUno(movimiento)) {
 			System.out.println("Anduvo!");
 		}
@@ -967,7 +978,7 @@ public class Main {
 	}
 	
 	public static void AgregarPrestamo(Prestamo prestamo) {
-		PrestamoNegImpl prestamoNeg = new PrestamoNegImpl();
+		PrestamoNeg prestamoNeg = new PrestamoNegImpl();
 		if(prestamoNeg.agregarUno(prestamo)) {
 			System.out.println("Anduvo!");
 		}
