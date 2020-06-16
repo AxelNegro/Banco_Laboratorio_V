@@ -5,6 +5,7 @@ Trabajo integrador de Laboratorio V
 Información útil:
 - Uso de GitHub: https://www.youtube.com/watch?v=zkfzIGJditA
 - HTML Formatter: https://www.freeformatter.com/html-formatter.html
+- Tutorial Spring MVC: https://www.javatpoint.com/spring-mvc-tutorial
 - En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward".
 - Va a haber casos donde Hibernate, a pesar de tener el hbm2ddl.auto en create, no va a crear la base de datos y te va a decir "Unknown database 'nombre'", la manera que encontré de solucionar esto, fue creando la base de datos (y solo la base de datos) a mano en MySQL.
 
@@ -26,30 +27,11 @@ Front-End:
   
 Consignas faltantes:
 
-- La base de datos junto con las tablas y las relaciones serÃ¡n creados a partir del proyecto mediante la utilización de Hibernate.
+- Dada la entrega número uno, se agregará la siguiente funcionalidad del administrador: ABML de cliente, ABML de cuentas y asignación de cuenta a cliente.
 
-- Crear un archivo llamado main. Dentro del mismo, se pide llenar la base de datos con mínimamente 10 registros validos por cada tabla. Por ejemplo, si tienen que llenar la tabla clientes coloquen nombres y apellidos correctos y no nombres como "afssafs" y apellido "fdskkjfsd".
+- Todas las instancias deben ser manejadas mediante SPRING CORE. Utilizar SPRING MVC para las peticiones (No servlets).
 
-- Las pantallas deberán realizarse con JSP.  Se evaluará que controles van a utilizar, por lo que es sumamente importante que se visualicen TODOS los controles. Ejemplo, si se va a editar sobre una grilla dibujar una grilla y colocar en su interior el botón eliminar y modificar. O si van a agregar sobre la grilla, dibujar los textbox respectivos.  No se pide entregar funcionalidad.
-
-Pantallas a realizar y persona a cargo: 
-- Todos:
-  - Masterpage. (Hecho)
-  - Login. (Hecho)
-  - Pagina principal sin logear. (Hecho)
-- Usuario Banco:
-  - Master Page de Banco que muestre el usuario logeado. (Hecho)
-  - ABML de clientes. (Hecho)
-  - ABML de cuentas y asignación de cuentas. (Hecho)
-  - ABML de usuarios y asignación de usuario.
-  - Autorización de prestamos, asignación de monto prestado, tiempo y cuotas que deberá pagar el cliente.
-  - Informe de actividades en un determinado rango de fechas.
-- Usuario Cliente:
-  - Master Page de Cliente que muestre el usuario logeado. (Hecho)
-  - Historial de movimientos de una cuenta seleccionada.
-  - Transferencia a otros clientes.
-  - Pedido de prestamos.
-  - MenÃº de pago de prestamos.
+- La pantalla principal debe llamarse Index.jsp (Ejecutare el código desde esta pantalla para probar así la funcionalidad)
 
 Clases:
 - Cliente x Usuario:
@@ -67,7 +49,7 @@ Clases:
   - Provincia.
 - Cuenta:
   - CBU.
-  - Fecha de creaciÃ³n.
+  - Fecha de creación.
   - Cod. Tipo de Cuenta.
   - Numero de Cuenta.
   - Nombre.
@@ -107,6 +89,6 @@ Clases:
   - Tipo de Cuenta.
 - Usuario: 
   - Usuario.
-  - ContraseÃ±a.
+  - Contraseña.
   - Tipo de Usuario (Banco/Cliente).
   - Estado.
