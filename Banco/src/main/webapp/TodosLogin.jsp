@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="CSS/Login.css" type="text/css"><link>
-<jsp:include page="TodosMasterPage.html" />
+<jsp:include page="TodosMasterPage.jsp" />
 <title>Iniciar sesión</title>
 </head>
 <body>

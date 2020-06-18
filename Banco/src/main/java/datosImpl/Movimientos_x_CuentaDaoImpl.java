@@ -1,17 +1,22 @@
 package datosImpl;
 
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import datos.Movimientos_x_CuentaDao;
+import entidad.Config;
 import entidad.Movimientos_x_Cuenta;
 
 public class Movimientos_x_CuentaDaoImpl implements Movimientos_x_CuentaDao{
-	
-private Conexion con = new Conexion();
+	private ApplicationContext appContext;
+	private Conexion con;
+	private Session session;
 	
 	@SuppressWarnings("finally")
 	public boolean agregarUno(Movimientos_x_Cuenta movxacc) {
-		Session session=con.abrirConexion();
+		Inicializar();
 		Boolean res=false;
 		
 		try {
@@ -26,10 +31,21 @@ private Conexion con = new Conexion();
 			res=false;
 		}
 		finally {
-			con.cerrarSession();
+			Finalizar();
 			return res;
 		}
 		
+	}
+	
+	public void Inicializar() {
+		appContext=new AnnotationConfigApplicationContext(Config.class);
+		con = (Conexion) appContext.getBean("ConexionBD");
+		session=con.abrirConexion();
+	}
+	
+	public void Finalizar() {
+		con.cerrarSession();
+		((ConfigurableApplicationContext)(appContext)).close();
 	}
 	
 }

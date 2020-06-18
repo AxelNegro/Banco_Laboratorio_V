@@ -7,7 +7,7 @@ import negocio.TipoCuentaNeg;
 
 public class TipoCuentaNegImpl implements TipoCuentaNeg{
 	
-	private TipoCuentaDao tipoaccDao = new TipoCuentaDaoImpl();
+	private TipoCuentaDao tipoaccDao;
 	
 	public TipoCuentaNegImpl() {
 	}

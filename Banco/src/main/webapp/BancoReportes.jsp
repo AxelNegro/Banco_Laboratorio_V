@@ -6,7 +6,7 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <jsp:include page="BancoMasterPage.html" />
+      <jsp:include page="BancoMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
       <title>Aprobar Creditos</title>
@@ -20,8 +20,8 @@
             <form action="">
                Buscar entre las fechas <input type="date"/> y <input type="date"/>	
                <br>
-               <button style="margin-top:2%;margin-bottom:2%" type="button" class="botonReportes" >Pagos realizados<br />Entre fechas</button>
-               <button style="margin-top:2%;margin-bottom:2%""type="button" class="botonReportes" >Creditos aprobados <br />Entre fechas</button>
+               <button style="margin-top:2%;margin-bottom:2%" type="button" class="botoncargar" >Pagos realizados<br />Entre fechas</button>
+               <button style="margin-top:2%;margin-bottom:2%""type="button" class="botoncargar" >Creditos aprobados <br />Entre fechas</button>
                <br>
             </form>
             <form>

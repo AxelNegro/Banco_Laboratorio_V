@@ -7,7 +7,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Solicitud de Prestamo</title>
-      <jsp:include page="ClienteMasterPage.html" />
+      <jsp:include page="ClienteMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
    </head>
@@ -31,7 +31,7 @@
                   <label>Plazo de Pago:</label>
                   <input type="Number" min="6" value="6"/>
                   <br><br>
-                  <input type="submit" value="Calcular">
+                  <input type="submit" class="botoncargar" value="Calcular">
                   <h1>Datos Finales del Prestamo</h1>
                   <label>Prestamo para la Cuenta: </label>
                   <label>Cuenta Corriente - CBU 156871278457</label>
@@ -48,9 +48,9 @@
                   <Label>Cuotas de :</Label>
                   <label> $ 1833.33</label> 
                   <br><br>
-                  <input type="submit" value="Enviar">
-                  <input type="submit" value="Modificar">
-                  <input type="submit" value="Cancelar">
+                  <input type="submit" class="botoncargar" value="Enviar">
+                  <input type="submit" class="botoncargar" value="Modificar">
+                  <input type="submit" class="botoncargar" value="Cancelar">
                </div>
             </form>
          </div>

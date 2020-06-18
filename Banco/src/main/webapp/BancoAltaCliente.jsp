@@ -6,7 +6,7 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <jsp:include page="BancoMasterPage.html" />
+      <jsp:include page="BancoMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
       <title>Cargar Clientes</title>

@@ -4,17 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="CSS/Inicio.css" type="text/css"><link>
+<link rel="stylesheet" href="CSS/Login.css" type="text/css"><link>
 <jsp:include page="TodosMasterPage.jsp" />
-<title>Página principal</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<div id="div1">
-		<label id="lbl1">Bienvenidos al Banco "Grupo 8"</label>
-	</div>
-
-	<div id="div2">
-		<label id="lbl2">Para comenzar a operar, ¡Inicía sesión!</label>
-	</div>
+<body>  
+<p>Welcome to Spring MVC Tutorial</p>  
+</body>  
 </body>
 </html>

@@ -9,7 +9,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <jsp:include page="BancoMasterPage.html" />
+      <jsp:include page="BancoMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
       <title>Cargar Clientes</title>

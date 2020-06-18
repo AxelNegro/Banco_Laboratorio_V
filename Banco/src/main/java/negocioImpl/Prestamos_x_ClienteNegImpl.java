@@ -7,7 +7,7 @@ import negocio.Prestamos_x_ClienteNeg;
 
 public class Prestamos_x_ClienteNegImpl implements Prestamos_x_ClienteNeg{
 
-	private Prestamos_x_ClienteDao prestxcliDao = new Prestamos_x_ClienteDaoImpl();
+	private Prestamos_x_ClienteDao prestxcliDao;
 	
 	public Prestamos_x_ClienteNegImpl() {
 	}

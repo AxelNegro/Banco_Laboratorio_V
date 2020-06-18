@@ -7,7 +7,7 @@ import negocio.Movimientos_x_CuentaNeg;
 
 public class Movimientos_x_CuentaNegImpl implements Movimientos_x_CuentaNeg{
 	
-	private Movimientos_x_CuentaDao movxaccDao = new Movimientos_x_CuentaDaoImpl();
+	private Movimientos_x_CuentaDao movxaccDao;
 	
 	public Movimientos_x_CuentaNegImpl() {
 	}

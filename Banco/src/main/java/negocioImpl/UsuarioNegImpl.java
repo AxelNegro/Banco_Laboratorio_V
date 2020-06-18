@@ -7,7 +7,7 @@ import negocio.UsuarioNeg;
 
 public class UsuarioNegImpl implements UsuarioNeg{
 	
-	private UsuarioDao userDao = new UsuarioDaoImpl();
+	private UsuarioDao userDao;
 	
 	public UsuarioNegImpl() {
 	}

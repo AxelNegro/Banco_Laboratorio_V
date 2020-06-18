@@ -7,7 +7,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Transferencia Bancaria</title>
-      <jsp:include page="ClienteMasterPage.html" />
+      <jsp:include page="ClienteMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
       <link>
    </head>
@@ -34,7 +34,7 @@
                   <option>Varios</option>
                </select>
                <br>
-               <input type="submit" value="Transferir">
+               <input class="botoncargar" type="submit" value="Transferir">
             </form>
          </div>
       </div>

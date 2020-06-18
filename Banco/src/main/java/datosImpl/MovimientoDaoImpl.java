@@ -1,17 +1,24 @@
 package datosImpl;
 
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import datos.MovimientoDao;
+import entidad.Config;
 import entidad.Movimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
 
-private Conexion con = new Conexion();
+	private ApplicationContext appContext;
+	private Conexion con;
+	private Session session;
 	
 	@SuppressWarnings("finally")
 	public boolean agregarUno(Movimiento mov) {
-		Session session=con.abrirConexion();
+		Inicializar();
+		 
 		Boolean res=false;
 		
 		try {
@@ -26,10 +33,22 @@ private Conexion con = new Conexion();
 			res=false;
 		}
 		finally {
-			con.cerrarSession();
+			Finalizar();
 			return res;
 		}
 		
+		
+	}
+	
+	public void Inicializar() {
+		appContext=new AnnotationConfigApplicationContext(Config.class);
+		con = (Conexion) appContext.getBean("ConexionBD");
+		session=con.abrirConexion();
+	}
+	
+	public void Finalizar() {
+		con.cerrarSession();
+		((ConfigurableApplicationContext)(appContext)).close();
 	}
 	
 }

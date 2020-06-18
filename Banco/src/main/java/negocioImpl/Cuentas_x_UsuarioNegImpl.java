@@ -7,7 +7,7 @@ import negocio.Cuentas_x_UsuarioNeg;
 
 public class Cuentas_x_UsuarioNegImpl implements Cuentas_x_UsuarioNeg{
 	
-	private Cuentas_x_UsuarioDao accxuserDao = new Cuentas_x_UsuarioDaoImpl();
+	private Cuentas_x_UsuarioDao accxuserDao;
 
 	public Cuentas_x_UsuarioNegImpl() {
 	}

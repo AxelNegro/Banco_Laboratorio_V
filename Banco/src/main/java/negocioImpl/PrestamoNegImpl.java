@@ -7,7 +7,7 @@ import negocio.PrestamoNeg;
 
 public class PrestamoNegImpl implements PrestamoNeg{
 	
-	private PrestamoDao prestDao = new PrestamoDaoImpl();
+	private PrestamoDao prestDao;
 	
 	public PrestamoNegImpl() {
 	}

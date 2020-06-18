@@ -7,7 +7,7 @@ import negocio.ClienteNeg;
 
 public class ClienteNegImpl implements ClienteNeg{
 	
-	private ClienteDao cliDao = new ClienteDaoImpl();
+	private ClienteDao cliDao;
 	
 	public ClienteNegImpl() {
 	}

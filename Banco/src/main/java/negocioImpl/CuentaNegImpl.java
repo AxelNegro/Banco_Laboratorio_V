@@ -7,7 +7,7 @@ import negocio.CuentaNeg;
 
 public class CuentaNegImpl implements CuentaNeg{
 	
-	private CuentaDao cuentaDao = new CuentaDaoImpl();
+	private CuentaDao cuentaDao;
 	
 	public CuentaNegImpl() {
 	}

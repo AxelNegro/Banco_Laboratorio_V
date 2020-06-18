@@ -7,7 +7,7 @@ import negocio.Cuotas_x_PrestamoNeg;
 
 public class Cuotas_x_PrestamoNegImpl implements Cuotas_x_PrestamoNeg{
 	
-	private Cuotas_x_PrestamoDao cuotxprestDao = new Cuotas_x_PrestamoDaoImpl();
+	private Cuotas_x_PrestamoDao cuotxprestDao;
 
 	public boolean agregarUna(Cuotas_x_Prestamo cuotxprest) {
 		return cuotxprestDao.agregarUna(cuotxprest);

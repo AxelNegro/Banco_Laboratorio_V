@@ -1,17 +1,23 @@
 package datosImpl;
 
 import org.hibernate.Session;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import datos.ClienteDao;
 import entidad.Cliente;
+import entidad.Config;
 
 public class ClienteDaoImpl implements ClienteDao{
 	
-	private Conexion con = new Conexion();
+	private ApplicationContext appContext;
+	private Conexion con;
+	private Session session;
 	
 	@SuppressWarnings("finally")
 	public boolean agregarUno(Cliente cli) {
-		Session session=con.abrirConexion();
+		Inicializar();
 		Boolean res=false;
 		
 		try {
@@ -26,10 +32,21 @@ public class ClienteDaoImpl implements ClienteDao{
 			res=false;
 		}
 		finally {
-			con.cerrarSession();
+			Finalizar();
 			return res;
 		}
 		
+	}
+	
+	public void Inicializar() {
+		appContext=new AnnotationConfigApplicationContext(Config.class);
+		con = (Conexion) appContext.getBean("ConexionBD");
+		session=con.abrirConexion();
+	}
+	
+	public void Finalizar() {
+		con.cerrarSession();
+		((ConfigurableApplicationContext)(appContext)).close();
 	}
 	
 }

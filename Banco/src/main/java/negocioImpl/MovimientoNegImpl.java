@@ -7,7 +7,7 @@ import negocio.MovimientoNeg;
 
 public class MovimientoNegImpl implements MovimientoNeg{
 	
-	private MovimientoDao movDao = new MovimientoDaoImpl();
+	private MovimientoDao movDao;
 	
 	public MovimientoNegImpl() {
 	}
