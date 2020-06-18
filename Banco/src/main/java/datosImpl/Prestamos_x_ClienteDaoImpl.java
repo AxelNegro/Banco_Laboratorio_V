@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.ConfigDao;
 import datos.Prestamos_x_ClienteDao;
-import entidad.Config;
 import entidad.Prestamos_x_Cliente;
 
 public class Prestamos_x_ClienteDaoImpl implements Prestamos_x_ClienteDao{
@@ -39,7 +39,7 @@ public class Prestamos_x_ClienteDaoImpl implements Prestamos_x_ClienteDao{
 	}
 	
 	public void Inicializar() {
-		appContext=new AnnotationConfigApplicationContext(Config.class);
+		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
 		session=con.abrirConexion();
 	}

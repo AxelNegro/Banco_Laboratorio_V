@@ -39,10 +39,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		//Crear BD
-		//CrearBD();
+		CrearBD();
 
 		//Luego de crear la BD, comentar la funcion "CrearBD", pasar hibernate.cfg.xml a Update y descomentar la funcion "Insertar"
-		Insertar();
+		//Insertar();
 		
 	}
 	

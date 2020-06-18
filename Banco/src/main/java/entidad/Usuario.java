@@ -17,12 +17,16 @@ public class Usuario implements Serializable{
 	private String Username;
 	@Column(name="Password")
 	private String Password;
+	@Column(name="TipoUsuario")
+	private Boolean TipoUsuario;
 	@Column(name="Estado")
 	private Boolean Estado;
 	
-	public Usuario(String username, String password, Boolean estado) {
+	
+	public Usuario(String username, String password, Boolean tipoUsuario, Boolean estado) {
 		Username = username;
 		Password = password;
+		TipoUsuario = tipoUsuario;
 		Estado = estado;
 	}
 	
@@ -44,6 +48,14 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		Password = password;
 	}
+	
+	public Boolean getTipoUsuario() {
+		return TipoUsuario;
+	}
+
+	public void setTipoUsuario(Boolean tipoUsuario) {
+		TipoUsuario = tipoUsuario;
+	}
 
 	public Boolean getEstado() {
 		return Estado;
@@ -51,6 +63,12 @@ public class Usuario implements Serializable{
 
 	public void setEstado(Boolean estado) {
 		Estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [Username=" + Username + ", Password=" + Password + ", TipoUsuario=" + TipoUsuario + ", Estado="
+				+ Estado + "]";
 	}
 	
 }

@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.ConfigDao;
 import datos.UsuarioDao;
-import entidad.Config;
 import entidad.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao{
@@ -38,8 +38,30 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 	}
 	
+	public Usuario leerUno(String username) {
+		Inicializar();
+		Usuario user;
+		try {
+			session.beginTransaction();
+			user=(Usuario) session.get(Usuario.class, username);
+		}
+		catch(Exception e) {
+			user=null;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		if(!user.equals(null)) {
+			return user;
+		}
+		else {
+			return null;
+		}
+	}
+	
 	public void Inicializar() {
-		appContext=new AnnotationConfigApplicationContext(Config.class);
+		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
 		session=con.abrirConexion();
 	}

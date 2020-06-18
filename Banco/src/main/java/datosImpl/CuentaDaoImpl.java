@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.ConfigDao;
 import datos.CuentaDao;
-import entidad.Config;
 import entidad.Cuenta;
 
 public class CuentaDaoImpl implements CuentaDao{
@@ -39,7 +39,7 @@ public class CuentaDaoImpl implements CuentaDao{
 	}
 	
 	public void Inicializar() {
-		appContext=new AnnotationConfigApplicationContext(Config.class);
+		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
 		session=con.abrirConexion();
 	}

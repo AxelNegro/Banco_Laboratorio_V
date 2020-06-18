@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.ConfigDao;
 import datos.MovimientoDao;
-import entidad.Config;
 import entidad.Movimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
@@ -37,11 +37,10 @@ public class MovimientoDaoImpl implements MovimientoDao{
 			return res;
 		}
 		
-		
 	}
 	
 	public void Inicializar() {
-		appContext=new AnnotationConfigApplicationContext(Config.class);
+		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
 		session=con.abrirConexion();
 	}

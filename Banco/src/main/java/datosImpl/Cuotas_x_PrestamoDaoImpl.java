@@ -5,8 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import config.ConfigDao;
 import datos.Cuotas_x_PrestamoDao;
-import entidad.Config;
 import entidad.Cuotas_x_Prestamo;
 
 public class Cuotas_x_PrestamoDaoImpl implements Cuotas_x_PrestamoDao{
@@ -40,7 +40,7 @@ public class Cuotas_x_PrestamoDaoImpl implements Cuotas_x_PrestamoDao{
 	}
 	
 	public void Inicializar() {
-		appContext=new AnnotationConfigApplicationContext(Config.class);
+		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
 		session=con.abrirConexion();
 	}
