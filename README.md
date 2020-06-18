@@ -34,9 +34,6 @@ Consignas faltantes:
 - La pantalla principal debe llamarse Index.jsp (Ejecutare el código desde esta pantalla para probar así la funcionalidad)
 
 Clases:
-- Cliente x Usuario:
-  - DNI.
-  - Usuario.
 - Cliente: 
   - DNI.
   - Nombre.
@@ -90,5 +87,5 @@ Clases:
 - Usuario: 
   - Usuario.
   - Contraseña.
-  - Tipo de Usuario (Banco/Cliente).
+  - Tipo de Usuario (1 - Banco, 0 - Cliente).
   - Estado.
