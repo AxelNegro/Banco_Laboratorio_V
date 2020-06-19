@@ -21,13 +21,13 @@ public class UsuarioController {
 	private ApplicationContext appContextEnt;
 	private ApplicationContext appContextNeg;
 	private boolean TipoUsuario;
-	@RequestMapping("/Login")
+	@RequestMapping("Login.do")
 	public String Login(HttpServletRequest req,Model m) {
 		String User=req.getParameter("txtUsuario");
 		String Pass=req.getParameter("txtContrasenia");
 		String msg;
 		AgregarUsuarioAdmin();
-		if(!User.trim().isEmpty()||!Pass.trim().isEmpty()) {
+		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
 				if(TipoUsuario) {
 					Finalizar();
@@ -56,14 +56,21 @@ public class UsuarioController {
 	public void AgregarUsuarioAdmin() {
 		InicializarEnt();
 		InicializarNeg();
+		
 		Usuario user = (Usuario) appContextEnt.getBean("UsuarioAdmin");
 		Cliente cli = (Cliente) appContextEnt.getBean("ClienteAdmin");
+		
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
+	
+		Usuario userAux = userNeg.leerUno(user.getUsername());
+		
 		try {
-			System.out.println(user.toString());
-			userNeg.agregarUno(user);
-			cliNeg.agregarUno(cli);
+			if(userAux==null) 
+			{
+				userNeg.agregarUno(user);
+				cliNeg.agregarUno(cli);
+			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -78,8 +85,14 @@ public class UsuarioController {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		Usuario user = userNeg.leerUno(User);
 		if(user!=null) {
-			TipoUsuario=user.getTipoUsuario();
-			return true;
+			if(user.getPassword().equals(Pass)) {
+				TipoUsuario=user.getTipoUsuario();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else {
 			return false;

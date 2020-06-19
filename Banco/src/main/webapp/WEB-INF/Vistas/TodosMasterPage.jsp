@@ -20,8 +20,8 @@ html {
    <form>
       <div>
          <ul name=”navbar”>
-            <li class="logo"><a href="TodosInicio.jsp"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-            <li class="usuario"><a  href="TodosLogin.jsp"><img id="usuario"  src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
+            <li class="logo"><a href="TodosInicio.do"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
+            <li class="usuario"><a  href="TodosLogin.do"><img id="usuario"  src="Multimedia/Usuario.png" alt="Iniciar sesión"/></a></li>
          </ul>
       </div>
    </form>

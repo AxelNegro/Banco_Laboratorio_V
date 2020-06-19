@@ -13,34 +13,34 @@
          <ul>
             <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaCliente.jsp>Clientes</a>
+               <a class="menu" href=BancoAltaCliente.do>Clientes</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaCliente.jsp>Alta</a>
+                  <li><a href=BancoAltaCliente.do>Alta</a>
                   <li>
-                  <li><a href=BancoByMClientes.jsp>Baja y Modificación</a>
+                  <li><a href=BancoByMClientes.do>Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaCuenta.jsp>Cuentas</a>
+               <a class="menu" href=BancoAltaCuenta.do>Cuentas</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaCuenta.jsp>Alta</a>
+                  <li><a href=BancoAltaCuenta.do>Alta</a>
                   <li>
-                  <li><a href=BancoByMCuentas.jsp>Baja y Modificación</a>
+                  <li><a href=BancoByMCuentas.do>Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaUsuario.jsp>Usuarios</a>
+               <a class="menu" href=BancoAltaUsuario.do>Usuarios</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaUsuario.jsp>Alta</a>
+                  <li><a href=BancoAltaUsuario.do>Alta</a>
                   <li>
-                  <li><a href=BancoByMUsuarios.jsp>Baja y Modificación</a>
+                  <li><a href=BancoByMUsuarios.do>Baja y Modificación</a>
                   <li>
                </ul>
             </li>
-            <li class="opcion"><a class="menu" href=BancoAprobarPrestamos.jsp>Prestamos</a></li>
-            <li class="opcion"><a class="menu" href=BancoReportes.jsp>Reportes</a></li>
+            <li class="opcion"><a class="menu" href=BancoAprobarPrestamos.do>Prestamos</a></li>
+            <li class="opcion"><a class="menu" href=BancoReportes.do>Reportes</a></li>
             <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">Nombre de usuario</p>

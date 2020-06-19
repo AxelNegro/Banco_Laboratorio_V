@@ -12,18 +12,17 @@
       <div>
          <ul name=”navbar”>
             <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-            <li class="opcion"><a class="menu" href=ClienteMovimientos.jsp>Historial</a></li>
-            <li class="opcion"><a class="menu" href=ClienteTransBancaria.jsp>Transferir</a></li>
+            <li class="opcion"><a class="menu" href=ClienteMovimientos.do>Historial</a></li>
+            <li class="opcion"><a class="menu" href=ClienteTransBancaria.do>Transferir</a></li>
             <li class="opcion">
-               <a class="menu" href=ClientePedidoPrestamos.jsp>Prestamos</a>
+               <a class="menu" href=ClientePedidoPrestamos.do>Prestamos</a>
                <ul class="submenu">
-                  <li><a href=ClientePedidoPrestamos.jsp>Pedido</a>
+                  <li><a href=ClientePedidoPrestamos.do>Pedido</a>
                   <li>
-                  <li><a href=ClientePagoPrestamos.jsp>Pago</a>
+                  <li><a href=ClientePagoPrestamos.do>Pago</a>
                   <li>
                </ul>
             </li>
-            <!-- <li class="opcion"><a class="menu" href=ClientePagoPrestamos.jsp>Pago de prestamos</a></li> -->
             <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">Nombre de usuario</p>

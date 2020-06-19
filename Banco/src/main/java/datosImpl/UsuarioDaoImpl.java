@@ -52,7 +52,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		finally {
 			Finalizar();
 		}
-		if(!user.equals(null)) {
+		if(user!=null) {
 			return user;
 		}
 		else {
