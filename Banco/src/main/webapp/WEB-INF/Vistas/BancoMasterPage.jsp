@@ -43,7 +43,7 @@
             <li class="opcion"><a class="menu" href=BancoReportes.do>Reportes</a></li>
             <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
-               <p id="username">Nombre de usuario</p>
+               <p id="username">${Username}</p>
             </li>
          </ul>
       </div>

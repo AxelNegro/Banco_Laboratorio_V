@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">  
+      <display-name>Banco</display-name>
       <welcome-file-list>
       	<welcome-file>TodosInicio.do</welcome-file>
       </welcome-file-list>  
@@ -7,9 +8,20 @@
         <servlet-name>spring</servlet-name>    
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>    
         <load-on-startup>1</load-on-startup>      
-    </servlet>    
+    </servlet>
+       <servlet>
+       	<description>
+       	</description>
+       	<display-name>uyi</display-name>
+       	<servlet-name>uyi</servlet-name>
+       	<servlet-class>presentacion.uyi</servlet-class>
+       </servlet>    
     <servlet-mapping>    
         <servlet-name>spring</servlet-name>    
         <url-pattern>*.do</url-pattern>    
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>uyi</servlet-name>
+    	<url-pattern>/uyi</url-pattern>
     </servlet-mapping>    
 </web-app>  

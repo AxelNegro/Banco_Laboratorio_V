@@ -20,8 +20,8 @@
 				Contraseña:	<input id="txtContrasenia" name="txtContrasenia" type="password" placeholder="Contraseña"/>
 				<br>
 				<br>
-				<input id="txtVolver" type="submit" value="Volver"/>
-				<input id="txtAceptar" type="submit" value="Aceptar"/>
+				<input id="btnVolver" type="submit" value="Volver"/>
+				<input id="btnAceptar" type="submit" value="Aceptar"/>
 				${Msg} 
 		</div>
 	</form>

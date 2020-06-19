@@ -1,7 +1,5 @@
 package presentacion;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,19 +20,19 @@ public class UsuarioController {
 	private ApplicationContext appContextNeg;
 	private boolean TipoUsuario;
 	@RequestMapping("Login.do")
-	public String Login(HttpServletRequest req,Model m) {
-		String User=req.getParameter("txtUsuario");
-		String Pass=req.getParameter("txtContrasenia");
+	public String Login(String txtUsuario, String txtContrasenia,Model m) {
+		String User=txtUsuario;
+		String Pass=txtContrasenia;
 		String msg;
 		AgregarUsuarioAdmin();
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
+				m.addAttribute("Username",User);
+				Finalizar();
 				if(TipoUsuario) {
-					Finalizar();
 					return "BancoAltaCliente";
 				}
 				else {
-					Finalizar();
 					return "ClienteMovimientos";
 				}
 			}
