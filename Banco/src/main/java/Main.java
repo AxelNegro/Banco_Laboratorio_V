@@ -1,6 +1,12 @@
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import config.ConfigDao;
+import config.ConfigNeg;
 import datosImpl.Conexion;
 import entidad.Cliente;
 import entidad.Cuenta;
@@ -47,8 +53,13 @@ public class Main {
 	}
 	
 	public static void CrearBD() {
-		Conexion con=new Conexion();
+		ApplicationContext appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
+		
+		Conexion con = (Conexion) appContext.getBean("ConexionBD");
+		
 		System.out.println("Base de datos creada.");
+		
+		((ConfigurableApplicationContext)(appContext)).close();
 	}
 	
 	static Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 

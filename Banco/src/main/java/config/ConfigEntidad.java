@@ -4,17 +4,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-import datosImpl.Conexion;
 import entidad.Cliente;
 import entidad.Usuario;
-import negocio.ClienteNeg;
-import negocio.UsuarioNeg;
-import negocioImpl.ClienteNegImpl;
-import negocioImpl.UsuarioNegImpl;
 
 
 
