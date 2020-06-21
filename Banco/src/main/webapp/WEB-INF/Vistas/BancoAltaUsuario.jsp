@@ -14,15 +14,20 @@
 	</div>
 	<div class="padre">
 	   <div class="hijo">
-	      <form style="width:100%;height:100%">
-	         Usuario: <input type="text" id="txtUsuario" placeholder="Usuario" />
+	      <form action="agregarUser.do" method="post">
+	         Usuario: <input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario" />
 	         <br>
 	         <br>
-	         Contraseña: <input type="password" id="txtContrasenia" placeholder="Contraseña" />
+	         Contraseña: <input type="password" id="txtContrasenia" name="txtContrasenia" placeholder="Contraseña" />
 	         <br>
 	         <br>
-	         <input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
-             <input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
+	         Tipo de usuario: <input type="radio" id="rdTipo" name="rdTipo" value="true"/> Banco	
+	         			      <input type="radio" id="rdTipo" name="rdTipo" value="false"/> Cliente
+	   		 <br>
+	   		 <br>
+	         <input class="botoncargar" id="txtVolver" type="submit" value="Volver"/>
+             <input class="botoncargar" id="txtAceptar" type="submit" value="Aceptar"/>
+            ${Msg}
 	      </form>
 	   </div>
 	</div>

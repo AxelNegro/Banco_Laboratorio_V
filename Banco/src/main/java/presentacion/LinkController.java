@@ -12,81 +12,94 @@ public class LinkController {
 	/* TODOS */
 	
 	@RequestMapping("TodosInicio.do")
-	public String TodosInicio(HttpServletRequest req,Model m) {
+	public String TodosInicio(Model m) {
 		return "index";
 	}
 	
 	@RequestMapping("TodosLogin.do")
-	public String TodosLogin(HttpServletRequest req,Model m) {
+	public String TodosLogin(Model m) {
 		return "TodosLogin";
 	}
 	
 	/* CLIENTE */
 	
 	@RequestMapping("ClienteInicio.do")
-	public String ClienteInicio(HttpServletRequest req,Model m) {
+	public String ClienteInicio(String user,Model m) {
+		m.addAttribute("Username",user);
 		return "ClienteMovimientos";
 	}
 	
 	@RequestMapping("ClientePagoPrestamos.do")
-	public String ClientePagoPrestamos(HttpServletRequest req,Model m) {
+	public String ClientePagoPrestamos(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "ClientePagoPrestamos";
 	}
 	
 	@RequestMapping("ClientePedidoPrestamos.do")
-	public String ClientePedidoPrestamos(HttpServletRequest req,Model m) {
+	public String ClientePedidoPrestamos(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "ClientePedidoPrestamos";
 	}
 	
 	@RequestMapping("ClienteTransBancaria.do")
-	public String ClienteTransBancaria(HttpServletRequest req,Model m) {
+	public String ClienteTransBancaria(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "ClienteTransBancaria";
 	}
 	
 	/* BANCO */
 	
 	@RequestMapping("BancoInicio.do")
-	public String BancoInicio(HttpServletRequest req,Model m) {
+	public String BancoInicio(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "BancoAltaCliente";
 	}
 	
 	@RequestMapping("BancoAltaCliente.do")
-	public String BancoAltaCliente(HttpServletRequest req,Model m) {
+	public String BancoAltaCliente(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "BancoAltaCliente";
 	}
 	
 	@RequestMapping("BancoAltaCuenta.do")
-	public String BancoAltaCuenta(HttpServletRequest req,Model m) {
+	public String BancoAltaCuenta(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "BancoAltaCuenta";
 	}
 	
 	@RequestMapping("BancoAltaUsuario.do")
-	public String BancoAltaUsuario(HttpServletRequest req,Model m) {
+	public String BancoAltaUsuario(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "BancoAltaUsuario";
 	}
 	
 	@RequestMapping("BancoAprobarPrestamos.do")
-	public String BancoAprobarPrestamos(HttpServletRequest req,Model m) {
+	public String BancoAprobarPrestamos(String user, Model m) {
+		m.addAttribute("Username",user);
 		return "BancoAprobarPrestamos";
 	}
 	
 	@RequestMapping("BancoByMClientes.do")
-	public String BancoByMClientes(HttpServletRequest req,Model m) {
+	public String BancoByMClientes(String user,Model m) {
+		m.addAttribute("Username",user);
 		return "BancoByMClientes";
 	}
 	
 	@RequestMapping("BancoByMCuentas.do")
-	public String BancoByMCuentas(HttpServletRequest req,Model m) {
+	public String BancoByMCuentas(String user,Model m) {
+		m.addAttribute("Username",user);
 		return "BancoByMCuentas";
 	}
 	
 	@RequestMapping("BancoByMUsuarios.do")
-	public String BancoByMUsuarios(HttpServletRequest req,Model m) {
-		return "BancoByMUsuarios";
+	public String BancoByMUsuarios(String user,Model m) {
+		m.addAttribute("Username",user);
+		return "";
 	}
 	
 	@RequestMapping("BancoReportes.do")
-	public String BancoReportes(HttpServletRequest req,Model m) {
+	public String BancoReportes(String user,Model m) {
+		m.addAttribute("Username",user);
 		return "BancoReportes";
 	}
 	

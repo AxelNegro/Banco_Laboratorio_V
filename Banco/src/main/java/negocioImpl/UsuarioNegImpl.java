@@ -1,5 +1,7 @@
 package negocioImpl;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -28,6 +30,14 @@ public class UsuarioNegImpl implements UsuarioNeg{
 
 	public Usuario leerUno(String username) {
 		return userDao.leerUno(username);
+	}
+	
+	public List<Usuario> leerTodos(){
+		return userDao.leerTodos();
+	}
+	
+	public boolean Modificar(Usuario user) {
+		return userDao.Modificar(user);
 	}
 
 	public void Inicializar() {

@@ -1,7 +1,9 @@
 package config;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +12,14 @@ import entidad.Usuario;
 
 
 
-public class ConfigEntidad {
+public class ConfigEnt {
 	private ApplicationContext appContext;
+	
+	@Bean
+	public Usuario UsuarioDefault() {
+		Usuario user = new Usuario();
+		return user;
+	}
 	
 	@Bean
 	public Usuario UsuarioAdmin() {
@@ -24,7 +32,7 @@ public class ConfigEntidad {
 		
 		return user;
 	}
-	
+
 	@Bean
 	public Date FechaDefault() {
 		Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 
@@ -55,5 +63,4 @@ public class ConfigEntidad {
 		
 		return cli;
 	}
-
 }

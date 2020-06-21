@@ -8,39 +8,39 @@
 <title>Master Page del banco</title>
 </head>
 <body>
-   <form>
+   <form method="get">
       <div>
          <ul>
             <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaCliente.do>Clientes</a>
+               <a class="menu" href="BancoAltaCliente.do?user=${Username}">Clientes</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaCliente.do>Alta</a>
+                  <li><a href="BancoAltaCliente.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href=BancoByMClientes.do>Baja y Modificación</a>
+                  <li><a href="BancoByMClientes.do?user=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaCuenta.do>Cuentas</a>
+               <a class="menu" href="BancoAltaCuenta.do?user=${Username}">Cuentas</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaCuenta.do>Alta</a>
+                  <li><a href="BancoAltaCuenta.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href=BancoByMCuentas.do>Baja y Modificación</a>
+                  <li><a href="BancoByMCuentas.do?user=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href=BancoAltaUsuario.do>Usuarios</a>
+               <a class="menu" href="BancoAltaUsuario.do?user=${Username}">Usuarios</a>
                <ul class="submenu">
-                  <li><a href=BancoAltaUsuario.do>Alta</a>
+                  <li><a href="BancoAltaUsuario.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href=BancoByMUsuarios.do>Baja y Modificación</a>
+                  <li><a href="leerTodos.do">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
-            <li class="opcion"><a class="menu" href=BancoAprobarPrestamos.do>Prestamos</a></li>
-            <li class="opcion"><a class="menu" href=BancoReportes.do>Reportes</a></li>
+            <li class="opcion"><a class="menu" href="BancoAprobarPrestamos.do?user=${Username}">Prestamos</a></li>
+            <li class="opcion"><a class="menu" href="BancoReportes.do?user=${Username}">Reportes</a></li>
             <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">${Username}</p>

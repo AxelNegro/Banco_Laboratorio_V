@@ -9,7 +9,7 @@
 <title>Iniciar sesión</title>
 </head>
 <body>
-	<form action="Login.do" method="post">
+	<form action="Login.do" method="get">
 		<div id="divPadre">
 				<label>Iniciar sesión:</label>
 				<br>

@@ -12,14 +12,14 @@
       <div>
          <ul name=”navbar”>
             <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-            <li class="opcion"><a class="menu" href=ClienteMovimientos.do>Historial</a></li>
-            <li class="opcion"><a class="menu" href=ClienteTransBancaria.do>Transferir</a></li>
+            <li class="opcion"><a class="menu" href="ClienteMovimientos.do?user=${Username}">Historial</a></li>
+            <li class="opcion"><a class="menu" href="ClienteTransBancaria.do?user=${Username}">Transferir</a></li>
             <li class="opcion">
-               <a class="menu" href=ClientePedidoPrestamos.do>Prestamos</a>
+               <a class="menu" href="ClientePedidoPrestamos.do?user=${Username}">Prestamos</a>
                <ul class="submenu">
-                  <li><a href=ClientePedidoPrestamos.do>Pedido</a>
+                  <li><a href="ClientePedidoPrestamos.do?user=${Username}">Pedido</a>
                   <li>
-                  <li><a href=ClientePagoPrestamos.do>Pago</a>
+                  <li><a href="ClientePagoPrestamos.do?user=${Username}">Pago</a>
                   <li>
                </ul>
             </li>
