@@ -195,18 +195,19 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("modificarUno.do")
-	public String ModificarUno(String btnModificar, String btnDesactivar, String hdnUser, String hdnPass, String hdnTipo, String hdnEstado, Model m) {
-		
+	public String ModificarUno(String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnUser, String[] hdnPass, String[] hdnTipo, String[] hdnEstado, String[] txtPassword, String[] ddlTipo, Model m) {
 		InicializarNeg();
 		InicializarEnt();
 		
-		Usuario user=EstablecerDatos(hdnUser, hdnPass, hdnTipo, hdnEstado);
+		int Id = Integer.parseInt(hdnId);
+		
+		Usuario user=EstablecerDatos(hdnUser[Id], hdnPass[Id], hdnTipo[Id], hdnEstado[Id]);
 		
 		if(btnModificar!=null) {
-			
+			Modificar(user,txtPassword[Id],ddlTipo[Id], m);
 		}
 		else if(btnDesactivar!=null) {
-			Modificar(user,m);
+			CambiarEstado(user,m);
 		}
 		
 		ObtenerLista(m);
@@ -216,7 +217,7 @@ public class UsuarioController {
 		return "BancoByMUsuarios";
 	}
 	
-	public void Modificar(Usuario user, Model m) {
+	public void CambiarEstado(Usuario user, Model m) {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		String Estado;
 		if(user.getEstado()) {
@@ -236,7 +237,24 @@ public class UsuarioController {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('El estado del usuario "+user.getUsername()+" es actualmente "+Estado+"')</script>");
 		}
 		else {
-			m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurri� un error al modificar el estado.')</script>");
+			m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar el estado.')</script>");
+		}
+	}
+	
+	public void Modificar(Usuario user, String Password, String Tipo, Model m) {
+		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
+		if(!(Password.trim().isEmpty())) {
+			user.setPassword(Password);
+			user.setTipoUsuario(Boolean.parseBoolean(Tipo.trim()));
+			if(userNeg.Modificar(user)) {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó el usuario correctamente.')</script>");
+			}
+			else {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar el usuario.')</script>");
+			}
+		}
+		else {
+			m.addAttribute("Msg","<script type='text/javascript'>alert('No puede insertar una contraseña vacía.')</script>");
 		}
 	}
 }

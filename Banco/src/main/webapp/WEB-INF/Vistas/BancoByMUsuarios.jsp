@@ -10,6 +10,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <jsp:include page="BancoMasterPage.jsp" />
       <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"></link>
+      <script type="text/javascript" src="JS/Tablas.js"></script>
       <title>Dar Baja/Modificar Usuarios</title>
       <script>
          $(document).ready(function () {
@@ -29,6 +30,7 @@
       <div class="padre">
          <div class="hijo">
             <form action="modificarUno.do" method="post">
+            	<input type="hidden" id="hdnId" name="hdnId" value=""/>
                <table style="width:95%" id="tablaUsuarios">
                   <thead>
                      <tr>
@@ -43,9 +45,14 @@
                   <tbody>
                   	<c:forEach items="${lstUsers}" var="user">
                      <tr>
-                        <td><input type="hidden" name="hdnUser" value="${user.getUsername()}"/>${user.getUsername()}</td>
-                        <td><input type="hidden" name="hdnPass" value="${user.getPassword()}"/>${user.getPassword()}</td>
-                        <td><input type="hidden" name="hdnTipo" value="${user.getTipoUsuario()}"/>
+                        <td>
+                        	<input type="hidden" name="hdnUser" value="${user.getUsername()}"/>
+                        	<input type="hidden" name="hdnPass" value="${user.getPassword()}"/>
+                        	<input type="hidden" name="hdnTipo" value="${user.getTipoUsuario()}"/>
+                        	<input type="hidden" name="hdnEstado" value="${user.getEstado()}"/>
+                        	${user.getUsername()}</td>
+                        <td> <input type="hidden" name="txtPassword"/> ${user.getPassword()}</td>
+                        <td> <input type="hidden" name="ddlTipo"/>
                         	<c:choose>
 							    <c:when test = "${user.getTipoUsuario()==true}">
 							        Banco
@@ -55,7 +62,7 @@
 							    </c:otherwise>
 							</c:choose>
                         </td>
-                        <td><input type="hidden" name="hdnEstado" value="${user.getEstado()}"/>
+                        <td>
                         	<c:choose>
 							    <c:when test = "${user.getEstado()==true}">
 							        Activo
@@ -65,8 +72,17 @@
 							    </c:otherwise>
 							</c:choose>
                         </td>
-                        <td> <input name="btnModificar" type="submit" class="botoncargar" value="Modificar"/> </td>
-                        <td> <input name="btnDesactivar" type="submit" class="botoncargar" value="Desactivar"/> </td>
+                        <td style="text-align:center"> <input name="btnModificar" type="button" class="botoncargar" value="Modificar" onclick="Modificar('tablaUsuarios',${lstUsers.indexOf(user)})"/> </td>
+                        <td style="text-align:center"> 
+                        	<c:choose>
+							    <c:when test = "${user.getEstado()==true}">
+							        <input name="btnDesactivar" type="submit" class="botoncargar" value="Desactivar" onclick="document.getElementById('hdnId').value=${lstUsers.indexOf(user)}"/> 
+							    </c:when>    
+							    <c:otherwise>
+							        <input name="btnDesactivar" type="submit" class="botoncargar" value="Activar" onclick="document.getElementById('hdnId').value=${lstUsers.indexOf(user)}"/> 
+							    </c:otherwise>
+							</c:choose>
+                        </td>
                      </tr>
                      </c:forEach>
                   </tbody>

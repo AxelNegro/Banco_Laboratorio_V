@@ -88,6 +88,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		try {
 			session.beginTransaction();
 			session.update(user);
+			session.getTransaction().commit();
 			res=true;
 		}
 		catch(Exception e) {
