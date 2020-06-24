@@ -17,37 +17,35 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <form>
+            <form action="agregarCliente.do" method="post">
                <br>
                <br>
-               Documento:	<input id="TxtDocumento" type="text"/>
-               &nbsp;&nbsp;  &nbsp;&nbsp;
-               Nacionalidad:	<input id="TxtNacionalidad" type="text"/>
+               Documento:	<input type="number" id="txtDocumento" name="txtDocumento" style="margin-right:1%" placeholder="Documento"/>
+               Usuario: <input type="text" id="txtUsuario" name="txtUsuario" style="margin-right:1%" placeholder="Usuario"/>
                <br>
                <br>
-               Nombre : &nbsp;&nbsp;&nbsp;   <input id="TxtNombre " type="text"/>
-               &nbsp;&nbsp;  &nbsp;&nbsp;  Direccion:	<input id="TxtDireccion" type="text"/>	
+               Nombre: <input type="text" id="txtNombre" name="txtNombre" style="margin-right:1%" placeholder="Nombre"/>
+               Apellido: <input type="text" id="txtApellido" name="txtApellido" style="margin-right:1%" placeholder="Apellido"/>
                <br>
                <br>
-               Apellido : &nbsp;&nbsp;    	<input id="TxtApellido" type="text"/>
-               &nbsp;&nbsp;  &nbsp;&nbsp;  Localidad:	<input id="TxtLocalidad" type="text"/>
-               <br>
-               <br>
-               Sexo  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;		
-               <select name="ddlSexo">
+               Sexo:		
+               <select id="ddlSexo" name="ddlSexo" style="margin-right:1%;width:6%;text-align:center">
                   <option value="Hombre">Hombre</option>
                   <option value="Mujer">Mujer</option>
                </select>
-               <label style="padding-left : 8%;"> Provincia :	<input id="TxtProvincia" type="text"/></label>
+               Fecha nacimiento	<input type="date" id="dtFechaNac" name="dtFechaNac" style="margin-right:1%" min="1900-01-01">
                <br>
                <br>
-               Usuario : &nbsp;&nbsp;    	<input id="TxtUsuario" type="text"/>
-               &nbsp;&nbsp;  &nbsp;&nbsp; Fecha nacimiento	<input type="date" id="FechaNac" name="trip-start" 
-                  min="1900-01-01">
+               Nacionalidad: <input type="text" id="txtNacionalidad" name="txtNacionalidad" style="margin-right:1%" placeholder="Nacionalidad"/>
+               Provincia: <input type="text" id="txtProvincia" name="txtProvincia" style="margin-right:1%" placeholder="Provincia"/>
                <br>
                <br>
-               <input style="margin-top:2%" class="botoncargar" id="txtVolver" type="button" value="Volver"/>
-               <input style="margin-top:2%" class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
+               Localidad: <input type="text" id="txtLocalidad" name="txtLocalidad" style="margin-right:1%" placeholder="Localidad"/>
+               Dirección: <input type="text" id="txtDireccion" name="txtDireccion" style="margin-right:1%" placeholder="Dirección"/>
+               <br>
+               <br>
+               <input class="botoncargar" id="txtAgregar" name="txtAceptar" type="submit" value="Agregar"/>
+               ${Msg}
             </form>
          </div>
       </div>

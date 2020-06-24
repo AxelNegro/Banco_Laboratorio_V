@@ -56,7 +56,7 @@ input[type="text"]:hover:after, input[type="password"]:hover:after{
   	border-bottom: 2px solid red;
 }*/
 
-input[type="button"]{
+input[type="button"],input[type="submit"]{
 	padding:5px 100px 5px 100px;
 	cursor:pointer;
 	border:none;
@@ -64,7 +64,7 @@ input[type="button"]{
 	color:white;
 }
 
-input[type="button"]:hover{
+input[type="button"]:hover,input[type="submit"]:hover{
 	background-color:#111;
 	-webkit-text-stroke: 2px white;
 	color:black;

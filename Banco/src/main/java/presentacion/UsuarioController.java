@@ -21,6 +21,7 @@ public class UsuarioController {
 	private ApplicationContext appContextEnt;
 	private ApplicationContext appContextNeg;
 	private boolean TipoUsuario;
+	private Usuario user;
 	
 	public void InicializarEnt() {
 		appContextEnt=new AnnotationConfigApplicationContext(ConfigEnt.class);
@@ -55,35 +56,42 @@ public class UsuarioController {
 		String User=txtUsuario;
 		String Pass=txtContrasenia;
 		String msg;
-		txtUsuario="asd";
 		AgregarUsuarioAdmin();
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
-				m.addAttribute("Username",User);
-				FinalizarEnt();
-				FinalizarNeg();
-				if(TipoUsuario) {
-					return "BancoAltaCliente";
+				if(user.getEstado()) {
+					if(TieneClienteAsignado(User)) {
+						m.addAttribute("Username",User);
+						FinalizarEnt();
+						FinalizarNeg();
+						if(TipoUsuario) {
+							return "BancoAltaCliente";
+						}
+						else {
+							return "ClienteMovimientos";
+						}
+					}
+					else {
+						msg="<script type='text/javascript'>alert('El usuario no tiene un cliente asignado.');</script>";
+					}
 				}
 				else {
-					return "ClienteMovimientos";
+					msg="<script type='text/javascript'>alert('El usuario está inactivo.');</script>";
 				}
 			}
 			else {
 				msg="<script type='text/javascript'>alert('Usuario y/o contraseña incorrectos.');</script>";
 				m.addAttribute("Msg",msg);
-				FinalizarEnt();
-				FinalizarNeg();
-				return "TodosLogin";
 			}
 		}
 		else {
 			msg="<script type='text/javascript'>alert('Ingrese un usuario y contraseña validos.');</script>";
-			m.addAttribute("Msg",msg);
-			FinalizarEnt();
-			FinalizarNeg();
-			return "TodosLogin";
 		}
+		
+		m.addAttribute("Msg",msg);
+		FinalizarEnt();
+		FinalizarNeg();
+		return "TodosLogin";
 	}
 	
 	
@@ -117,7 +125,7 @@ public class UsuarioController {
 	
 	public boolean EsCorrecto(String User, String Pass) {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
-		Usuario user = userNeg.leerUno(User);
+		this.user = userNeg.leerUno(User);
 		if(user!=null) {
 			if(user.getPassword().equals(Pass)) {
 				TipoUsuario=user.getTipoUsuario();
@@ -133,6 +141,11 @@ public class UsuarioController {
 		}
 	}
 	
+	public boolean TieneClienteAsignado(String Username) {
+		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
+		return cliNeg.tieneUsuario(Username);
+	}
+	
 	@RequestMapping("agregarUser.do")
 	public String agregarUno(String txtUsuario, String txtContrasenia, String rdTipo, Model m) {
 		InicializarEnt();
@@ -141,13 +154,10 @@ public class UsuarioController {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		
 		Usuario user = (Usuario) appContextEnt.getBean("UsuarioDefault");
-		Usuario userAux = (Usuario) appContextEnt.getBean("UsuarioDefault");
 		
 		if(!(txtUsuario.trim().isEmpty()||txtContrasenia.trim().isEmpty()||rdTipo==null)) {
 			
-			userAux = userNeg.leerUno(txtUsuario.trim());
-			
-			if(userAux==null) {
+			if(userNeg.leerUno(txtUsuario.trim())==null) {
 				
 				user=EstablecerDatos(txtUsuario.trim(),txtContrasenia.trim(),rdTipo,"true");
 				
@@ -173,8 +183,8 @@ public class UsuarioController {
 		return "BancoAltaUsuario";
 	}
 	
-	@RequestMapping("leerTodos.do")
-	public String LeerTodos(Model m) {
+	@RequestMapping("leerTodosUser.do")
+	public String LeerTodos(String user, Model m) {
 		InicializarNeg();
 		InicializarEnt();
 		
@@ -182,6 +192,9 @@ public class UsuarioController {
 		
 		FinalizarEnt();
 		FinalizarNeg();
+		
+		m.addAttribute("Username", user);
+		
 		return "BancoByMUsuarios";
 	}
 	
@@ -194,7 +207,7 @@ public class UsuarioController {
 		userNeg.Finalizar();
 	}
 	
-	@RequestMapping("modificarUno.do")
+	@RequestMapping("modificarUser.do")
 	public String ModificarUno(String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnUser, String[] hdnPass, String[] hdnTipo, String[] hdnEstado, String[] txtPassword, String[] ddlTipo, Model m) {
 		InicializarNeg();
 		InicializarEnt();

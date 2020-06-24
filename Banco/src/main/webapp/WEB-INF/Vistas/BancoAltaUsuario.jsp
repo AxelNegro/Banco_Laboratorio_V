@@ -18,15 +18,14 @@
 	         Usuario: <input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario" />
 	         <br>
 	         <br>
-	         Contraseña: <input type="password" id="txtContrasenia" name="txtContrasenia" placeholder="Contraseña" />
+	         Contraseña: <input type="text" id="txtContrasenia" name="txtContrasenia" placeholder="Contraseña" />
 	         <br>
 	         <br>
 	         Tipo de usuario: <input type="radio" id="rdTipo" name="rdTipo" value="true"/> Banco	
 	         			      <input type="radio" id="rdTipo" name="rdTipo" value="false"/> Cliente
 	   		 <br>
 	   		 <br>
-	         <input class="botoncargar" id="txtVolver" type="submit" value="Volver"/>
-             <input class="botoncargar" id="txtAceptar" type="submit" value="Aceptar"/>
+             <input class="botoncargar" id="txtAgregar" name="txtAgregar" type="submit" value="Agregar"/>
             ${Msg}
 	      </form>
 	   </div>

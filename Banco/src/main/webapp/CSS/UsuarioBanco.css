@@ -15,11 +15,11 @@
     margin-top:-145px;
 }
 
-#tablaBancoCliente th{
+#tablaClientes th{
     background-color: #2454cc;
     color:white;
 }
-#tablaBancoCliente tr:nth-child(even) { 
+#tablaClientes tr:nth-child(even) { 
   background-color: #dddddd;
   font-family:Arial;
 }
@@ -78,14 +78,9 @@ text-align: center;
 
 }
 
-input[type="text"]{
+input[type="text"], select, input[type="password"], input[type="date"], input[type="number"]{
 	border: none;
 	border-bottom: 2px solid black;
-		font-family:Arial;
-}
-
-input[type="text"]:hover{
-	border: 2px solid black;
 		font-family:Arial;
 }
 

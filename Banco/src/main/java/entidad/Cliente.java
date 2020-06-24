@@ -3,12 +3,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name="Cliente")
@@ -19,8 +25,7 @@ public class Cliente implements Serializable{
 	@Id
 	@Column(name="DNI")
 	private int DNI;
-	@OneToOne(cascade = {CascadeType.ALL},
-			  orphanRemoval = true)
+	@OneToOne
 	@JoinColumn(name="Username")
 	private Usuario usuario;
 	@Column(name="Nombre")
@@ -32,6 +37,7 @@ public class Cliente implements Serializable{
 	@Column(name="Nacionalidad")
 	private String Nacionalidad;
 	@Column(name="Fecha_Nac")
+	@Type(type="date")
 	private Date Fecha_Nac;
 	@Column(name="Direccion")
 	private String Direccion;
@@ -90,7 +96,7 @@ public class Cliente implements Serializable{
 		return Fecha_Nac;
 	}
 	public void setFecha(Date fecha) {
-		Fecha_Nac = fecha;
+			Fecha_Nac = fecha;
 	}
 	public String getDireccion() {
 		return Direccion;

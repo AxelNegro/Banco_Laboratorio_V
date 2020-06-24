@@ -17,7 +17,7 @@
                <ul class="submenu">
                   <li><a href="BancoAltaCliente.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href="BancoByMClientes.do?user=${Username}">Baja y Modificación</a>
+                  <li><a href="leerTodosClientes.do?user=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
@@ -35,7 +35,7 @@
                <ul class="submenu">
                   <li><a href="BancoAltaUsuario.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href="leerTodos.do">Baja y Modificación</a>
+                  <li><a href="leerTodosUser.do?user=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>

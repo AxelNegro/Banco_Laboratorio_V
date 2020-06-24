@@ -29,7 +29,7 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <form action="modificarUno.do" method="post">
+            <form action="modificarUser.do" method="post">
             	<input type="hidden" id="hdnId" name="hdnId" value=""/>
                <table style="width:95%" id="tablaUsuarios">
                   <thead>

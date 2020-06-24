@@ -40,6 +40,12 @@ public class ConfigEnt {
 	}
 	
 	@Bean
+	public Cliente ClienteDefault() {
+		Cliente cli = new Cliente();
+		return cli;
+	}
+	
+	@Bean
 	public Cliente ClienteAdmin() {
 		Usuario user = new Usuario();
 		Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 

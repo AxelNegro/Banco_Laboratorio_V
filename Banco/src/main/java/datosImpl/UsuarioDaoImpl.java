@@ -64,6 +64,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Usuario> leerTodos(){
 		Inicializar();
 		List<Usuario> lstUsers;
