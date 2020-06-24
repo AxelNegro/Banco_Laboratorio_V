@@ -26,8 +26,6 @@ function Modificar(NombreTabla,Fila){
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
 		LlenarDatos(NombreTabla,Fila);
 	break;
-	default:
-	break;
 	}
 }
 
@@ -50,7 +48,5 @@ function LlenarDatos(NombreTabla, Fila){
 		Filas.cells[8].children[0].value=document.getElementsByName('hdnLocalidad')[Fila].value;
 		Filas.cells[9].children[0].value=document.getElementsByName('hdnDireccion')[Fila].value;
 	break;
-	default:
-		break;
 	}
 }

@@ -32,7 +32,7 @@
                <br>
                <br>
                <div style="float:left;Width:50%">
-                  <table id="tablaBancoAltaCuenta">
+                  <table id="tablaAltaCuentas">
                      <thead>
                         <tr>
                            <th>Dni</th>
@@ -48,37 +48,21 @@
                            <td>1549682</td>
                            <td>Alfredo</td>
                            <td>Torres</td>
-                           <td style="text-align: center;">16/2/1950</td>
+                           <td style="text-align:center">16/2/1950</td>
                            <td>Alfredo123</td>
-                           <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
-                        </tr>
-                        <tr>
-                           <td>1543242</td>
-                           <td>Diego</td>
-                           <td>Torres</td>
-                           <td style="text-align: center;">16/2/1934</td>
-                           <td>Diego456</td>
-                           <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
-                        </tr>
-                        <tr>
-                           <td>1232682</td>
-                           <td>Martin</td>
-                           <td>Perez</td>
-                           <td style="text-align: center;">15/2/1930</td>
-                           <td>Martin789</td>
-                           <td>&nbsp;&nbsp;&nbsp;<input class="btntabla" id="BtnSeleccionar" type="button" value="Seleccionar"/></td>
+                           <td style="text-align:center"><input class="botoncargar" id="btnSeleccionar" type="button" value="Seleccionar"/></td>
                         </tr>
                      </tbody>
                   </table>
                </div>
                <div style="float:left; padding:2% 0px 0px 50px;Width:45%">
-                  Cbu:	<input id="TxtCbu" type="text"/>
-                  &nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;  &nbsp;&nbsp;  Numero Cuenta:	<input id="TxtNroCuenta" type="number"/>
+                  Cbu:<input type="text" id="txtCBU" name="txtCBU"/>
+                  Numero Cuenta: <input type="number" id="txtNroCuenta" name="txtNroCuenta"/>
                   <br>
                   <br>
-                  Nombre : <input id="TxtNombre " type="text"/>
-                  &nbsp;	&nbsp;&nbsp;&nbsp;	  Tipo Cuenta:	
-                  <select name="tipoCuenta" style="width: 159px;">
+                  Nombre: <input type="text" id="txtNombre" name="txtNombre"/>
+                  Tipo Cuenta:	
+                  <select id="ddlTipo" name="ddlTipo" style="width: 159px;">
                      <option value="ahorroPesos">Caja de ahorro en pesos</option>
                      <option value="ahorroDolares">Caja de ahorro en dólares</option>
                      <option value="ctaCte">Cuenta corriente</option>
@@ -87,22 +71,20 @@
                   </select>
                   <br>
                   <br>
-                  Saldo : &nbsp;&nbsp;    	<input id="TxtSaldo" type="number"/>
-                  &nbsp;&nbsp;  &nbsp;&nbsp;	Fecha Creacion	<input type="date" id="FechaCreacionCuenta" name="trip-start" 
-                     min="1900-01-01">
+                  Saldo: <input type="number" id="txtSaldo" name="txtSaldo" />
+                  Fecha Creacion:	<input type="date" id="txtFecha" name="txtFecha" min="1900-01-01">
                   <br>
                   <br>
-                  Dni Dueño cuenta : <input id="DniDuenoCuenta" disabled></input>
+                  DNI del cliente seleccionado: <input id="txtDNICli" name="txtDNICli" disabled></input>
                   <br>  
                   <br> 
-                  Nombre Dueño Cuenta:<input id="NombreDuenoCuenta" disabled ></input>
+                  Nombre del cliente seleccionado:<input id="txtNombreCli" name="txtNombreCli" disabled ></input>
                   <br>  
                   <br> 
                </div>
             </div>
             <div style="clear:both;padding-top:2%">
-               <input class="botoncargar" id="txtVolver" type="button" value="Volver"/>
-               <input class="botoncargar" id="txtAceptar" type="button" value="Aceptar"/>
+               <input class="botoncargar" type="button" id="txtAceptar" name="txtAceptar" value="Aceptar"/>
             </div>
          </form>
       </div>
