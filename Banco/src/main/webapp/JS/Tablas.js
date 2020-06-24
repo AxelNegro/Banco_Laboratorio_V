@@ -9,6 +9,7 @@ function Modificar(NombreTabla,Fila){
 		Filas.cells[4].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
+		LlenarDatos(NombreTabla,Fila);
 	break;
 	case 'tablaClientes':
 		Filas.cells[1].innerHTML='<input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario"/>';
@@ -23,28 +24,33 @@ function Modificar(NombreTabla,Fila){
 		Filas.cells[10].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
+		LlenarDatos(NombreTabla,Fila);
 	break;
 	default:
 	break;
 	}
 }
 
-/*function LimpiarTabla(NombreTabla){
-	var Tabla=document.getElementById(NombreTabla);
-	for(var i = 0; i < Tabla.rows.length; i++){
-		LimpiarFila(NombreTabla,i);
-	}
-}
-
-function LimpiarFila(NombreTabla, Fila){
+function LlenarDatos(NombreTabla, Fila){
 	var Tabla=document.getElementById(NombreTabla);
 	var Filas=Tabla.rows[Fila+1];
-	var Modificar;
-	if(NombreTabla=='tablaUsuarios'){
-		Filas.cells[1].innerHTML='${user.getPassword()}';
-		Filas.cells[2].innerHTML='<input type="hidden" name="ddlTipo"/><c:choose><c:when test = "${user.getTipoUsuario()==true}">Banco</c:when><c:otherwise>Cliente</c:otherwise></c:choose>';
-		Filas.cells[4].innerHTML='<input name="btnModificar" type="button" class="botoncargar" value="Modificar" onclick=""/>';
-		Modificar=document.getElementsByName("btnModificar");
-		Modificar[Fila].setAttribute('onclick','Modificar("tablaUsuarios",${lstUsers.indexOf(user)})');
+	switch(NombreTabla){
+	case 'tablaUsuarios':
+		Filas.cells[1].children[0].value=document.getElementsByName('hdnPass')[Fila].value;
+		Filas.cells[2].children[0].value=document.getElementsByName('hdnTipo')[Fila].value;
+	case 'tablaClientes':
+		alert(document.getElementsByName('hdnSexo')[Fila].value);
+		Filas.cells[1].children[0].value=document.getElementsByName('hdnUsuario')[Fila].value;
+		Filas.cells[2].children[0].value=document.getElementsByName('hdnNombre')[Fila].value;
+		Filas.cells[3].children[0].value=document.getElementsByName('hdnApellido')[Fila].value;
+		Filas.cells[4].children[0].value=document.getElementsByName('hdnSexo')[Fila].value;
+		Filas.cells[5].children[0].value=document.getElementsByName('hdnFecha')[Fila].value;
+		Filas.cells[6].children[0].value=document.getElementsByName('hdnNacionalidad')[Fila].value;
+		Filas.cells[7].children[0].value=document.getElementsByName('hdnProvincia')[Fila].value;
+		Filas.cells[8].children[0].value=document.getElementsByName('hdnLocalidad')[Fila].value;
+		Filas.cells[9].children[0].value=document.getElementsByName('hdnDireccion')[Fila].value;
+	break;
+	default:
+		break;
 	}
-}*/
+}
