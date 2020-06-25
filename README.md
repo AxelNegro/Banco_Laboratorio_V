@@ -9,6 +9,14 @@ Información útil:
 - En caso de que alguien haya hechos cambios mientras nosotros estabamos realizando cambios también, habrá que realizar un Pull y acto seguido realizar un Push para que el Commit se produzca, caso contrario, tirará "Rejected: Non-fast forward".
 - Va a haber casos donde Hibernate, a pesar de tener el hbm2ddl.auto en create, no va a crear la base de datos y te va a decir "Unknown database 'nombre'", la manera que encontré de solucionar esto, fue creando la base de datos (y solo la base de datos) a mano en MySQL.
 
+- Creación correcta de la BD:
+1. Ejecutar en MySQL "CREATE DATABASE banco;"
+2. Con el hibernate.cfg.xml en "create" ejecutar el proyecto.
+3. Logearse con la cuenta de usuario "admin" y contraseña "admin".
+4. Parar la ejecución del proyecto y pasar el hibernate.cfg.xml a "update".
+5. Descomentar la linea 62 del UsuarioController.java y comentar la linea 61.
+6. Ejecutar el proyecto hasta luego de logearse y luego comentar la linea 62 (Opcional).
+
 Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
 
 Programación por capas:
@@ -27,11 +35,11 @@ Front-End:
   
 Consignas faltantes:
 
-- Dada la entrega número uno, se agregará la siguiente funcionalidad del administrador: ABML de cliente, ABML de cuentas y asignación de cuenta a cliente.
+- Dada la entrega número uno, se agregará la siguiente funcionalidad del administrador: ABML de cliente, ABML de cuentas y asignación de cuenta a cliente. (Hecho)
 
-- Todas las instancias deben ser manejadas mediante SPRING CORE. Utilizar SPRING MVC para las peticiones (No servlets).
+- Todas las instancias deben ser manejadas mediante SPRING CORE. Utilizar SPRING MVC para las peticiones (No servlets). (Hecho)
 
-- La pantalla principal debe llamarse Index.jsp (Ejecutare el código desde esta pantalla para probar así la funcionalidad)
+- La pantalla principal debe llamarse Index.jsp (Ejecutare el código desde esta pantalla para probar así la funcionalidad) (Hecho)
 
 Clases:
 - Cliente: 
