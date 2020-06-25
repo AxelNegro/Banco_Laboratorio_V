@@ -110,6 +110,27 @@ public class CuentaDaoImpl implements CuentaDao{
 		return res;
 	}
 	
+	public int contarTodas() {
+		Inicializar();
+		
+		Long contAux;
+		int cont;
+		
+		try {
+		query = session.createQuery("select count(*) from Cuenta");
+		contAux=(Long) query.uniqueResult();
+		}
+		catch(Exception e){
+			contAux=(long) 0;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		cont=Integer.parseInt(contAux.toString());
+		return cont;
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");

@@ -7,4 +7,5 @@ public interface CuentaDao {
 	public Cuenta leerUna(int CBU);
 	public boolean tipoCuentaUsado(String Username, int codTipo);
 	public boolean modificarUna(Cuenta cuenta);
+	public int contarTodas();
 }

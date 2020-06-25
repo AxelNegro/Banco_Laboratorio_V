@@ -44,7 +44,7 @@ public class CuentaController {
 		((ConfigurableApplicationContext)(appContextNeg)).close();
 	}
 	
-	public Cuenta EstablecerDatos(String CBU, String Nombre, String CodTipo, String Saldo) {
+	public Cuenta EstablecerDatos(String CBU, String Nombre, String CodTipo, String Saldo, int Nro) {
 		Cuenta acc=(Cuenta) appContextEnt.getBean("CuentaDefault");
 		Date FechaAsig=(Date) appContextEnt.getBean("FechaDefault");
 		
@@ -53,6 +53,7 @@ public class CuentaController {
 			acc.setCodTipoCuenta(Integer.parseInt(CodTipo));
 			acc.setFecha(FechaAsig);
 			acc.setNombre(Nombre);
+			acc.setNumeroCuenta(Nro);
 			acc.setSaldo(Double.parseDouble(Saldo));	
 			acc.setEstado(true);
 		}
@@ -111,48 +112,53 @@ public class CuentaController {
 		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
 		
 		if(!(txtCBU.trim().isEmpty()||txtNombre.trim().isEmpty()||txtSaldo.trim().isEmpty()||ddlTipo.trim().isEmpty()||hdnUser.trim().isEmpty())) {
-			acc=EstablecerDatos(txtCBU,txtNombre,ddlTipo,txtSaldo);
-			if(acc!=null) {
-				if(accNeg.leerUna(Integer.parseInt(txtCBU))==null) {
-					if(userNeg.leerUno(hdnUser)!=null) {
-						accxuser=EstablecerDatos_2(acc,hdnUser);
-						if(accxuser!=null) {
-							if(!(accNeg.tipoCuentaUsado(hdnUser, Integer.parseInt(ddlTipo)))) {
-								if(accxuserNeg.contarCuentas(hdnUser)<4) {
-									if(accNeg.agregarUna(acc)) {
-										if(accxuserNeg.agregarUna(accxuser)){
-											m.addAttribute("Msg","<script type='text/javascript'>alert('Cuenta agregada y vinculada correctamente.');</script>");
+			if(Integer.parseInt(txtCBU)>=0&&Double.parseDouble(txtSaldo)>=0) {
+				acc=EstablecerDatos(txtCBU,txtNombre,ddlTipo,txtSaldo, accNeg.contarTodas());
+				if(acc!=null) {
+					if(accNeg.leerUna(Integer.parseInt(txtCBU))==null) {
+						if(userNeg.leerUno(hdnUser)!=null) {
+							accxuser=EstablecerDatos_2(acc,hdnUser);
+							if(accxuser!=null) {
+								if(!(accNeg.tipoCuentaUsado(hdnUser, Integer.parseInt(ddlTipo)))) {
+									if(accxuserNeg.contarCuentas(hdnUser)<4) {
+										if(accNeg.agregarUna(acc)) {
+											if(accxuserNeg.agregarUna(accxuser)){
+												m.addAttribute("Msg","<script type='text/javascript'>alert('Cuenta agregada y vinculada correctamente.');</script>");
+											}
+											else {
+												m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al vincular la cuenta con el usuario.');</script>");
+											}
 										}
 										else {
-											m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al vincular la cuenta con el usuario.');</script>");
+											m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al agregar la cuenta.');</script>");
 										}
 									}
 									else {
-										m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al agregar la cuenta.');</script>");
+										m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener más de cuatro cuentas.');</script>");
 									}
 								}
 								else {
-									m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener más de cuatro cuentas.');</script>");
+									m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener dos cuentas de igual tipo.');</script>");
 								}
 							}
 							else {
-								m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener dos cuentas de igual tipo.');</script>");
+								m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
 							}
 						}
 						else {
-							m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
+							m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
 						}
 					}
 					else {
-						m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
+						m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU especificado ya existe.');</script>");
 					}
 				}
 				else {
-					m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU especificado ya existe.');</script>");
+					m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
 				}
 			}
 			else {
-				m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
+				m.addAttribute("Msg","<script type='text/javascript'>alert('No se permiten valores negativos en campos númericos.');</script>");
 			}
 		}
 		else {

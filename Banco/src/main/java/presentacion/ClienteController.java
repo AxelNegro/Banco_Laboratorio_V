@@ -80,32 +80,37 @@ public class ClienteController {
 		Cliente cli;
 		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||txtUsuario.trim().isEmpty())) {
 			if(!(txtNacionalidad.trim().isEmpty()||txtProvincia.trim().isEmpty()||txtLocalidad.trim().isEmpty()||txtDireccion.trim().isEmpty()||dtFechaNac.trim().isEmpty())) {
-				if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {
-					if(userNeg.leerUno(txtUsuario)!=null) {
-						if(!cliNeg.tieneUsuario(txtUsuario)) {
-						cli=EstablecerDatos(txtUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,txtProvincia,txtLocalidad,txtDireccion);
-							if(cli!=null) {
-								if(cliNeg.agregarUno(cli)) {
-									m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente agregado correctamente.');</script>");
+				if(Integer.parseInt(txtDocumento)>=0) {
+					if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {
+						if(userNeg.leerUno(txtUsuario)!=null) {
+							if(!cliNeg.tieneUsuario(txtUsuario)) {
+							cli=EstablecerDatos(txtUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,txtProvincia,txtLocalidad,txtDireccion);
+								if(cli!=null) {
+									if(cliNeg.agregarUno(cli)) {
+										m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente agregado correctamente.');</script>");
+									}
+									else {
+										m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al agregar el usuario.');</script>");
+									}
 								}
 								else {
-									m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al agregar el usuario.');</script>");
+									m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
 								}
 							}
 							else {
-								m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
+								m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado ya está asignado a un cliente.');</script>");
 							}
 						}
 						else {
-							m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado ya está asignado a un cliente.');</script>");
+							m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
 						}
 					}
 					else {
-						m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
+						m.addAttribute("Msg","<script type='text/javascript'>alert('Ya existe un cliente con el DNI especificado.');</script>");
 					}
 				}
 				else {
-					m.addAttribute("Msg","<script type='text/javascript'>alert('Ya existe un cliente con el DNI especificado.');</script>");
+					m.addAttribute("Msg","<script type='text/javascript'>alert('No se permiten valores negativos en campos númericos.');</script>");
 				}
 			}
 			else {

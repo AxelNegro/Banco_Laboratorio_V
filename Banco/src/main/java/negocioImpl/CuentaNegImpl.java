@@ -38,6 +38,10 @@ public class CuentaNegImpl implements CuentaNeg{
 		return cuentaDao.modificarUna(cuenta);
 	}
 	
+	public int contarTodas() {
+		return cuentaDao.contarTodas();
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		cuentaDao = (CuentaDao) appContext.getBean("accDao");

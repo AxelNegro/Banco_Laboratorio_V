@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Id;
@@ -25,8 +27,7 @@ public class Cuenta implements Serializable{
 	private Date Fecha_Creacion;
 	@Column(name="CodTipoCuenta")
 	private int CodTipoCuenta;
-	@Column(name="NumeroCuenta")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "NumeroCuenta")
 	private int NumeroCuenta;
 	@Column(name="Nombre")
 	private String Nombre;

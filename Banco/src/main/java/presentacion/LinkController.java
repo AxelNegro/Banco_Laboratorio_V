@@ -1,6 +1,7 @@
 package presentacion;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,7 @@ public class LinkController {
 	public void CrearBD() {
 		ApplicationContext appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		Conexion con = (Conexion) appContext.getBean("ConexionBD");
+		((ConfigurableApplicationContext)(appContext)).close();
 	}
 	
 	@RequestMapping("TodosLogin.do")
