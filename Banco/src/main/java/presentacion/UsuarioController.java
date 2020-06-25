@@ -55,6 +55,9 @@ public class UsuarioController {
 	
 	@RequestMapping("Login.do")
 	public String Login(String txtUsuario, String txtContrasenia,Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
 		String User=txtUsuario;
 		String Pass=txtContrasenia;
 		String msg;
@@ -98,8 +101,6 @@ public class UsuarioController {
 	}
 	
 	public void AgregarUsuarioAdmin() {
-		InicializarEnt();
-		InicializarNeg();
 		
 		Usuario user = (Usuario) appContextEnt.getBean("UsuarioAdmin");
 		Cliente cli = (Cliente) appContextEnt.getBean("ClienteAdmin");
@@ -162,6 +163,7 @@ public class UsuarioController {
 		if(tcNeg.leerUna(tc.getCodTipoCuenta())==null) {
 			tcNeg.agregarUna(tc);
 		}
+		tcNeg.Finalizar();
 	}
 	
 	public boolean EsCorrecto(String User, String Pass) {
@@ -170,14 +172,17 @@ public class UsuarioController {
 		if(user!=null) {
 			if(user.getPassword().equals(Pass)) {
 				TipoUsuario=user.getTipoUsuario();
+				userNeg.Finalizar();
 				return true;
 			}
 			else
 			{
+				userNeg.Finalizar();
 				return false;
 			}
 		}
 		else {
+			userNeg.Finalizar();
 			return false;
 		}
 	}

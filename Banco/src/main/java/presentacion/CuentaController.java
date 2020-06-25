@@ -232,7 +232,7 @@ public class CuentaController {
 		Cuenta cuenta=EstablecerDatos_3(hdnCBU[Id], hdnNroCuenta[Id], hdnNombre[Id], hdnTipo[Id], hdnSaldo[Id], hdnFecha[Id], hdnEstado[Id]);
 		
 		if(btnModificar!=null) {
-			Modificar(cuenta, txtNombre[Id], ddlTipo[Id], txtSaldo[Id], m);
+			Modificar(cuenta, hdnUsuario[Id], txtNombre[Id], ddlTipo[Id], txtSaldo[Id], m);
 		}
 		else if(btnDesactivar!=null) {
 			CambiarEstado(cuenta,m);
@@ -271,17 +271,27 @@ public class CuentaController {
 		}
 	}
 	
-	public void Modificar(Cuenta cuenta, String Nombre, String Tipo, String Saldo, Model m) {
+	public void Modificar(Cuenta cuenta, String User, String Nombre, String Tipo, String Saldo, Model m) {
 		CuentaNeg cuentaNeg = (CuentaNeg) appContextNeg.getBean("accNeg");
 		if(!(Nombre.trim().isEmpty()||Saldo.trim().isEmpty())) {
-			cuenta.setNombre(Nombre);
-			cuenta.setCodTipoCuenta(Integer.parseInt(Tipo));
-			cuenta.setSaldo(Double.parseDouble(Saldo));
-			if(cuentaNeg.modificarUna(cuenta)) {
-				m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó la cuenta correctamente.')</script>");
+			if(Double.parseDouble(Saldo)>=0){
+				if(!(cuentaNeg.tipoCuentaUsado(User, Integer.parseInt(Tipo)))) {
+					cuenta.setNombre(Nombre);
+					cuenta.setCodTipoCuenta(Integer.parseInt(Tipo));
+					cuenta.setSaldo(Double.parseDouble(Saldo));
+					if(cuentaNeg.modificarUna(cuenta)) {
+						m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó la cuenta correctamente.')</script>");
+					}
+					else {
+						m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar la cuenta.')</script>");
+					}
+				}
+				else {
+					m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener dos cuentas del mismo tipo.')</script>");
+				}
 			}
 			else {
-				m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar la cuenta.')</script>");
+				m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario no puede tener saldo negativo.')</script>");
 			}
 		}
 		else {

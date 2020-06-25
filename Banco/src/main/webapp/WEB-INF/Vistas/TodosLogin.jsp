@@ -9,7 +9,7 @@
 <title>Iniciar sesión</title>
 </head>
 <body>
-	<form action="Login.do" method="get">
+	<form action="Login.do" method="post">
 		<div id="divPadre">
 				<label>Iniciar sesión:</label>
 				<br>
@@ -20,7 +20,7 @@
 				Contraseña:	<input id="txtContrasenia" name="txtContrasenia" type="password" placeholder="Contraseña"/>
 				<br>
 				<br>
-				<input id="btnVolver" type="submit" value="Volver"/>
+				<a href="TodosInicio.do"><input id="btnVolver" type="button" value="Volver"/></a>
 				<input id="btnAceptar" type="submit" value="Aceptar"/>
 				${Msg} 
 		</div>

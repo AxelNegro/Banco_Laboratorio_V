@@ -11,7 +11,7 @@
    <form method="get">
       <div>
          <ul>
-            <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
+            <li class="logo"><a href="BancoInicio.do?User=${Username}"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
             <li class="opcion">
                <a class="menu" href="BancoAltaCliente.do?User=${Username}">Clientes</a>
                <ul class="submenu">
@@ -41,7 +41,7 @@
             </li>
             <li class="opcion"><a class="menu" href="BancoAprobarPrestamos.do?User=${Username}">Prestamos</a></li>
             <li class="opcion"><a class="menu" href="BancoReportes.do?User=${Username}">Reportes</a></li>
-            <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
+            <li class="usuario"><a href="TodosInicio.do"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">${Username}</p>
             </li>

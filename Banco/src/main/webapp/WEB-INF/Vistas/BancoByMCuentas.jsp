@@ -43,8 +43,8 @@
                         <th>Saldo</th>
                         <th>Fecha de creación</th>
                         <th>Estado</th>
-                        <th>Modificar</th>
-                        <th>Borrar</th>
+                        <th></th>
+                        <th></th>
                      </tr>
                   </thead>
                   <tbody>

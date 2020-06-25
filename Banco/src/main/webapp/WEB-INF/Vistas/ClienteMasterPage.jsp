@@ -11,19 +11,19 @@
    <form>
       <div>
          <ul name=”navbar”>
-            <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-            <li class="opcion"><a class="menu" href="ClienteMovimientos.do?user=${Username}">Historial</a></li>
-            <li class="opcion"><a class="menu" href="ClienteTransBancaria.do?user=${Username}">Transferir</a></li>
+            <li class="logo"><a href="ClienteInicio.do?User=${Username}"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
+            <li class="opcion"><a class="menu" href="ClienteMovimientos.do?User=${Username}">Historial</a></li>
+            <li class="opcion"><a class="menu" href="ClienteTransBancaria.do?User=${Username}">Transferir</a></li>
             <li class="opcion">
-               <a class="menu" href="ClientePedidoPrestamos.do?user=${Username}">Prestamos</a>
+               <a class="menu" href="ClientePedidoPrestamos.do?User=${Username}">Prestamos</a>
                <ul class="submenu">
-                  <li><a href="ClientePedidoPrestamos.do?user=${Username}">Pedido</a>
+                  <li><a href="ClientePedidoPrestamos.do?User=${Username}">Pedido</a>
                   <li>
-                  <li><a href="ClientePagoPrestamos.do?user=${Username}">Pago</a>
+                  <li><a href="ClientePagoPrestamos.do?User=${Username}">Pago</a>
                   <li>
                </ul>
             </li>
-            <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
+            <li class="usuario"><a href="TodosInicio.do"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">${Username}</p>
             </li>

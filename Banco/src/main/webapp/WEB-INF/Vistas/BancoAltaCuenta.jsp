@@ -40,7 +40,7 @@
                            <th>Apellido</th>
                            <th>Fecha de Nacimiento</th>
                            <th>Usuario</th>
-                           <th>Seleccionar</th>
+                           <th></th>
                         </tr>
                      </thead>
                      <c:forEach items="${lstClientes}" var="cli">

@@ -78,7 +78,8 @@ public class ClienteController {
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		Cliente cli;
-		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||ddlUsuario.trim().isEmpty())) {
+		
+		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||ddlUsuario==null||ddlUsuario.trim().isEmpty())) {
 			if(!(txtNacionalidad.trim().isEmpty()||txtProvincia.trim().isEmpty()||txtLocalidad.trim().isEmpty()||txtDireccion.trim().isEmpty()||dtFechaNac.trim().isEmpty())) {
 				if(Integer.parseInt(txtDocumento)>=0) {
 					if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {

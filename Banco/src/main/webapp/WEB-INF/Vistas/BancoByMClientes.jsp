@@ -45,7 +45,7 @@
                         <th>Provincia</th>
                         <th>Localidad</th>
                         <th>Direccion</th>
-                        <th>Modificar</th>
+                        <th></th>
                      </tr>
                   </thead>
                   <tbody>

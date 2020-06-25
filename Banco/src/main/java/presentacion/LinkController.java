@@ -37,6 +37,12 @@ public class LinkController {
 	@RequestMapping("ClienteInicio.do")
 	public String ClienteInicio(String User,Model m) {
 		m.addAttribute("Username",User);
+		return "ClienteMasterPage";
+	}
+	
+	@RequestMapping("ClienteMovimientos.do")
+	public String ClienteMovimientos(String User,Model m) {
+		m.addAttribute("Username",User);
 		return "ClienteMovimientos";
 	}
 	
@@ -63,7 +69,7 @@ public class LinkController {
 	@RequestMapping("BancoInicio.do")
 	public String BancoInicio(String User, Model m) {
 		m.addAttribute("Username",User);
-		return "BancoAltaCliente";
+		return "BancoMasterPage";
 	}
 	
 	@RequestMapping("BancoAltaCliente.do")
