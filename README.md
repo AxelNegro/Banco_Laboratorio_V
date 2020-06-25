@@ -17,8 +17,6 @@ Información útil:
 5. Descomentar la linea 62 del UsuarioController.java y comentar la linea 61.
 6. Ejecutar el proyecto hasta luego de logearse y luego comentar la linea 62 (Opcional).
 
-Archivos: Al día de la fecha (02/06/2020) los archivos creados dentro de los PKGs y carpetas de Front-End hasta ahora son puramente de ejemplo y fueron para crear los PKGs y carpetas. A medida que se vayan llenando los mismos, los archivos de ejemplo irán eliminandose.
-
 Programación por capas:
   - En el PKG "datos" se crean las interfaces de las clases que más tarde tendrán las funciones ABML a implementar en cada clase del package "datosImpl". La nomenclatura para este es "NombreDao", ejemplo: "ClienteDao".
   - En el PKG "datosImpl" se crean las clases que realizan acciones en la Base de datos. La nomenclatura de esto es "NombreDaoImpl", ejemplo: "ClienteDaoImpl".
