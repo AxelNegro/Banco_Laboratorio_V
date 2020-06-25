@@ -10,7 +10,7 @@ Información útil:
 - Va a haber casos donde Hibernate, a pesar de tener el hbm2ddl.auto en create, no va a crear la base de datos y te va a decir "Unknown database 'nombre'", la manera que encontré de solucionar esto, fue creando la base de datos (y solo la base de datos) a mano en MySQL.
 
 - Creación correcta de la BD:
-1. Ejecutar en MySQL "CREATE DATABASE banco;"
+1. Ejecutar en MySQL "CREATE DATABASE Banco;"
 2. Con el hibernate.cfg.xml en "create" ejecutar el proyecto.
 3. Logearse con la cuenta de usuario "admin" y contraseña "admin".
 4. Parar la ejecución del proyecto y pasar el hibernate.cfg.xml a "update".
