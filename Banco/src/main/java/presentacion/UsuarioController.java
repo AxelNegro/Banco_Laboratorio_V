@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import config.ConfigDao;
 import config.ConfigEnt;
 import config.ConfigNeg;
+import datosImpl.Conexion;
 import entidad.Cliente;
 import entidad.TipoCuenta;
 import entidad.Usuario;
@@ -59,7 +61,7 @@ public class UsuarioController {
 		String Pass=txtContrasenia;
 		String msg;
 		AgregarUsuarioAdmin();
-		//InsertarTipoCuenta();
+		InsertarTipoCuenta();
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
 				if(user.getEstado()) {
@@ -96,7 +98,6 @@ public class UsuarioController {
 		FinalizarNeg();
 		return "TodosLogin";
 	}
-	
 	
 	public void AgregarUsuarioAdmin() {
 		InicializarEnt();
