@@ -14,7 +14,7 @@
 	</div>
 	<div class="padre">
 	   <div class="hijo">
-	      <form action="agregarUser.do" method="post">
+	      <form action="agregarUser.do?User=${Username}" method="post">
 	         Usuario: <input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario" />
 	         <br>
 	         <br>

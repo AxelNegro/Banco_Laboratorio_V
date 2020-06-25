@@ -1,8 +1,7 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,11 +16,16 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <form action="agregarCliente.do" method="post">
+            <form action="agregarCliente.do?User=${Username}" method="post">
                <br>
                <br>
                Documento:	<input type="number" id="txtDocumento" name="txtDocumento" style="margin-right:1%" placeholder="Documento"/>
-               Usuario: <input type="text" id="txtUsuario" name="txtUsuario" style="margin-right:1%" placeholder="Usuario"/>
+               Usuario: <select id="ddlUsuario" name="ddlUsuario" style="margin-right:1%" placeholder="Usuario">
+	               			<c:forEach items="${lstUserSinCli}" var="user">
+	               				<option value="${user.getUsername()}">${user.getUsername()}</option>
+	               			</c:forEach>
+               			</select>
+               
                <br>
                <br>
                Nombre: <input type="text" id="txtNombre" name="txtNombre" style="margin-right:1%" placeholder="Nombre"/>

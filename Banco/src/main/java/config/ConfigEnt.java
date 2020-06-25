@@ -1,7 +1,10 @@
 package config;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
+
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -88,6 +91,12 @@ public class ConfigEnt {
 	public TipoCuenta TipoCuentaDefault() {
 		TipoCuenta tipoacc = new TipoCuenta();
 		return tipoacc;
+	}
+	
+	@Bean
+	public List<Usuario> LstUserDefault(){
+		List<Usuario> lstUsuario = new ArrayList<Usuario>();
+		return lstUsuario;
 	}
 	
 }

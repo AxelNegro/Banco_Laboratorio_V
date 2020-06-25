@@ -30,7 +30,7 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <form action="modificarCuenta.do" method="post"> 
+            <form action="modificarCuenta.do?User=${Username}" method="post"> 
             <input type="hidden" id="hdnId" name="hdnId" value=""/>
                <table id="tablaCuentas" style="width:95%">
                   <thead>
@@ -62,7 +62,7 @@
                         <td>${accxuser.getUsuario().getUsername()}</td>
                         <td>${accxuser.getCuenta().getNumeroCuenta()}</td>
                         <td><input type="hidden" id="txtNombre" name="txtNombre"/>${accxuser.getCuenta().getNombre()}</td>
-                        <td><input type="hidden" id="ddlTipo" name="txtTipo"/>
+                        <td><input type="hidden" id="ddlTipo" name="ddlTipo"/>
                         <c:choose>
 							    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==1}">
 							        Caja de ahorro en pesos

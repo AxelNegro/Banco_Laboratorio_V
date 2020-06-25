@@ -71,20 +71,20 @@ public class ClienteController {
 	}
 	
 	@RequestMapping("agregarCliente.do")
-	public String AgregarCliente(String txtDocumento, String txtNombre, String txtApellido, String ddlSexo, String txtUsuario, 
+	public String AgregarCliente(String User, String txtDocumento, String txtNombre, String txtApellido, String ddlSexo, String ddlUsuario, 
 								 String txtNacionalidad, String txtProvincia, String txtLocalidad, String txtDireccion, String dtFechaNac, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		Cliente cli;
-		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||txtUsuario.trim().isEmpty())) {
+		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||ddlUsuario.trim().isEmpty())) {
 			if(!(txtNacionalidad.trim().isEmpty()||txtProvincia.trim().isEmpty()||txtLocalidad.trim().isEmpty()||txtDireccion.trim().isEmpty()||dtFechaNac.trim().isEmpty())) {
 				if(Integer.parseInt(txtDocumento)>=0) {
 					if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {
-						if(userNeg.leerUno(txtUsuario)!=null) {
-							if(!cliNeg.tieneUsuario(txtUsuario)) {
-							cli=EstablecerDatos(txtUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,txtProvincia,txtLocalidad,txtDireccion);
+						if(userNeg.leerUno(ddlUsuario)!=null) {
+							if(!cliNeg.tieneUsuario(ddlUsuario)) {
+							cli=EstablecerDatos(ddlUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,txtProvincia,txtLocalidad,txtDireccion);
 								if(cli!=null) {
 									if(cliNeg.agregarUno(cli)) {
 										m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente agregado correctamente.');</script>");
@@ -120,6 +120,11 @@ public class ClienteController {
 		else {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
+
+		ObtenerListaUserSinUsar(m);
+
+		m.addAttribute("Username",User);
+		
 		cliNeg.Finalizar();
 		userNeg.Finalizar();
 		FinalizarEnt();
@@ -128,7 +133,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping("leerTodosClientes.do")
-	public String LeerTodos(String user, String origen, Model m) {
+	public String LeerTodos(String User, String origen, Model m) {
 		String Destino;
 		
 		InicializarNeg();
@@ -136,7 +141,7 @@ public class ClienteController {
 		
 		ObtenerLista(m);
 		
-		m.addAttribute("Username", user);
+		m.addAttribute("Username", User);
 		
 		switch(Integer.parseInt(origen)) {
 			case 0:
@@ -176,7 +181,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping("modificarCliente.do")
-	public String ModificarUno(String hdnId, String[] hdnDNI, String[] txtUsuario, String[] txtNombre, String[] txtApellido, String[] ddlSexo, String[] txtFecha, 
+	public String ModificarUno(String User, String hdnId, String[] hdnDNI, String[] txtUsuario, String[] txtNombre, String[] txtApellido, String[] ddlSexo, String[] txtFecha, 
 								String[] txtNacionalidad, String[] txtProvincia, String[] txtLocalidad, String[] txtDireccion, Model m) {
 		InicializarNeg();
 		InicializarEnt();
@@ -214,13 +219,60 @@ public class ClienteController {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
 		
+		
 		ObtenerLista(m);
+		
+		m.addAttribute("Username",User);
 		
 		cliNeg.Finalizar();
 		userNeg.Finalizar();
 		FinalizarEnt();
 		FinalizarNeg();
 		return "BancoByMClientes";
+	}
+	
+	
+	@RequestMapping("leerUserSinCli.do")
+	public String LeerUserSinCli(String User, Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
+		ObtenerListaUserSinUsar(m);
+		
+		m.addAttribute("Username", User);
+		
+		FinalizarNeg();
+		FinalizarEnt();
+		return "BancoAltaCliente";
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void ObtenerListaUserSinUsar(Model m) {
+		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
+		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
+		
+		List<Cliente> lstCli=cliNeg.leerTodos();
+		List<Usuario> lstUser=userNeg.leerTodos();
+		List<Usuario> lstUserSinCli = (List<Usuario>) appContextEnt.getBean("LstUserDefault");
+		
+		Boolean comp=false;
+		
+		for(Usuario user : lstUser) {
+			comp=false;
+			for(Cliente cli : lstCli){
+				if(user.equals(cli.getUsuario())) { //Existe cliente con el usuario?
+					comp=true;
+				}
+			}
+			if(comp==false) {
+			lstUserSinCli.add(user);
+			}
+		}
+		
+		m.addAttribute("lstUserSinCli",lstUserSinCli);
+		
+		cliNeg.Finalizar();
+		userNeg.Finalizar();
 	}
 	
 }

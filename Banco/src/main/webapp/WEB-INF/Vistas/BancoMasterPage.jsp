@@ -13,34 +13,34 @@
          <ul>
             <li class="logo"><a href="#"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
             <li class="opcion">
-               <a class="menu" href="BancoAltaCliente.do?user=${Username}">Clientes</a>
+               <a class="menu" href="BancoAltaCliente.do?User=${Username}">Clientes</a>
                <ul class="submenu">
-                  <li><a href="BancoAltaCliente.do?user=${Username}">Alta</a>
+                  <li><a href="leerUserSinCli.do?User=${Username}">Alta</a>
                   <li>
-                  <li><a href="leerTodosClientes.do?user=${Username}&origen=0">Baja y Modificación</a>
+                  <li><a href="leerTodosClientes.do?User=${Username}&origen=0">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href="BancoAltaCuenta.do?user=${Username}">Cuentas</a>
+               <a class="menu" href="BancoAltaCuenta.do?User=${Username}">Cuentas</a>
                <ul class="submenu">
-                  <li><a href="leerTodosClientes.do?user=${Username}&origen=1">Alta</a>
+                  <li><a href="leerTodosClientes.do?User=${Username}&origen=1">Alta</a>
                   <li>
-                  <li><a href="leerTodosCuenta.do?user=${Username}">Baja y Modificación</a>
+                  <li><a href="leerTodosCuenta.do?User=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
-               <a class="menu" href="BancoAltaUsuario.do?user=${Username}">Usuarios</a>
+               <a class="menu" href="BancoAltaUsuario.do?User=${Username}">Usuarios</a>
                <ul class="submenu">
-                  <li><a href="BancoAltaUsuario.do?user=${Username}">Alta</a>
+                  <li><a href="BancoAltaUsuario.do?User=${Username}">Alta</a>
                   <li>
-                  <li><a href="leerTodosUser.do?user=${Username}">Baja y Modificación</a>
+                  <li><a href="leerTodosUser.do?User=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
-            <li class="opcion"><a class="menu" href="BancoAprobarPrestamos.do?user=${Username}">Prestamos</a></li>
-            <li class="opcion"><a class="menu" href="BancoReportes.do?user=${Username}">Reportes</a></li>
+            <li class="opcion"><a class="menu" href="BancoAprobarPrestamos.do?User=${Username}">Prestamos</a></li>
+            <li class="opcion"><a class="menu" href="BancoReportes.do?User=${Username}">Reportes</a></li>
             <li class="usuario"><a href="#"><img id="usuario" src="Multimedia/Usuario.png" alt="Usuario"/></a></li>
             <li class="usuario">
                <p id="username">${Username}</p>

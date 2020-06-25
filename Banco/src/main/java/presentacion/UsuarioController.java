@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import config.ConfigDao;
 import config.ConfigEnt;
 import config.ConfigNeg;
-import datosImpl.Conexion;
 import entidad.Cliente;
 import entidad.TipoCuenta;
 import entidad.Usuario;
@@ -70,10 +68,10 @@ public class UsuarioController {
 						FinalizarEnt();
 						FinalizarNeg();
 						if(TipoUsuario) {
-							return "BancoAltaCliente";
+							return "BancoMasterPage";
 						}
 						else {
-							return "ClienteMovimientos";
+							return "ClienteMasterPage";
 						}
 					}
 					else {
@@ -190,7 +188,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("agregarUser.do")
-	public String agregarUno(String txtUsuario, String txtContrasenia, String rdTipo, Model m) {
+	public String agregarUno(String User, String txtUsuario, String txtContrasenia, String rdTipo, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		
@@ -219,6 +217,8 @@ public class UsuarioController {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete los datos.')</script>");
 		}
 		
+		m.addAttribute("Username",User);
+		
 		userNeg.Finalizar();
 		FinalizarEnt();
 		FinalizarNeg();
@@ -227,7 +227,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("leerTodosUser.do")
-	public String LeerTodos(String user, Model m) {
+	public String LeerTodos(String User, Model m) {
 		InicializarNeg();
 		InicializarEnt();
 		
@@ -236,7 +236,7 @@ public class UsuarioController {
 		FinalizarEnt();
 		FinalizarNeg();
 		
-		m.addAttribute("Username", user);
+		m.addAttribute("Username", User);
 		
 		return "BancoByMUsuarios";
 	}
@@ -251,7 +251,7 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("modificarUser.do")
-	public String ModificarUno(String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnUser, String[] hdnPass, String[] hdnTipo, String[] hdnEstado, String[] txtPassword, String[] ddlTipo, Model m) {
+	public String ModificarUno(String User, String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnUser, String[] hdnPass, String[] hdnTipo, String[] hdnEstado, String[] txtPassword, String[] ddlTipo, Model m) {
 		InicializarNeg();
 		InicializarEnt();
 		
@@ -265,6 +265,8 @@ public class UsuarioController {
 		else if(btnDesactivar!=null) {
 			CambiarEstado(user,m);
 		}
+		
+		m.addAttribute("Username",User);
 		
 		ObtenerLista(m);
 		
@@ -295,6 +297,8 @@ public class UsuarioController {
 		else {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar el estado.')</script>");
 		}
+		
+		userNeg.Finalizar();
 	}
 	
 	public void Modificar(Usuario user, String Password, String Tipo, Model m) {
@@ -312,5 +316,7 @@ public class UsuarioController {
 		else {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('No puede insertar una contraseña vacía.')</script>");
 		}
+		
+		userNeg.Finalizar();
 	}
 }

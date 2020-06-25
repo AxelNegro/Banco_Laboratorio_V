@@ -71,4 +71,17 @@ public class Usuario implements Serializable{
 				+ Estado + "]";
 	}
 	
+	public boolean equals(Usuario user) {
+		System.out.println(user.getUsername());
+		System.out.println(this.Username);
+		if (this.Username.equals(user.getUsername())) {
+			System.out.println(true);
+			return true;
+		}
+		else{
+			System.out.println(false);
+			return false;
+		}
+	}
+	
 }

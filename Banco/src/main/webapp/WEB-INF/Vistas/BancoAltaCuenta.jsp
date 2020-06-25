@@ -26,7 +26,7 @@
    </head>
    <body>
       <div class="padre">
-         <form action="agregarCuenta.do" method="post" style="width:100%">
+         <form action="agregarCuenta.do?User=${Username}" method="post" style="width:100%">
             <div>
                <label class="titulo"> Alta de Cuentas</label>
                <br>

@@ -101,7 +101,7 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("agregarCuenta.do")
-	public String AgregarCuenta(String txtCBU, String txtNombre, String ddlTipo, String txtSaldo, String hdnUser, Model m) {
+	public String AgregarCuenta(String User, String txtCBU, String txtNombre, String ddlTipo, String txtSaldo, String hdnUser, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		Cuenta acc;
@@ -168,6 +168,8 @@ public class CuentaController {
 		ObtenerLista(m);
 		ObtenerListaTipoCuentas(m);
 		
+		m.addAttribute("Username",User);
+		
 		accNeg.Finalizar();
 		userNeg.Finalizar();
 		accxuserNeg.Finalizar();
@@ -204,13 +206,13 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("leerTodosCuenta.do")
-	public String LeerTodas(String Username, Model m) {
+	public String LeerTodas(String User, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		
 		ObtenerListaCuentas(m);
 		
-		m.addAttribute("Username",Username);
+		m.addAttribute("Username",User);
 		
 		FinalizarNeg();
 		FinalizarEnt();
@@ -219,7 +221,7 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("modificarCuenta.do")
-	public String ModificarUno(String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnCBU, String[] hdnUsuario, 
+	public String ModificarUno(String User, String hdnId, String[] btnModificar, String[] btnDesactivar, String[] hdnCBU, String[] hdnUsuario, 
 								String[] hdnNroCuenta, String[] hdnNombre, String[] hdnTipo, String[] hdnSaldo, String[] hdnFecha,
 								String[] hdnEstado, String[] txtNombre, String[] ddlTipo, String[] txtSaldo, Model m) {
 		InicializarNeg();
@@ -235,6 +237,8 @@ public class CuentaController {
 		else if(btnDesactivar!=null) {
 			CambiarEstado(cuenta,m);
 		}
+		
+		m.addAttribute("Username",User);
 		
 		ObtenerListaCuentas(m);
 		
