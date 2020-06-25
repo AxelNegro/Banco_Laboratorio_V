@@ -17,7 +17,8 @@
              $('#tablaClientes').DataTable(
                  {
                      "lengthChange": false,
-                     "info": false
+                     "info": false,
+                     "pageLength": 5
                  }
              );
          });

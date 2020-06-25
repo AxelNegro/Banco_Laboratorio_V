@@ -3,7 +3,6 @@ package presentacion;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
 @Controller
@@ -114,24 +115,41 @@ public class ClienteController {
 		else {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
+		cliNeg.Finalizar();
+		userNeg.Finalizar();
 		FinalizarEnt();
 		FinalizarNeg();
 		return "BancoAltaCliente";
 	}
 	
 	@RequestMapping("leerTodosClientes.do")
-	public String LeerTodos(String user, Model m) {
+	public String LeerTodos(String user, String origen, Model m) {
+		String Destino;
+		
 		InicializarNeg();
 		InicializarEnt();
 		
 		ObtenerLista(m);
 		
+		m.addAttribute("Username", user);
+		
+		switch(Integer.parseInt(origen)) {
+			case 0:
+				Destino="BancoByMClientes";
+			break;
+			case 1:
+				ObtenerListaTipoCuentas(m);
+				Destino="BancoAltaCuenta";
+			break;
+			default:
+				Destino="TodosLogin";
+			break;
+		}
+		
 		FinalizarEnt();
 		FinalizarNeg();
 		
-		m.addAttribute("Username", user);
-		
-		return "BancoByMClientes";
+		return Destino;
 	}
 	
 	public void ObtenerLista(Model m) {
@@ -141,6 +159,15 @@ public class ClienteController {
 		m.addAttribute("lstClientes", lstClientes);
 		
 		cliNeg.Finalizar();
+	}
+	
+	public void ObtenerListaTipoCuentas(Model m) {
+		TipoCuentaNeg tipoaccNeg = (TipoCuentaNeg) appContextNeg.getBean("tcNeg");
+		List<TipoCuenta> lstTipoAcc=tipoaccNeg.leerTodas();
+		
+		m.addAttribute("lstTipoAcc",lstTipoAcc);
+		
+		tipoaccNeg.Finalizar();
 	}
 	
 	@RequestMapping("modificarCliente.do")
@@ -184,6 +211,8 @@ public class ClienteController {
 		
 		ObtenerLista(m);
 		
+		cliNeg.Finalizar();
+		userNeg.Finalizar();
 		FinalizarEnt();
 		FinalizarNeg();
 		return "BancoByMClientes";

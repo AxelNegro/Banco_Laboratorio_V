@@ -26,6 +26,15 @@ function Modificar(NombreTabla,Fila){
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
 		LlenarDatos(NombreTabla,Fila);
 	break;
+	case 'tablaCuentas':
+		Filas.cells[3].innerHTML='<input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"/>';
+		Filas.cells[4].innerHTML='<select id="ddlTipo" name="ddlTipo"><option value="1">Caja de ahorro en pesos</option><option value="2">Caja de ahorro en dólares</option><option value="3">Cuenta corriente</option><option value="4">Cuenta corriente especial en pesos</option><option value="5">Cuenta corriente especial en dólares</option></select>';
+		Filas.cells[5].innerHTML='<input type="number" id="txtSaldo" name="txtSaldo" placeholder="Saldo"/>';
+		Filas.cells[8].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
+		Modificar=document.getElementsByName("btnModificar");
+		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
+		LlenarDatos(NombreTabla,Fila);
+	break;
 	}
 }
 
@@ -37,7 +46,6 @@ function LlenarDatos(NombreTabla, Fila){
 		Filas.cells[1].children[0].value=document.getElementsByName('hdnPass')[Fila].value;
 		Filas.cells[2].children[0].value=document.getElementsByName('hdnTipo')[Fila].value;
 	case 'tablaClientes':
-		alert(document.getElementsByName('hdnSexo')[Fila].value);
 		Filas.cells[1].children[0].value=document.getElementsByName('hdnUsuario')[Fila].value;
 		Filas.cells[2].children[0].value=document.getElementsByName('hdnNombre')[Fila].value;
 		Filas.cells[3].children[0].value=document.getElementsByName('hdnApellido')[Fila].value;
@@ -47,6 +55,22 @@ function LlenarDatos(NombreTabla, Fila){
 		Filas.cells[7].children[0].value=document.getElementsByName('hdnProvincia')[Fila].value;
 		Filas.cells[8].children[0].value=document.getElementsByName('hdnLocalidad')[Fila].value;
 		Filas.cells[9].children[0].value=document.getElementsByName('hdnDireccion')[Fila].value;
+	break;
+	case 'tablaCuentas':
+		Filas.cells[3].children[0].value=document.getElementsByName('hdnNombre')[Fila].value;
+		Filas.cells[4].children[0].value=document.getElementsByName('hdnTipo')[Fila].value;
+		Filas.cells[5].children[0].value=document.getElementsByName('hdnSaldo')[Fila].value;
+	break;
+	}
+}
+
+function Seleccionar(NombreTabla, Fila){
+	switch(NombreTabla){
+	case 'tablaAltaCuenta':
+		document.getElementById("txtDNICli").value=document.getElementsByName("hdnDNI")[Fila].value;
+		document.getElementById("hdnDNICli").value=document.getElementsByName("hdnDNI")[Fila].value;
+		document.getElementById("txtUsuario").value=document.getElementsByName("hdnUsuario")[Fila].value;
+		document.getElementById("hdnUser").value=document.getElementsByName("hdnUsuario")[Fila].value;
 	break;
 	}
 }

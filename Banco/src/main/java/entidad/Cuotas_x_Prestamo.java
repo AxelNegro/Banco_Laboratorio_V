@@ -3,7 +3,6 @@ package entidad;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +18,7 @@ public class Cuotas_x_Prestamo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name="CodPrestamo")
 	private Prestamo prestamo;
 	@Column(name="Importe_Mensual")

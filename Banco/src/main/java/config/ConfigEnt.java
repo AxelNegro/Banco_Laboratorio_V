@@ -1,19 +1,20 @@
 package config;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
-
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+
 import entidad.Cliente;
+import entidad.Cuenta;
+import entidad.Cuentas_x_Usuario;
+import entidad.TipoCuenta;
 import entidad.Usuario;
 
 
 
 public class ConfigEnt {
-	private ApplicationContext appContext;
 	
 	@Bean
 	public Usuario UsuarioDefault() {
@@ -35,7 +36,7 @@ public class ConfigEnt {
 
 	@Bean
 	public Date FechaDefault() {
-		Date Fecha = new GregorianCalendar(2000, 05, 27).getTime(); 
+		Date Fecha = new Date(); 
 		return Fecha;
 	}
 	
@@ -69,4 +70,24 @@ public class ConfigEnt {
 		
 		return cli;
 	}
+	
+	@Bean
+	public Cuenta CuentaDefault() {
+		Cuenta acc = new Cuenta();
+		return acc;
+	}
+	
+	@Bean
+	public Cuentas_x_Usuario Cuenta_x_UsuarioDefault() {
+		Cuentas_x_Usuario accxuser = new Cuentas_x_Usuario();
+		return accxuser;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public TipoCuenta TipoCuentaDefault() {
+		TipoCuenta tipoacc = new TipoCuenta();
+		return tipoacc;
+	}
+	
 }

@@ -26,6 +26,18 @@ public class CuentaNegImpl implements CuentaNeg{
 		return cuentaDao.agregarUna(cuenta);
 	}
 	
+	public Cuenta leerUna(int CBU) {
+		return cuentaDao.leerUna(CBU);
+	}
+	
+	public boolean tipoCuentaUsado(String Username, int codTipo) {
+		return cuentaDao.tipoCuentaUsado(Username, codTipo);
+	}
+	
+	public boolean modificarUna(Cuenta cuenta) {
+		return cuentaDao.modificarUna(cuenta);
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		cuentaDao = (CuentaDao) appContext.getBean("accDao");

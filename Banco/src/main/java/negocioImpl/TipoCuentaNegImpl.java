@@ -1,5 +1,7 @@
 package negocioImpl;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,6 +26,14 @@ public class TipoCuentaNegImpl implements TipoCuentaNeg{
 
 	public boolean agregarUna(TipoCuenta tipoacc) {
 		return tipoaccDao.agregarUna(tipoacc);
+	}
+	
+	public TipoCuenta leerUna(int ID) {
+		return tipoaccDao.leerUna(ID);
+	}
+	
+	public List<TipoCuenta> leerTodas(){
+		return tipoaccDao.leerTodas();
 	}
 	
 	public void Inicializar() {

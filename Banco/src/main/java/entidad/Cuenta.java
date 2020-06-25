@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Id;
 
 import java.io.Serializable;
@@ -16,13 +19,14 @@ public class Cuenta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="CBU")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int CBU;
 	@Column(name="Fecha_Creacion")
+	@Type(type="date")
 	private Date Fecha_Creacion;
 	@Column(name="CodTipoCuenta")
 	private int CodTipoCuenta;
 	@Column(name="NumeroCuenta")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int NumeroCuenta;
 	@Column(name="Nombre")
 	private String Nombre;

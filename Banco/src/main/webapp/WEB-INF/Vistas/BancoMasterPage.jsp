@@ -17,16 +17,16 @@
                <ul class="submenu">
                   <li><a href="BancoAltaCliente.do?user=${Username}">Alta</a>
                   <li>
-                  <li><a href="leerTodosClientes.do?user=${Username}">Baja y Modificación</a>
+                  <li><a href="leerTodosClientes.do?user=${Username}&origen=0">Baja y Modificación</a>
                   <li>
                </ul>
             </li>
             <li class="opcion">
                <a class="menu" href="BancoAltaCuenta.do?user=${Username}">Cuentas</a>
                <ul class="submenu">
-                  <li><a href="BancoAltaCuenta.do?user=${Username}">Alta</a>
+                  <li><a href="leerTodosClientes.do?user=${Username}&origen=1">Alta</a>
                   <li>
-                  <li><a href="BancoByMCuentas.do?user=${Username}">Baja y Modificación</a>
+                  <li><a href="leerTodosCuenta.do?user=${Username}">Baja y Modificación</a>
                   <li>
                </ul>
             </li>

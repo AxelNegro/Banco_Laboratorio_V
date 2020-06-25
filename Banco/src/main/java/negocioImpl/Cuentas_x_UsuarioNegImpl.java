@@ -1,5 +1,7 @@
 package negocioImpl;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,6 +28,13 @@ public class Cuentas_x_UsuarioNegImpl implements Cuentas_x_UsuarioNeg{
 		return accxuserDao.agregarUna(accxuser);
 	}
 	
+	public int contarCuentas(String username) {
+		return accxuserDao.contarCuentas(username);
+	}
+	
+	public List<Cuentas_x_Usuario> leerTodas(){
+		return accxuserDao.leerTodas();
+	}
 	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);

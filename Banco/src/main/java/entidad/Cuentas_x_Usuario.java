@@ -1,5 +1,4 @@
 package entidad;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -16,10 +15,10 @@ public class Cuentas_x_Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@OneToOne(cascade= {CascadeType.ALL})
+	@OneToOne
 	@JoinColumn(name="CBU")
 	private Cuenta cuenta;
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@PrimaryKeyJoinColumn(name="Usuario")
 	private Usuario usuario;
 	

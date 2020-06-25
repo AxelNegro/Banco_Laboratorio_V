@@ -2,7 +2,6 @@ package entidad;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,11 +15,10 @@ public class Prestamos_x_Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@OneToOne(cascade= {CascadeType.ALL},
-			  orphanRemoval = true)
+	@OneToOne
 	@JoinColumn(name="CodPrestamo")
 	private Prestamo prestamo;
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name="DNI")
 	private Cliente cliente;
 	

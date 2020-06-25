@@ -6,7 +6,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ConfigDao;
-import config.ConfigNeg;
 import datosImpl.Conexion;
 import entidad.Cliente;
 import entidad.Cuenta;
@@ -319,7 +318,7 @@ public class Main {
 			tC = new TipoCuenta();
 			
 			tC.setCodTipoCuenta(2);
-			tC.setTipoCuenta("Caja de ahorro en d�lares");
+			tC.setTipoCuenta("Caja de ahorro en dólares");
 			AgregartC(tC);
 			
 			tC = new TipoCuenta();
@@ -337,9 +336,8 @@ public class Main {
 			tC = new TipoCuenta();
 			
 			tC.setCodTipoCuenta(5);
-			tC.setTipoCuenta("Cuenta corriente especial en d�lares");
+			tC.setTipoCuenta("Cuenta corriente especial en dólares");
 			AgregartC(tC);
-		
 		}
 	
 	public static void InsertarCuenta() {

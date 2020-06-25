@@ -2,7 +2,6 @@ package entidad;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,14 +15,13 @@ public class Movimientos_x_Cuenta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@OneToOne(cascade= {CascadeType.ALL},
-			  orphanRemoval = true)
+	@OneToOne
 	@JoinColumn(name="CodMovimiento")
 	private Movimiento movimiento;
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name="CBU_Origen")
 	private Cuenta cuentaOrig;
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name="CBU_Destino")
 	private Cuenta cuentaDest;
 	

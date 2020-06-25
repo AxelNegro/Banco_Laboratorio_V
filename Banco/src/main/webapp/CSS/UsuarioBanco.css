@@ -24,20 +24,20 @@
   font-family:Arial;
 }
 
-#tablaBancoCuenta th{
+#tablaCuentas th{
     background-color: #2454cc;
     color:white;
 }
-#tablaBancoCuenta tr:nth-child(even) { 
+#tablaCuentas tr:nth-child(even) { 
   background-color: #dddddd;
   font-family:Arial;
 }
 
-#tablaBancoAltaCuenta th{
+#tablaAltaCuenta th{
     background-color: #2454cc;
     color:white;
 }
-#tablaBancoAltaCuenta tr:nth-child(even) { 
+#tablaAltaCuenta tr:nth-child(even) { 
   background-color: #dddddd;
   font-family:Arial;
 }

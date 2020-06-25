@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
 @Controller
@@ -57,6 +59,7 @@ public class UsuarioController {
 		String Pass=txtContrasenia;
 		String msg;
 		AgregarUsuarioAdmin();
+		//InsertarTipoCuenta();
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
 				if(user.getEstado()) {
@@ -120,6 +123,45 @@ public class UsuarioController {
 		finally {
 			userNeg.Finalizar();
 			cliNeg.Finalizar();
+		}
+	}
+	
+	public void InsertarTipoCuenta() {
+			TipoCuenta tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+		
+			tc.setCodTipoCuenta(1);
+			tc.setTipoCuenta("Caja de ahorro en pesos");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(2);
+			tc.setTipoCuenta("Caja de ahorro en dólares");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(3);
+			tc.setTipoCuenta("Cuenta corriente");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(4);
+			tc.setTipoCuenta("Cuenta corriente especial en pesos");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(5);
+			tc.setTipoCuenta("Cuenta corriente especial en dólares");
+			AgregarTC(tc);
+		}
+	
+	public void AgregarTC(TipoCuenta tc) {
+		TipoCuentaNeg tcNeg = (TipoCuentaNeg) appContextNeg.getBean("tcNeg");
+		if(tcNeg.leerUna(tc.getCodTipoCuenta())==null) {
+			tcNeg.agregarUna(tc);
 		}
 	}
 	
