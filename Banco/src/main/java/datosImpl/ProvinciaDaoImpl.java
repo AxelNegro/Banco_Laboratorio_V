@@ -9,23 +9,23 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ConfigDao;
-import datos.ClienteDao;
-import entidad.Cliente;
+import datos.ProvinciaDao;
+import entidad.Provincia;
 
-public class ClienteDaoImpl implements ClienteDao{
+public class ProvinciaDaoImpl implements ProvinciaDao{
 	
 	private ApplicationContext appContext;
 	private Conexion con;
 	private Session session;
 	private Query query;
 	
-	public boolean agregarUno(Cliente cli) {
+	public boolean agregarUna(Provincia provincia) {
 		Inicializar();
 		Boolean res=false;
 		
 		try {
 			session.beginTransaction();
-			session.save(cli);
+			session.save(provincia);
 			session.getTransaction().commit();
 			
 			res=true;
@@ -41,88 +41,44 @@ public class ClienteDaoImpl implements ClienteDao{
 		return res;
 	}
 	
-	public Cliente leerUno(int DNI) {
+	public Provincia leerUna(int idProvincia) {
 		Inicializar();
-		Cliente cli;
+		Provincia prov;
 		try {
 			session.beginTransaction();
-			cli=(Cliente) session.get(Cliente.class, DNI);
+			prov=(Provincia) session.get(Provincia.class, idProvincia);
 		}
 		catch(Exception e) {
-			cli=null;
+			prov=null;
 			e.printStackTrace();
 		}
 		finally {
 			Finalizar();
 		}
-		if(cli!=null) {
-			return cli;
+		if(prov!=null) {
+			return prov;
 		}
 		else {
 			return null;
 		}
 	}
 	
-	public boolean tieneUsuario(String Username) {
-		Inicializar();
-		Long cont;
-		try {
-		query = session.createQuery("select count(*) from Cliente where Username=:username");
-		query.setString("username", Username);
-		cont=(Long) query.uniqueResult();
-		}
-		catch(Exception e){
-			cont=(long) 0;
-			e.printStackTrace();
-		}
-		finally {
-			Finalizar();
-		}
-		
-		if(Integer.parseInt(cont.toString())==1) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
 	@SuppressWarnings("unchecked")
-	public List<Cliente> leerTodos() {
+	public List<Provincia> leerTodas() {
 		Inicializar();
-		List<Cliente> lstClientes;
+		List<Provincia> lstProvincias;
 		try {
-		query=session.createQuery("FROM Cliente");
-		lstClientes=query.list();
+		query=session.createQuery("FROM Provincia");
+		lstProvincias=query.list();
 		}
 		catch(Exception e){
-			lstClientes=null;
+			lstProvincias=null;
 			e.printStackTrace();
 		}
 		finally {
 			Finalizar();
 		}
-		return lstClientes;
-	}
-	
-	public boolean modificar(Cliente cli) {
-		Boolean res=false;
-		Inicializar();
-		
-		try {
-			session.beginTransaction();
-			session.update(cli);
-			session.getTransaction().commit();
-			res=true;
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			res=false;
-		}
-		finally {
-			Finalizar();
-		}
-		return res;
+		return lstProvincias;
 	}
 	
 	public void Inicializar() {
@@ -135,5 +91,4 @@ public class ClienteDaoImpl implements ClienteDao{
 		con.cerrarSession();
 		((ConfigurableApplicationContext)(appContext)).close();
 	}
-	
 }

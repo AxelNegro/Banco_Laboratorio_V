@@ -19,7 +19,6 @@ public class Cuentas_x_UsuarioDaoImpl implements Cuentas_x_UsuarioDao{
 	private Session session;
 	private Query query;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUna(Cuentas_x_Usuario accxuser) {
 		Inicializar();
 		Boolean res=false;
@@ -37,9 +36,9 @@ public class Cuentas_x_UsuarioDaoImpl implements Cuentas_x_UsuarioDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public int contarCuentas(String username) {

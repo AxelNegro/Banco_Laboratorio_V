@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.Localidad;
+import entidad.Provincia;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.LocalidadNeg;
+import negocio.ProvinciaNeg;
 import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
@@ -61,8 +65,11 @@ public class UsuarioController {
 		String User=txtUsuario;
 		String Pass=txtContrasenia;
 		String msg;
-		AgregarUsuarioAdmin();
-		InsertarTipoCuenta();
+		//InsertarTipoCuenta();
+		//InsertarProvinciasyLocalidades();
+		//AgregarUsuarioAdmin();
+		
+		
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
 				if(user.getEstado()) {
@@ -98,72 +105,6 @@ public class UsuarioController {
 		FinalizarEnt();
 		FinalizarNeg();
 		return "TodosLogin";
-	}
-	
-	public void AgregarUsuarioAdmin() {
-		
-		Usuario user = (Usuario) appContextEnt.getBean("UsuarioAdmin");
-		Cliente cli = (Cliente) appContextEnt.getBean("ClienteAdmin");
-		
-		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
-		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
-	
-		Usuario userAux = userNeg.leerUno(user.getUsername());
-		
-		try {
-			if(userAux==null) 
-			{
-				userNeg.agregarUno(user);
-				cliNeg.agregarUno(cli);
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			userNeg.Finalizar();
-			cliNeg.Finalizar();
-		}
-	}
-	
-	public void InsertarTipoCuenta() {
-			TipoCuenta tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
-		
-			tc.setCodTipoCuenta(1);
-			tc.setTipoCuenta("Caja de ahorro en pesos");
-			AgregarTC(tc);
-			
-			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
-			
-			tc.setCodTipoCuenta(2);
-			tc.setTipoCuenta("Caja de ahorro en dólares");
-			AgregarTC(tc);
-			
-			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
-			
-			tc.setCodTipoCuenta(3);
-			tc.setTipoCuenta("Cuenta corriente");
-			AgregarTC(tc);
-			
-			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
-			
-			tc.setCodTipoCuenta(4);
-			tc.setTipoCuenta("Cuenta corriente especial en pesos");
-			AgregarTC(tc);
-			
-			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
-			
-			tc.setCodTipoCuenta(5);
-			tc.setTipoCuenta("Cuenta corriente especial en dólares");
-			AgregarTC(tc);
-		}
-	
-	public void AgregarTC(TipoCuenta tc) {
-		TipoCuentaNeg tcNeg = (TipoCuentaNeg) appContextNeg.getBean("tcNeg");
-		if(tcNeg.leerUna(tc.getCodTipoCuenta())==null) {
-			tcNeg.agregarUna(tc);
-		}
-		tcNeg.Finalizar();
 	}
 	
 	public boolean EsCorrecto(String User, String Pass) {
@@ -323,5 +264,296 @@ public class UsuarioController {
 		}
 		
 		userNeg.Finalizar();
+	}
+	
+	/* FUNCIONES PARA LA BD */
+	
+	public void AgregarUsuarioAdmin() {
+		
+		Usuario user = (Usuario) appContextEnt.getBean("UsuarioAdmin");
+		Cliente cli = (Cliente) appContextEnt.getBean("ClienteAdmin");
+		
+		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
+		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
+	
+		Usuario userAux = userNeg.leerUno(user.getUsername());
+		
+		try {
+			if(userAux==null) 
+			{
+				userNeg.agregarUno(user);
+				cliNeg.agregarUno(cli);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			userNeg.Finalizar();
+			cliNeg.Finalizar();
+		}
+	}
+	
+	public void InsertarTipoCuenta() {
+			TipoCuenta tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+		
+			tc.setCodTipoCuenta(1);
+			tc.setTipoCuenta("Caja de ahorro en pesos");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(2);
+			tc.setTipoCuenta("Caja de ahorro en dólares");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(3);
+			tc.setTipoCuenta("Cuenta corriente");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(4);
+			tc.setTipoCuenta("Cuenta corriente especial en pesos");
+			AgregarTC(tc);
+			
+			tc = (TipoCuenta) appContextEnt.getBean("TipoCuentaDefault");
+			
+			tc.setCodTipoCuenta(5);
+			tc.setTipoCuenta("Cuenta corriente especial en dólares");
+			AgregarTC(tc);
+		}
+	
+	public void AgregarTC(TipoCuenta tc) {
+		TipoCuentaNeg tcNeg = (TipoCuentaNeg) appContextNeg.getBean("tcNeg");
+		if(tcNeg.leerUna(tc.getCodTipoCuenta())==null) {
+			tcNeg.agregarUna(tc);
+		}
+		tcNeg.Finalizar();
+	}
+	
+	public void InsertarProvinciasyLocalidades() {
+		Provincia prov;
+		Localidad loc;
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Bs. As");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+
+		loc.setProvincia(prov);
+		loc.setDescripcion("Tigre");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("San Fernando");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("La Pampa");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Hucal");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Puelén");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+		
+		prov.setDescripcion("Rio Negro");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("General Roca");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Adolfo Alsina");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Entre Rios");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("La Paz");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Victoria");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Santa Fe");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Rosario");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("General Lopez");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+		
+		prov.setDescripcion("Córdoba");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Rio Cuarto");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("General Roca");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("San Luis");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Belgrano");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Ayacucho");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Corrientes");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Mercedes");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Ituzaingo");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Misiones");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("San Ignacio");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("Montecarlo");
+		
+		AgregarLocalidad(loc);
+		
+		prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+
+		prov.setDescripcion("Mendoza");
+		
+		AgregarProvincia(prov);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("San Rafael");
+		
+		AgregarLocalidad(loc);
+		
+		loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
+		
+		loc.setProvincia(prov);
+		loc.setDescripcion("San Carlos");
+		
+		AgregarLocalidad(loc);
+		
+	}
+	
+	public void AgregarProvincia(Provincia prov) {
+		System.out.println(prov.toString());
+		ProvinciaNeg provNeg = (ProvinciaNeg) appContextNeg.getBean("provNeg");
+		if(provNeg.leerUna(prov.getIdProvincia())==null) {
+			provNeg.agregarUna(prov);
+		}
+		provNeg.Finalizar();
+	}
+	
+	public void AgregarLocalidad(Localidad loc) {
+		LocalidadNeg locNeg = (LocalidadNeg) appContextNeg.getBean("locNeg");
+		if(locNeg.leerUna(loc.getIdLocalidad())==null) {
+			locNeg.agregarUna(loc);
+		}
+		locNeg.Finalizar();
 	}
 }

@@ -19,7 +19,6 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao{
 	private Session session;
 	private Query query;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUna(TipoCuenta tipoacc) {
 		Inicializar();
 		Boolean res=false;
@@ -37,9 +36,9 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public TipoCuenta leerUna(int ID) {

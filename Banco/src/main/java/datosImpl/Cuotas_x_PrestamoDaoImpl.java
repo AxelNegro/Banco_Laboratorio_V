@@ -15,7 +15,6 @@ public class Cuotas_x_PrestamoDaoImpl implements Cuotas_x_PrestamoDao{
 	private Conexion con;
 	private Session session;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUna(Cuotas_x_Prestamo cuotxprest) {
 		Inicializar();
 		 
@@ -34,9 +33,10 @@ public class Cuotas_x_PrestamoDaoImpl implements Cuotas_x_PrestamoDao{
 		}
 		finally {
 			Finalizar();
-			return res;
+			
 		}
 		
+		return res;
 	}
 	
 	public void Inicializar() {

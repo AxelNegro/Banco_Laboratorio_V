@@ -15,7 +15,6 @@ public class MovimientoDaoImpl implements MovimientoDao{
 	private Conexion con;
 	private Session session;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUno(Movimiento mov) {
 		Inicializar();
 		 
@@ -34,9 +33,9 @@ public class MovimientoDaoImpl implements MovimientoDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public void Inicializar() {

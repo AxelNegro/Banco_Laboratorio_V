@@ -6,8 +6,8 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <jsp:include page="BancoMasterPage.jsp" />
-      <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
-      <link>
+      <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"></link>
+      <script type="text/javascript" src="JS/Descolgables.js"></script>
       <title>Cargar Clientes</title>
    </head>
    <body>
@@ -34,17 +34,28 @@
                <br>
                Sexo:		
                <select id="ddlSexo" name="ddlSexo" style="margin-right:1%;width:6%;text-align:center">
-                  <option value="Hombre">Hombre</option>
+                  <option value="Hombre" hidden>Hombre</option>
                   <option value="Mujer">Mujer</option>
                </select>
                Fecha nacimiento	<input type="date" id="dtFechaNac" name="dtFechaNac" style="margin-right:1%" min="1900-01-01">
                <br>
                <br>
                Nacionalidad: <input type="text" id="txtNacionalidad" name="txtNacionalidad" style="margin-right:1%" placeholder="Nacionalidad"/>
-               Provincia: <input type="text" id="txtProvincia" name="txtProvincia" style="margin-right:1%" placeholder="Provincia"/>
+               Provincia: 
+               <select id="ddlProvincia" name="ddlProvincia" onchange="sacarHidden(this.value,0, -1)" placeholder="Provincia">
+               	<option></option>
+               	<c:forEach items="${lstProv}" var="prov">
+	            	<option value="${prov.getIdProvincia()}">${prov.getDescripcion()}</option>
+	           	</c:forEach>
+               </select>
                <br>
                <br>
-               Localidad: <input type="text" id="txtLocalidad" name="txtLocalidad" style="margin-right:1%" placeholder="Localidad"/>
+               Localidad: <select id="ddlLocalidad" name="ddlLocalidad" placeholder="Localidad">
+               <option></option>
+               <c:forEach items="${lstLoc}" var="loc">
+	            	<option name="${loc.getProvincia().getIdProvincia()}" value="${loc.getIdLocalidad()}" hidden>${loc.getDescripcion()}</option>
+	           	</c:forEach>
+	           	</select>
                Dirección: <input type="text" id="txtDireccion" name="txtDireccion" style="margin-right:1%" placeholder="Dirección"/>
                <br>
                <br>

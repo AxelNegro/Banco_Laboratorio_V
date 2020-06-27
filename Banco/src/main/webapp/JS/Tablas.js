@@ -12,14 +12,14 @@ function Modificar(NombreTabla,Fila){
 		LlenarDatos(NombreTabla,Fila);
 	break;
 	case 'tablaClientes':
-		Filas.cells[1].innerHTML='<input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario"/>';
+		LlenarDescolgable(Filas.cells[1],'ddlUsuario', Fila);//<input type="text" id="txtUsuario" name="txtUsuario" placeholder="Usuario"/>';
 		Filas.cells[2].innerHTML='<input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"/>';
 		Filas.cells[3].innerHTML='<input type="text" id="txtApellido" name="txtApellido" placeholder="Apellido"/>';
 		Filas.cells[4].innerHTML='<select id="ddlSexo" name="ddlSexo"><option value="Hombre">Hombre</option><option value="Mujer">Mujer</option></select>';
 		Filas.cells[5].innerHTML='<input type="date" id="txtFecha" name="txtFecha"/>';
 		Filas.cells[6].innerHTML='<input type="text" id="txtNacionalidad" name="txtNacionalidad" placeholder="Nacionalidad"/>';
-		Filas.cells[7].innerHTML='<input type="text" id="txtProvincia" name="txtProvincia" placeholder="Provincia"/>';
-		Filas.cells[8].innerHTML='<input type="text" id="txtLocalidad" name="txtLocalidad" placeholder="Localidad"/>';
+		LlenarDescolgable(Filas.cells[7],'ddlProvincia', Fila);//Filas.cells[7].innerHTML='<input type="text" id="txtProvincia" name="txtProvincia" placeholder="Provincia"/>';
+		LlenarDescolgable(Filas.cells[8],'ddlLocalidad', Fila);//Filas.cells[8].innerHTML='<select id="ddlLocalidad" name="ddlLocalidad" placeholder="Localidad"><option><option></select>';
 		Filas.cells[9].innerHTML='<input type="text" id="txtDireccion" name="txtDireccion" placeholder="Dirección"/>';
 		Filas.cells[10].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
@@ -72,5 +72,53 @@ function Seleccionar(NombreTabla, Fila){
 		document.getElementById("txtUsuario").value=document.getElementsByName("hdnUsuario")[Fila].value;
 		document.getElementById("hdnUser").value=document.getElementsByName("hdnUsuario")[Fila].value;
 	break;
+	}
+}
+
+function LlenarDescolgable(Celda, Nombre, Fila){
+	var Cadena
+	switch(Nombre){
+		case 'ddlUsuario':
+			var div = document.getElementById('hdnUsers');
+			var usuarios = div.childElementCount;
+			var usuario=document.getElementsByName('hdnUsuario')[Fila].value;
+			var valor;
+			Cadena='<select id="ddlUsuario" name="ddlUsuario" placeholder="Usuario"><option value="'+usuario+'">'+usuario+'</option>'
+			for(var i=0;i<usuarios;i++){
+				valor=div.children[i].value;
+				Cadena+='<option value="'+valor+'">'+valor+'</option>';
+			}
+			Cadena+='</select>';
+			Celda.innerHTML=Cadena;
+		break;
+		case 'ddlProvincia':
+			var div = document.getElementById('hdnProvincias');
+			var provincias = div.childElementCount;
+			var nombre;
+			var valor;
+			Cadena='<select id="ddlProvincia" name="ddlProvincia" onchange="sacarHidden(this.value,1,'+Fila+')" placeholder="Provincia"><option></option>';
+			for(var i=0;i<provincias;i++){
+				nombre=div.children[i].getAttribute("name");
+				valor=div.children[i].value;
+				Cadena+='<option value="'+nombre+'">'+valor+'</option>';
+			}
+			Cadena+='</select>';
+			Celda.innerHTML=Cadena;
+		break;
+		case 'ddlLocalidad':
+			var div = document.getElementById('hdnLocalidades');
+			var localidades = div.childElementCount;
+			var nombre;
+			var valor;
+			Cadena='<select id="ddlLocalidad" name="ddlLocalidad" placeholder="Localidad"><option></option>';
+			for(var i=0;i<localidades;i++){
+				id=div.children[i].getAttribute("id");
+				nombre=div.children[i].getAttribute("name");
+				valor=div.children[i].value;
+				Cadena+='<option name="'+nombre+'" value="'+id+'" hidden>'+valor+'</option>';
+			}
+			Cadena+='</select>';
+			Celda.innerHTML=Cadena;
+		break;
 	}
 }

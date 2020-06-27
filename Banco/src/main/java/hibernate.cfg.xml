@@ -21,5 +21,7 @@
         <mapping class="entidad.Prestamo"/>
         <mapping class="entidad.TipoCuenta"/>
         <mapping class="entidad.Usuario"/>
+        <mapping class="entidad.Provincia"/>
+        <mapping class="entidad.Localidad"/>
   </session-factory>
 </hibernate-configuration>

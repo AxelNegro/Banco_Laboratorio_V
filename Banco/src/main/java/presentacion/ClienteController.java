@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.Localidad;
+import entidad.Provincia;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.LocalidadNeg;
+import negocio.ProvinciaNeg;
 import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
@@ -46,21 +50,26 @@ public class ClienteController {
 
 		Cliente cli = (Cliente) appContextEnt.getBean("ClienteDefault");
 		Usuario user = (Usuario) appContextEnt.getBean("UsuarioDefault");
+		Provincia prov = (Provincia) appContextEnt.getBean("ProvinciaDefault");
+		Localidad loc = (Localidad) appContextEnt.getBean("LocalidadDefault");
 		Date FechaNac;
 		
 		try {
-		FechaNac=new SimpleDateFormat("yyyy-mm-dd").parse(Fecha);  
-		user.setUsername(User);
-		cli.setDNI(Integer.parseInt(DNI));
-		cli.setNombre(Nombre);
-		cli.setApellido(Apellido);
-		cli.setFecha(FechaNac);
-		cli.setLocalidad(Localidad);
-		cli.setNacionalidad(Nacionalidad);
-		cli.setProvincia(Provincia);
-		cli.setSexo(Sexo);
-		cli.setDireccion(Direccion);
-		cli.setUsuario(user);
+			FechaNac=new SimpleDateFormat("yyyy-mm-dd").parse(Fecha);  
+			user.setUsername(User);
+			prov.setIdProvincia(Integer.parseInt(Provincia));
+			loc.setProvincia(prov);
+			loc.setIdLocalidad(Integer.parseInt(Localidad));
+			cli.setDNI(Integer.parseInt(DNI));
+			cli.setNombre(Nombre);
+			cli.setApellido(Apellido);
+			cli.setFecha(FechaNac);
+			cli.setLocalidad(loc);
+			cli.setNacionalidad(Nacionalidad);
+			cli.setProvincia(prov);
+			cli.setSexo(Sexo);
+			cli.setDireccion(Direccion);
+			cli.setUsuario(user);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -72,57 +81,64 @@ public class ClienteController {
 	
 	@RequestMapping("agregarCliente.do")
 	public String AgregarCliente(String User, String txtDocumento, String txtNombre, String txtApellido, String ddlSexo, String ddlUsuario, 
-								 String txtNacionalidad, String txtProvincia, String txtLocalidad, String txtDireccion, String dtFechaNac, Model m) {
+								 String txtNacionalidad, String ddlProvincia, String ddlLocalidad, String txtDireccion, String dtFechaNac, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		Cliente cli;
 		
-		if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||ddlUsuario==null||ddlUsuario.trim().isEmpty())) {
-			if(!(txtNacionalidad.trim().isEmpty()||txtProvincia.trim().isEmpty()||txtLocalidad.trim().isEmpty()||txtDireccion.trim().isEmpty()||dtFechaNac.trim().isEmpty())) {
-				if(Integer.parseInt(txtDocumento)>=0) {
-					if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {
-						if(userNeg.leerUno(ddlUsuario)!=null) {
-							if(!cliNeg.tieneUsuario(ddlUsuario)) {
-							cli=EstablecerDatos(ddlUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,txtProvincia,txtLocalidad,txtDireccion);
-								if(cli!=null) {
-									if(cliNeg.agregarUno(cli)) {
-										m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente agregado correctamente.');</script>");
+		try {
+			if(!(txtDocumento.trim().isEmpty()||txtNombre.trim().isEmpty()||txtApellido.trim().isEmpty()||ddlSexo.trim().isEmpty()||ddlUsuario==null||ddlUsuario.trim().isEmpty())) {
+				if(!(txtNacionalidad.trim().isEmpty()||ddlProvincia==null||ddlProvincia.trim().isEmpty()||ddlLocalidad==null||ddlLocalidad.trim().isEmpty()||txtDireccion.trim().isEmpty()||dtFechaNac.trim().isEmpty())) {
+					if(Integer.parseInt(txtDocumento)>=0) {
+						if(cliNeg.leerUno(Integer.parseInt(txtDocumento))==null) {
+							if(userNeg.leerUno(ddlUsuario)!=null) {
+								if(!cliNeg.tieneUsuario(ddlUsuario)) {
+								cli=EstablecerDatos(ddlUsuario,txtDocumento,txtNombre,txtApellido,ddlSexo, dtFechaNac,txtNacionalidad,ddlProvincia,ddlLocalidad,txtDireccion);
+									if(cli!=null) {
+										if(cliNeg.agregarUno(cli)) {
+											m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente agregado correctamente.');</script>");
+										}
+										else {
+											m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al agregar el usuario.');</script>");
+										}
 									}
 									else {
-										m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al agregar el usuario.');</script>");
+										m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
 									}
 								}
 								else {
-									m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
+									m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado ya está asignado a un cliente.');</script>");
 								}
 							}
 							else {
-								m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado ya está asignado a un cliente.');</script>");
+								m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
 							}
 						}
 						else {
-							m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
+							m.addAttribute("Msg","<script type='text/javascript'>alert('Ya existe un cliente con el DNI especificado.');</script>");
 						}
 					}
 					else {
-						m.addAttribute("Msg","<script type='text/javascript'>alert('Ya existe un cliente con el DNI especificado.');</script>");
+						m.addAttribute("Msg","<script type='text/javascript'>alert('No se permiten valores negativos en campos númericos.');</script>");
 					}
 				}
 				else {
-					m.addAttribute("Msg","<script type='text/javascript'>alert('No se permiten valores negativos en campos númericos.');</script>");
+					m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 				}
 			}
 			else {
 				m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 			}
 		}
-		else {
+		catch (Exception e){
+			e.printStackTrace();
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
-
 		ObtenerListaUserSinUsar(m);
+		ObtenerProvincias(m);
+		ObtenerLocalidades(m);
 
 		m.addAttribute("Username",User);
 		
@@ -141,6 +157,9 @@ public class ClienteController {
 		InicializarEnt();
 		
 		ObtenerLista(m);
+		ObtenerListaUserSinUsar(m);
+		ObtenerProvincias(m);
+		ObtenerLocalidades(m);
 		
 		m.addAttribute("Username", User);
 		
@@ -182,8 +201,8 @@ public class ClienteController {
 	}
 	
 	@RequestMapping("modificarCliente.do")
-	public String ModificarUno(String User, String hdnId, String[] hdnDNI, String[] txtUsuario, String[] txtNombre, String[] txtApellido, String[] ddlSexo, String[] txtFecha, 
-								String[] txtNacionalidad, String[] txtProvincia, String[] txtLocalidad, String[] txtDireccion, Model m) {
+	public String ModificarUno(String User, String hdnId, String[] hdnDNI, String[] ddlUsuario, String[] txtNombre, String[] txtApellido, String[] ddlSexo, String[] txtFecha, 
+								String[] txtNacionalidad, String[] ddlProvincia, String[] ddlLocalidad, String[] txtDireccion, Model m) {
 		InicializarNeg();
 		InicializarEnt();
 		
@@ -191,37 +210,45 @@ public class ClienteController {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		int Id = Integer.parseInt(hdnId);
 		
-		if(!(hdnDNI[Id].trim().isEmpty()||txtNombre[Id].trim().isEmpty()||txtApellido[Id].trim().isEmpty()||ddlSexo[Id].trim().isEmpty()||txtUsuario[Id].trim().isEmpty())) {
-			if(!(txtNacionalidad[Id].trim().isEmpty()||txtProvincia[Id].trim().isEmpty()||txtLocalidad[Id].trim().isEmpty()||txtDireccion[Id].trim().isEmpty()||txtFecha[Id].trim().isEmpty())) {
-				if(userNeg.leerUno(txtUsuario[Id])!=null) {
-					Cliente cli=EstablecerDatos(txtUsuario[Id], hdnDNI[Id], txtNombre[Id], txtApellido[Id], ddlSexo[Id], txtFecha[Id], 
-							txtNacionalidad[Id], txtProvincia[Id], txtLocalidad[Id], txtDireccion[Id]);
-					if(cli!=null) {
-						if(cliNeg.modificar(cli)) {
-							m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente modificado correctamente.');</script>");
+		try {
+			if(!(hdnDNI[Id].trim().isEmpty()||txtNombre[Id].trim().isEmpty()||txtApellido[Id].trim().isEmpty()||ddlSexo[Id].trim().isEmpty()||ddlUsuario==null||ddlUsuario[Id].equals(null)||ddlUsuario[Id].trim().isEmpty())) {
+				if(!(txtNacionalidad[Id].trim().isEmpty()||ddlProvincia==null||ddlProvincia[Id].trim().isEmpty()||ddlLocalidad==null||ddlLocalidad[Id].trim().isEmpty()||txtDireccion[Id].trim().isEmpty()||txtFecha[Id].trim().isEmpty())) {
+					if(userNeg.leerUno(ddlUsuario[Id])!=null) {
+						Cliente cli=EstablecerDatos(ddlUsuario[Id], hdnDNI[Id], txtNombre[Id], txtApellido[Id], ddlSexo[Id], txtFecha[Id], 
+								txtNacionalidad[Id], ddlProvincia[Id], ddlLocalidad[Id], txtDireccion[Id]);
+						if(cli!=null) {
+							if(cliNeg.modificar(cli)) {
+								m.addAttribute("Msg","<script type='text/javascript'>alert('Cliente modificado correctamente.');</script>");
+							}
+							else {
+								m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar el usuario.');</script>");
+							}
 						}
 						else {
-							m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar el usuario.');</script>");
+							m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
 						}
 					}
 					else {
-						m.addAttribute("Msg","<script type='text/javascript'>alert('Ingrese los datos correctamente.');</script>");
+						m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
 					}
 				}
 				else {
-					m.addAttribute("Msg","<script type='text/javascript'>alert('El usuario especificado no existe.');</script>");
+					m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 				}
 			}
 			else {
 				m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 			}
 		}
-		else {
+		catch(Exception e) {
+			e.printStackTrace();
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
 		
-		
 		ObtenerLista(m);
+		ObtenerListaUserSinUsar(m);
+		ObtenerProvincias(m);
+		ObtenerLocalidades(m);
 		
 		m.addAttribute("Username",User);
 		
@@ -239,6 +266,8 @@ public class ClienteController {
 		InicializarNeg();
 		
 		ObtenerListaUserSinUsar(m);
+		ObtenerProvincias(m);
+		ObtenerLocalidades(m);
 		
 		m.addAttribute("Username", User);
 		
@@ -276,4 +305,21 @@ public class ClienteController {
 		userNeg.Finalizar();
 	}
 	
+	public void ObtenerProvincias(Model m) {
+		ProvinciaNeg provNeg = (ProvinciaNeg) appContextNeg.getBean("provNeg");
+		List<Provincia> lstProv = provNeg.leerTodas();
+		
+		m.addAttribute("lstProv",lstProv);
+		
+		provNeg.Finalizar();
+	}
+	
+	public void ObtenerLocalidades(Model m) {
+		LocalidadNeg locNeg = (LocalidadNeg) appContextNeg.getBean("locNeg");
+		List<Localidad> lstLoc = locNeg.leerTodas();
+	
+		m.addAttribute("lstLoc",lstLoc);
+		
+		locNeg.Finalizar();
+	}
 }

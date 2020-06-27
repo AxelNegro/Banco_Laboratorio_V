@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import java.io.Serializable;
@@ -37,16 +38,19 @@ public class Cliente implements Serializable{
 	private Date Fecha_Nac;
 	@Column(name="Direccion")
 	private String Direccion;
-	@Column(name="Localidad")
-	private String Localidad;
-	@Column(name="Provincia")
-	private String Provincia;
+	@ManyToOne
+	@JoinColumn(name="IdProvincia")
+	private Provincia provincia;
+	@ManyToOne
+	@JoinColumn(name="IdLocalidad")
+	private Localidad localidad;
+	
 	
 	public Cliente() {
 		
 	}
 	public Cliente(int dni, Usuario user , String nombre, String apellido, String sexo, String nacionalidad, Date fecha,
-			String direccion, String localidad, String provincia) {
+			String direccion, Localidad localidad, Provincia provincia) {
 		DNI = dni;
 		usuario = user;
 		Nombre = nombre;
@@ -55,8 +59,8 @@ public class Cliente implements Serializable{
 		Nacionalidad = nacionalidad;
 		Fecha_Nac = fecha;
 		Direccion = direccion;
-		Localidad = localidad;
-		Provincia = provincia;
+		this.localidad = localidad;
+		this.provincia = provincia;
 	}
 	public int getDNI() {
 		return DNI;
@@ -100,17 +104,17 @@ public class Cliente implements Serializable{
 	public void setDireccion(String direccion) {
 		Direccion = direccion;
 	}
-	public String getLocalidad() {
-		return Localidad;
+	public Localidad getLocalidad() {
+		return this.localidad;
 	}
-	public void setLocalidad(String localidad) {
-		Localidad = localidad;
+	public void setLocalidad(Localidad localidad) {
+		this.localidad = localidad;
 	}
-	public String getProvincia() {
-		return Provincia;
+	public Provincia getProvincia() {
+		return this.provincia;
 	}
-	public void setProvincia(String provincia) {
-		Provincia = provincia;
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 	public Usuario getUsuario() {
 		return usuario;

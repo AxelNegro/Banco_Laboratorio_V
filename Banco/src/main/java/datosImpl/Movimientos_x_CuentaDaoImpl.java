@@ -14,7 +14,6 @@ public class Movimientos_x_CuentaDaoImpl implements Movimientos_x_CuentaDao{
 	private Conexion con;
 	private Session session;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUno(Movimientos_x_Cuenta movxacc) {
 		Inicializar();
 		Boolean res=false;
@@ -32,9 +31,9 @@ public class Movimientos_x_CuentaDaoImpl implements Movimientos_x_CuentaDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public void Inicializar() {

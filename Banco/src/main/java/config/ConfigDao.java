@@ -7,10 +7,12 @@ import datos.ClienteDao;
 import datos.CuentaDao;
 import datos.Cuentas_x_UsuarioDao;
 import datos.Cuotas_x_PrestamoDao;
+import datos.LocalidadDao;
 import datos.MovimientoDao;
 import datos.Movimientos_x_CuentaDao;
 import datos.PrestamoDao;
 import datos.Prestamos_x_ClienteDao;
+import datos.ProvinciaDao;
 import datos.TipoCuentaDao;
 import datos.UsuarioDao;
 import datosImpl.ClienteDaoImpl;
@@ -18,10 +20,12 @@ import datosImpl.Conexion;
 import datosImpl.CuentaDaoImpl;
 import datosImpl.Cuentas_x_UsuarioDaoImpl;
 import datosImpl.Cuotas_x_PrestamoDaoImpl;
+import datosImpl.LocalidadDaoImpl;
 import datosImpl.MovimientoDaoImpl;
 import datosImpl.Movimientos_x_CuentaDaoImpl;
 import datosImpl.PrestamoDaoImpl;
 import datosImpl.Prestamos_x_ClienteDaoImpl;
+import datosImpl.ProvinciaDaoImpl;
 import datosImpl.TipoCuentaDaoImpl;
 import datosImpl.UsuarioDaoImpl;
 
@@ -91,5 +95,17 @@ public class ConfigDao {
 	public UsuarioDao userDao() {
 		UsuarioDao userDao = new UsuarioDaoImpl();
 		return userDao;
+	}
+	
+	@Bean
+	public ProvinciaDao provDao() {
+		ProvinciaDao provDao = new ProvinciaDaoImpl();
+		return provDao;
+	}
+	
+	@Bean
+	public LocalidadDao locDao() {
+		LocalidadDao locDao = new LocalidadDaoImpl();
+		return locDao;
 	}
 }

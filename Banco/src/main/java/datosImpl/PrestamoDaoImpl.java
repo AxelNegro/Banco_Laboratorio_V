@@ -15,7 +15,6 @@ public class PrestamoDaoImpl implements PrestamoDao{
 	private Conexion con;
 	private Session session;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUno(Prestamo prest) {
 		Inicializar();
 		Boolean res=false;
@@ -33,8 +32,9 @@ public class PrestamoDaoImpl implements PrestamoDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
+		
+		return res;
 		
 	}
 	

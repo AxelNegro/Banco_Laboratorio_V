@@ -19,7 +19,6 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	private Session session;
 	private Query query;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUno(Usuario user) {
 		Inicializar();
 		Boolean res=false;
@@ -37,8 +36,9 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
+		
+		return res;
 		
 	}
 	

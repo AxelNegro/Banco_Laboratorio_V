@@ -65,11 +65,11 @@ public class Main {
 	
 	public static void Insertar() {
 		InsertarUsuario();
-		InsertarCliente();
+		//InsertarCliente();
 		InsertarTipoCuenta();
 		InsertarCuenta();
 		InsertarMovimientos();
-		InsertarPrestamo();
+		//InsertarPrestamo();
 	}
 	
 	public static void InsertarUsuario() {
@@ -145,7 +145,7 @@ public class Main {
 		
 	}
 	
-	public static void InsertarCliente() {
+	/*public static void InsertarCliente() {
 		Cliente cli = new Cliente();
 		Usuario user = new Usuario();
 			
@@ -306,7 +306,7 @@ public class Main {
 			cli.setUsuario(user);
 			AgregarCliente(cli);
 			
-	}
+	}*/
 	
 	public static void InsertarTipoCuenta() {
 		TipoCuenta tC = new TipoCuenta();		
@@ -618,7 +618,7 @@ public class Main {
 			}		
 		}
 	
-	public static void InsertarPrestamo() {
+	/*public static void InsertarPrestamo() {
 		Prestamo prestamo = new Prestamo();
 		Cliente cli = new Cliente();
 		Usuario user = new Usuario();
@@ -893,7 +893,7 @@ public class Main {
 			InsertarCuotas_x_Prestamo(prestamo);
 			
 			
-	}
+	}*/
 	
 	public static void InsertarCuotas_x_Prestamo(Prestamo prestamo) {
 		Cuotas_x_Prestamo cuotas_x_Prestamo = new Cuotas_x_Prestamo();

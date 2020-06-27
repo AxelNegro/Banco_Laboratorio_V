@@ -15,7 +15,6 @@ public class Prestamos_x_ClienteDaoImpl implements Prestamos_x_ClienteDao{
 	private Conexion con;
 	private Session session;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUno(Prestamos_x_Cliente prestxcli) {
 		Inicializar();
 		Boolean res=false;
@@ -33,9 +32,9 @@ public class Prestamos_x_ClienteDaoImpl implements Prestamos_x_ClienteDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public void Inicializar() {

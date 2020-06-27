@@ -17,7 +17,6 @@ public class CuentaDaoImpl implements CuentaDao{
 	private Session session;
 	private Query query;
 	
-	@SuppressWarnings("finally")
 	public boolean agregarUna(Cuenta cuenta) {
 		Inicializar();
 		Boolean res=false;
@@ -35,9 +34,9 @@ public class CuentaDaoImpl implements CuentaDao{
 		}
 		finally {
 			Finalizar();
-			return res;
 		}
 		
+		return res;
 	}
 	
 	public Cuenta leerUna(int CBU) {
