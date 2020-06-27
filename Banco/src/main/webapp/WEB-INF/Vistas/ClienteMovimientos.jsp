@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
    <head>
@@ -13,10 +11,11 @@
       <link>
       <script>
          $(document).ready(function () {
-             $('#tablaBancoCliente').DataTable(
+             $('#tablaMovimientos').DataTable(
                  {
                      "lengthChange": false,
-                     "info": false
+                     "info": false,
+                     "pageLength":5
                  }
              );
          });
@@ -29,7 +28,7 @@
       <div class="padre">
          <div class="hijo">
             <div style="float:left;width:55%">
-               <table id="tablaBancoCliente">
+               <table id=tablaMovimientos>
                   <thead>
                      <tr>
                         <th> Numero de Movimiento </th>

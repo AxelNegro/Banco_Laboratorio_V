@@ -58,6 +58,12 @@ public class LinkController {
 		return "ClientePedidoPrestamos";
 	}
 	
+	@RequestMapping("ClientePrestamos.do")
+	public String ClientePrestamos(String User, Model m) {
+		m.addAttribute("Username",User);
+		return "ClientePrestamos";
+	}
+	
 	@RequestMapping("ClienteTransBancaria.do")
 	public String ClienteTransBancaria(String User, Model m) {
 		m.addAttribute("Username",User);

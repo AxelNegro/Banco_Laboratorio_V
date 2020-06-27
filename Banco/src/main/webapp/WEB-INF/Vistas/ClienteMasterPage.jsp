@@ -17,9 +17,9 @@
             <li class="opcion">
                <a class="menu" href="ClientePedidoPrestamos.do?User=${Username}">Prestamos</a>
                <ul class="submenu">
-                  <li><a href="ClientePedidoPrestamos.do?User=${Username}">Pedido</a>
+                  <li><a href="ClientePedidoPrestamos.do?User=${Username}">Pedir</a>
                   <li>
-                  <li><a href="ClientePagoPrestamos.do?User=${Username}">Pago</a>
+                  <li><a href="ClientePrestamos.do?User=${Username}">Pagar</a>
                   <li>
                </ul>
             </li>

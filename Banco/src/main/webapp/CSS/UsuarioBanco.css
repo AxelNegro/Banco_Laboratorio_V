@@ -51,6 +51,33 @@
   font-family:Arial;
 }
 
+#tablaPrestamos th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaPrestamos tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+#tablaReportes th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaReportes tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
+#tablaMovimientos th{
+    background-color: #2454cc;
+    color:white;
+}
+#tablaMovimientos tr:nth-child(even) { 
+  background-color: #dddddd;
+  font-family:Arial;
+}
+
 table, th, td{
     border: 1px solid black;
     padding: 10px;

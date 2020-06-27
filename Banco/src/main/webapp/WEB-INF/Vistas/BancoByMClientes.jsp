@@ -33,7 +33,7 @@
          <div class="hijo">
             <form action="modificarCliente.do?User=${Username}" method="post">
             <input type="hidden" id="hdnId" name="hdnId" value=""/>
-               <table style="width:95%" id=tablaClientes>
+               <table id=tablaClientes style="width:95%">
                   <thead>
                      <tr>
                         <th>DNI</th>

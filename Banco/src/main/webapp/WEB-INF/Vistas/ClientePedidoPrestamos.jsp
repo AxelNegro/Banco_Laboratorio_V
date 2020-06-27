@@ -29,7 +29,12 @@
                   <input type="number" min="10000" Value="10000"/>
                   <br>
                   <label>Plazo de Pago:</label>
-                  <input type="Number" min="6" value="6"/>
+                  <select name="ddlPlazo">
+                  	<option value="3">3 Meses</option>
+                  	<option value="6">6 Meses</option>
+                  	<option value="12">12 Meses</option>
+                  	<option value="24">24 Meses</option>
+                  </select>
                   <br><br>
                   <input type="submit" class="botoncargar" value="Calcular">
                   <h1>Datos Finales del Prestamo</h1>
