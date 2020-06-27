@@ -14,8 +14,9 @@ Información útil:
 2. Con el hibernate.cfg.xml en "create" ejecutar el proyecto.
 3. Logearse con la cuenta de usuario "admin" y contraseña "admin".
 4. Parar la ejecución del proyecto y pasar el hibernate.cfg.xml a "update".
-5. Descomentar la linea 62 del UsuarioController.java y comentar la linea 61.
-6. Ejecutar el proyecto hasta luego de logearse y luego comentar la linea 62 (Opcional).
+5. Descomentar las lineas 68, 69 y 70 del UsuarioController.java y comentar la linea 20 del LinkController.java.
+6. Ejecutar el proyecto hasta luego de logearse.
+7. Detener la ejecución y comentar las lineas 68, 69 y 70 del UsuarioController.java.
 
 Programación por capas:
   - En el PKG "datos" se crean las interfaces de las clases que más tarde tendrán las funciones ABML a implementar en cada clase del package "datosImpl". La nomenclatura para este es "NombreDao", ejemplo: "ClienteDao".
@@ -95,3 +96,10 @@ Clases:
   - Contraseña.
   - Tipo de Usuario (1 - Banco, 0 - Cliente).
   - Estado.
+- Provincia:
+  - IdProvincia.
+  - Descripción
+- Localidad:
+  - IdLocalidad.
+  - IdProvincia.
+  - Descripción.
