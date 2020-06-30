@@ -80,6 +80,25 @@ public class Cuentas_x_UsuarioDaoImpl implements Cuentas_x_UsuarioDao{
 		return lstAccxUser;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Cuentas_x_Usuario> leerCuentasxUsuario(String Username) {
+		Inicializar();
+		List<Cuentas_x_Usuario> lstAccxUser;
+		try {
+			query=session.createQuery("from Cuentas_x_Usuario where usuario_Username=:Username");
+			query.setString("Username", Username);
+			lstAccxUser=(List<Cuentas_x_Usuario>) query.list();
+		}
+		catch(Exception e){
+			lstAccxUser=null;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		return lstAccxUser;
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");

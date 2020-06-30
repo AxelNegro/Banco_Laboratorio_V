@@ -1,4 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+   <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,45 +30,77 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <div style="float:left;width:55%">
-               <table id=tablaMovimientos>
-                  <thead>
-                     <tr>
-                        <th> Numero de Movimiento </th>
-                        <th> Nombre de Movimiento </th>
-                        <th> Fecha del Movimiento</th>
-                        <th> Monto del Movimiento</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <form style="padding-left:35%;">
-                           <td> 2 </td>
-                           <td> Transferencia a 156871278457 </td>
-                           <td> 05/06/2020</td>
-                           <td> -$ 1833.33 </td>
-                        </form>
-                     </tr>
-                     </tr>
-                  </tbody>
-               </table>
-            </div>
-            <div style="float:left;width:35%; border:2px solid grey;margin-left:3%">
-               <br>
-               <label style="font-family:Arial;font-size:20px;font-weight:bold">Caja de ahorro en pesos</label>
-               <br>
-               <br>
-               <label style="font-family:Arial;font-size:20px">$ 4563,23</label>
-               <br>
-               <hr>
-               <br>
-               <label style="font-family:Arial;font-size:20px;font-weight:bold">Caja de ahorro en dolares</label>
-               <br>
-               <br>
-               <label style="font-family:Arial;font-size:20px">$ 354,55</label>
-               <br>
-               <br>
-            </div>
+         	<form>
+	            <div style="float:left;width:55%">
+	               <table id=tablaMovimientos>
+	                  <thead>
+	                     <tr>
+	                        <th>Nro. de Movimiento</th>
+	                        <th>CBU Origen</th>
+	                        <th>CBU Destino</th>
+	                        <th>Concepto del Movimiento</th>
+	                        <th>Fecha del Movimiento</th>
+	                        <th>Importe del Movimiento</th>
+	                     </tr>
+	                  </thead>
+	                  <tbody>
+	                  	<c:forEach items="${lstMovxAcc}" var="movxacc">
+		                     <tr>
+		                           <td>${movxacc.getMovimiento().getCodMovimiento()}</td>
+		                           <td>${movxacc.getCuentaOrig().getCBU()}</td>
+		                           <td>${movxacc.getCuentaDest().getCBU()}</td>
+		                           <td>${movxacc.getMovimiento().getConcepto()}</td>
+		                           <td>${movxacc.getMovimiento().getFecha()}</td>
+		                           <td>$ ${movxacc.getMovimiento().getImporte()}</td>
+		                     </tr>
+	                     </c:forEach>
+	                  </tbody>
+	               </table>
+	            </div>
+	            <div style="float:left;width:35%; border:2px solid grey;margin-left:3%">
+	            	<c:forEach items="${lstAccxUser}" var="accxuser">
+	            		<c:choose>
+		            		<c:when test = "${accxuser.getCuenta().getEstado()}">
+				                <br>
+				                <label style="font-family:Arial;font-size:20px;font-weight:bold">
+					                <c:choose>
+								    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==1}">
+								        Caja de ahorro en pesos
+								    </c:when>    
+								    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==2}">
+								    Caja de ahorro en dólares
+								    </c:when>
+								    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==3}">
+								    Cuenta corriente
+								    </c:when>
+								    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==4}">
+								    Cuenta corriente especial en pesos
+								    </c:when>
+								    <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==5}">
+								    Cuenta corriente especial en dólares
+								    </c:when>
+									</c:choose>
+								</label>
+								<br>
+				                <br>
+				                <label style="font-family:Arial;font-size:15px">${accxuser.getCuenta().getNombre()}</label>
+				                <br>
+				                <br>
+				                <label style="font-family:Arial;font-size:15px">$ ${accxuser.getCuenta().getSaldo()}</label>
+				                <br>
+				                <c:choose>
+				                <c:when test = "${lstAccxUser.indexOf(accxuser)!=lstAccxUser.size()-1}">
+				                	<hr>
+				                </c:when>
+				                <c:otherwise>
+				                	<br>
+				                </c:otherwise>
+				                </c:choose>
+		            		</c:when>
+	            		</c:choose>
+	            	</c:forEach>
+	            </div>
+            </form>
          </div>
       </div>
    </body>

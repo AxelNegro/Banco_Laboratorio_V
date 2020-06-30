@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.Cuenta;
+import entidad.Cuentas_x_Usuario;
 import entidad.Localidad;
 import entidad.Provincia;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.CuentaNeg;
+import negocio.Cuentas_x_UsuarioNeg;
 import negocio.LocalidadNeg;
 import negocio.ProvinciaNeg;
 import negocio.TipoCuentaNeg;
@@ -75,6 +79,7 @@ public class UsuarioController {
 				if(user.getEstado()) {
 					if(TieneClienteAsignado(User)) {
 						m.addAttribute("Username",User);
+						
 						FinalizarEnt();
 						FinalizarNeg();
 						if(TipoUsuario) {
@@ -206,7 +211,17 @@ public class UsuarioController {
 		Usuario user=EstablecerDatos(hdnUser[Id], hdnPass[Id], hdnTipo[Id], hdnEstado[Id]);
 		
 		if(btnModificar!=null) {
-			Modificar(user,txtPassword[Id],ddlTipo[Id], m);
+			try {
+				if(!(txtPassword[Id].trim().isEmpty()||ddlTipo==null||ddlTipo[Id].trim().isEmpty())) {
+					Modificar(user,txtPassword[Id],ddlTipo[Id], m);
+				}
+				else {
+					m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
+				}
+			}
+			catch(Exception e) {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
+			}
 		}
 		else if(btnDesactivar!=null) {
 			CambiarEstado(user,m);
@@ -272,18 +287,19 @@ public class UsuarioController {
 		
 		Usuario user = (Usuario) appContextEnt.getBean("UsuarioAdmin");
 		Cliente cli = (Cliente) appContextEnt.getBean("ClienteAdmin");
+		Cuenta acc = (Cuenta) appContextEnt.getBean("CuentaAdmin");
+		Cuentas_x_Usuario accxuser = (Cuentas_x_Usuario) appContextEnt.getBean("Cuentas_x_UsuarioAdmin");
 		
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
-	
-		Usuario userAux = userNeg.leerUno(user.getUsername());
+		CuentaNeg accNeg = (CuentaNeg) appContextNeg.getBean("accNeg");
+		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
 		
 		try {
-			if(userAux==null) 
-			{
-				userNeg.agregarUno(user);
-				cliNeg.agregarUno(cli);
-			}
+			userNeg.agregarUno(user);
+			cliNeg.agregarUno(cli);
+			accNeg.agregarUna(acc);
+			accxuserNeg.agregarUna(accxuser);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -291,6 +307,8 @@ public class UsuarioController {
 		finally {
 			userNeg.Finalizar();
 			cliNeg.Finalizar();
+			accNeg.Finalizar();
+			accxuserNeg.Finalizar();
 		}
 	}
 	

@@ -12,8 +12,15 @@
       <div>
          <ul name=”navbar”>
             <li class="logo"><a href="ClienteInicio.do?User=${Username}"><img id="logo" src="Multimedia/Logo.png" alt="Logo"/></a></li>
-            <li class="opcion"><a class="menu" href="ClienteMovimientos.do?User=${Username}">Historial</a></li>
-            <li class="opcion"><a class="menu" href="ClienteTransBancaria.do?User=${Username}">Transferir</a></li>
+            <li class="opcion"><a class="menu" href="estadoCuentas.do?User=${Username}">Historial</a></li>
+            <li class="opcion"><a class="menu" href="ClienteTransTerceros.do?User=${Username}">Transferir</a>
+            	 <ul class="submenu">
+                  <li><a href="ClienteTransTerceros.do?User=${Username}">A cuentas de terceros</a>
+                  <li>
+                  <li><a href="ClienteTransPropias.do?User=${Username}">A cuentas propias</a>
+                  <li>
+               </ul>
+            </li>
             <li class="opcion">
                <a class="menu" href="ClientePedidoPrestamos.do?User=${Username}">Prestamos</a>
                <ul class="submenu">

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Id;
 
 import java.io.Serializable;
@@ -25,6 +28,7 @@ public class Movimiento implements Serializable{
 	@Column(name="Concepto")
 	private String Concepto;
 	@Column(name="Fecha")
+	@Type(type="date")
 	private Date Fecha;
 
 	public Movimiento(int codMovimiento, double importe, String concepto, Date fecha) {
@@ -70,8 +74,5 @@ public class Movimiento implements Serializable{
 	public void setFecha(Date fecha) {
 		Fecha = fecha;
 	}
-	
-	
-	
 	
 }

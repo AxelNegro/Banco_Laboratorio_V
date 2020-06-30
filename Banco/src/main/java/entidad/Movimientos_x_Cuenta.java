@@ -58,4 +58,10 @@ public class Movimientos_x_Cuenta implements Serializable{
 		this.cuentaDest = cuentaDest;
 	}
 
+	@Override
+	public String toString() {
+		return "Movimientos_x_Cuenta [movimiento=" + movimiento + ", cuentaOrig=" + cuentaOrig + ", cuentaDest="
+				+ cuentaDest + "]";
+	}
+	
 }

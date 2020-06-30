@@ -7,6 +7,8 @@ import negocio.ClienteNeg;
 import negocio.CuentaNeg;
 import negocio.Cuentas_x_UsuarioNeg;
 import negocio.LocalidadNeg;
+import negocio.MovimientoNeg;
+import negocio.Movimientos_x_CuentaNeg;
 import negocio.ProvinciaNeg;
 import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
@@ -14,6 +16,8 @@ import negocioImpl.ClienteNegImpl;
 import negocioImpl.CuentaNegImpl;
 import negocioImpl.Cuentas_x_UsuarioNegImpl;
 import negocioImpl.LocalidadNegImpl;
+import negocioImpl.MovimientoNegImpl;
+import negocioImpl.Movimientos_x_CuentaNegImpl;
 import negocioImpl.ProvinciaNegImpl;
 import negocioImpl.TipoCuentaNegImpl;
 import negocioImpl.UsuarioNegImpl;
@@ -60,5 +64,17 @@ public class ConfigNeg {
 	public LocalidadNeg locNeg() {
 		LocalidadNeg locNeg = new LocalidadNegImpl();
 		return locNeg;
+	}
+	
+	@Bean
+	public MovimientoNeg movNeg() {
+		MovimientoNeg movNeg = new MovimientoNegImpl();
+		return movNeg;
+	}
+	
+	@Bean
+	public Movimientos_x_CuentaNeg movxaccNeg() {
+		Movimientos_x_CuentaNeg movxaccNeg = new Movimientos_x_CuentaNegImpl();
+		return movxaccNeg;
 	}
 }

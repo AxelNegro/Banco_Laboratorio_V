@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Entity;
 
 
@@ -24,6 +27,7 @@ public class Cuotas_x_Prestamo implements Serializable{
 	@Column(name="Importe_Mensual")
 	private double Importe_Mensual;
 	@Column(name="Fecha_Pago")
+	@Type(type="date")
 	private Date Fecha_Pago;
 	@Column(name="Estado")
 	private boolean Estado;

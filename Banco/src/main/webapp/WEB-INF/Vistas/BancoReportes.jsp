@@ -33,7 +33,7 @@
                Buscar entre las fechas <input type="date"/> y <input type="date"/>	
                <br>
                <button style="margin-top:2%;margin-bottom:2%" type="button" class="botoncargar" >Pagos realizados<br />Entre fechas</button>
-               <button style="margin-top:2%;margin-bottom:2%""type="button" class="botoncargar" >Creditos aprobados <br />Entre fechas</button>
+               <button style="margin-top:2%;margin-bottom:2%" type="button" class="botoncargar" >Creditos aprobados <br />Entre fechas</button>
                <br>
             </form>
             <form>

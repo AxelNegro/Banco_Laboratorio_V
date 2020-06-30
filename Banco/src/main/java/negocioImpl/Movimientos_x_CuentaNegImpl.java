@@ -1,11 +1,14 @@
 package negocioImpl;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ConfigDao;
 import datos.Movimientos_x_CuentaDao;
+import entidad.Cuenta;
 import entidad.Movimientos_x_Cuenta;
 import negocio.Movimientos_x_CuentaNeg;
 
@@ -26,6 +29,9 @@ public class Movimientos_x_CuentaNegImpl implements Movimientos_x_CuentaNeg{
 		return movxaccDao.agregarUno(movxacc);
 	}
 	
+	public List<Movimientos_x_Cuenta> obtenerHistorialCuenta(List<Cuenta> lstCBUs) {
+		return movxaccDao.obtenerHistorialCuenta(lstCBUs);
+	}
 	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);

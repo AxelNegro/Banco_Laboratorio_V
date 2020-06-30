@@ -8,4 +8,5 @@ public interface Cuentas_x_UsuarioDao {
 	public boolean agregarUna(Cuentas_x_Usuario accxuser);
 	public int contarCuentas(String username);
 	public List<Cuentas_x_Usuario> leerTodas();
+	public List<Cuentas_x_Usuario> leerCuentasxUsuario(String Username);
 }

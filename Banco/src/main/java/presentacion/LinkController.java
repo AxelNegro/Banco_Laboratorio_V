@@ -17,7 +17,7 @@ public class LinkController {
 	
 	@RequestMapping("TodosInicio.do")
 	public String TodosInicio(Model m) {
-		CrearBD();
+		//CrearBD();
 		return "index";
 	}
 	
@@ -64,10 +64,22 @@ public class LinkController {
 		return "ClientePrestamos";
 	}
 	
-	@RequestMapping("ClienteTransBancaria.do")
-	public String ClienteTransBancaria(String User, Model m) {
+	@RequestMapping("ClienteTransTerceros.do")
+	public String ClienteTransTerceros(String User, Model m) {
 		m.addAttribute("Username",User);
-		return "ClienteTransBancaria";
+		return "ClienteTransTerceros";
+	}
+	
+	@RequestMapping("ClienteTransPropias.do")
+	public String ClienteTransPropias(String User, Model m) {
+		m.addAttribute("Username",User);
+		return "ClienteTransPropias";
+	}
+	
+	@RequestMapping("ClienteTransInfo.do")
+	public String ClienteTransInfo(String User, Model m) {
+		m.addAttribute("Username",User);
+		return "ClienteTransInfo";
 	}
 	
 	/* BANCO */

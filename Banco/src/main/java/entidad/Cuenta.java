@@ -100,5 +100,12 @@ public class Cuenta implements Serializable{
 	public void setEstado(Boolean estado) {
 		Estado = estado;
 	}
+
+	@Override
+	public String toString() {
+		return "Cuenta [CBU=" + CBU + ", Fecha_Creacion=" + Fecha_Creacion + ", CodTipoCuenta=" + CodTipoCuenta
+				+ ", NumeroCuenta=" + NumeroCuenta + ", Nombre=" + Nombre + ", Saldo=" + Saldo + ", Estado=" + Estado
+				+ "]";
+	}
 	
 }

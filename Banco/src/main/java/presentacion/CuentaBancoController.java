@@ -15,16 +15,20 @@ import config.ConfigNeg;
 import entidad.Cliente;
 import entidad.Cuenta;
 import entidad.Cuentas_x_Usuario;
+import entidad.Movimiento;
+import entidad.Movimientos_x_Cuenta;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
 import negocio.CuentaNeg;
 import negocio.Cuentas_x_UsuarioNeg;
+import negocio.MovimientoNeg;
+import negocio.Movimientos_x_CuentaNeg;
 import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
 @Controller
-public class CuentaController {
+public class CuentaBancoController {
 	private ApplicationContext appContextEnt;
 	private ApplicationContext appContextNeg;
 	
@@ -111,6 +115,8 @@ public class CuentaController {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
 		
+		int CantCuentas = 0;
+		
 		if(!(txtCBU.trim().isEmpty()||txtNombre.trim().isEmpty()||txtSaldo.trim().isEmpty()||ddlTipo.trim().isEmpty()||hdnUser.trim().isEmpty())) {
 			if(Integer.parseInt(txtCBU)>=0&&Double.parseDouble(txtSaldo)>=0) {
 				acc=EstablecerDatos(txtCBU,txtNombre,ddlTipo,txtSaldo, accNeg.contarTodas());
@@ -120,10 +126,16 @@ public class CuentaController {
 							accxuser=EstablecerDatos_2(acc,hdnUser);
 							if(accxuser!=null) {
 								if(!(accNeg.tipoCuentaUsado(hdnUser, Integer.parseInt(ddlTipo)))) {
-									if(accxuserNeg.contarCuentas(hdnUser)<4) {
+									CantCuentas=accxuserNeg.contarCuentas(hdnUser);
+									if(CantCuentas<4||(hdnUser.equals("admin")&&CantCuentas<5)) {
 										if(accNeg.agregarUna(acc)) {
 											if(accxuserNeg.agregarUna(accxuser)){
-												m.addAttribute("Msg","<script type='text/javascript'>alert('Cuenta agregada y vinculada correctamente.');</script>");
+												if(CrearMovimientos(Integer.parseInt(txtCBU),Double.parseDouble(txtSaldo),0)) {
+													m.addAttribute("Msg","<script type='text/javascript'>alert('Cuenta agregada y vinculada correctamente.');</script>");
+												}
+												else {
+													m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al agregar el saldo a la cuenta.');</script>");
+												}
 											}
 											else {
 												m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al vincular la cuenta con el usuario.');</script>");
@@ -205,6 +217,59 @@ public class CuentaController {
 		accxuserNeg.Finalizar();
 	}
 	
+	public boolean CrearMovimientos(int CBU, double Saldo, int Origen) {
+		boolean res=false;
+		
+		MovimientoNeg movNeg = (MovimientoNeg) appContextNeg.getBean("movNeg");
+		Movimientos_x_CuentaNeg movxaccNeg = (Movimientos_x_CuentaNeg) appContextNeg.getBean("movxaccNeg");
+		
+		Date FechaMov = (Date) appContextEnt.getBean("FechaDefault");
+		Movimiento mov = (Movimiento) appContextEnt.getBean("MovimientoDefault");
+		Cuenta accOrig = (Cuenta) appContextEnt.getBean("CuentaDefault");
+		Cuenta accDest = (Cuenta) appContextEnt.getBean("CuentaDefault");
+		Movimientos_x_Cuenta movxacc = (Movimientos_x_Cuenta) appContextEnt.getBean("Movimientos_x_CuentaDefault");
+		
+		try {
+			accOrig.setCBU(-1);
+			accDest.setCBU(CBU);
+			
+			if(Origen==0) {
+				mov.setConcepto("Saldo inicial de la cuenta.");
+			}
+			else {
+				mov.setConcepto("Ajuste de cuentas.");
+			}
+			mov.setFecha(FechaMov);
+			mov.setImporte(Saldo);
+			
+			if(movNeg.agregarUno(mov)) 
+			{
+				movxacc.setCuentaOrig(accOrig);
+				movxacc.setCuentaDest(accDest);
+				movxacc.setMovimiento(mov);
+				
+				if(movxaccNeg.agregarUno(movxacc)) {
+					res=true;
+				}
+				else {
+					res=false;
+				}
+			}
+			else {
+				res=false;
+			}
+		}
+		catch(Exception e) {
+			res=false;
+		}
+		finally {
+			movNeg.Finalizar();
+			movxaccNeg.Finalizar();
+		}
+		
+		return res;
+	}
+	
 	@RequestMapping("leerTodosCuenta.do")
 	public String LeerTodas(String User, Model m) {
 		InicializarEnt();
@@ -232,7 +297,22 @@ public class CuentaController {
 		Cuenta cuenta=EstablecerDatos_3(hdnCBU[Id], hdnNroCuenta[Id], hdnNombre[Id], hdnTipo[Id], hdnSaldo[Id], hdnFecha[Id], hdnEstado[Id]);
 		
 		if(btnModificar!=null) {
-			Modificar(cuenta, hdnUsuario[Id], txtNombre[Id], ddlTipo[Id], txtSaldo[Id], m);
+			try {
+				if(!(txtNombre[Id].trim().isEmpty()||ddlTipo==null||ddlTipo[Id].trim().isEmpty()||txtSaldo[Id].trim().isEmpty())) {
+					if(Integer.parseInt(txtSaldo[Id])>=0){
+						Modificar(cuenta, hdnUsuario[Id], txtNombre[Id], ddlTipo[Id], txtSaldo[Id], m);
+					}
+					else {
+						m.addAttribute("Msg","<script type='text/javascript'>alert('No puede ingresar un saldo negativo.');</script>");
+					}
+				}
+				else {
+					m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
+				}
+			}
+			catch(Exception e) {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
+			}
 		}
 		else if(btnDesactivar!=null) {
 			CambiarEstado(cuenta,m);
@@ -280,7 +360,12 @@ public class CuentaController {
 					cuenta.setCodTipoCuenta(Integer.parseInt(Tipo));
 					cuenta.setSaldo(Double.parseDouble(Saldo));
 					if(cuentaNeg.modificarUna(cuenta)) {
-						m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó la cuenta correctamente.')</script>");
+						if(CrearMovimientos(cuenta.getCBU(),Double.parseDouble(Saldo),1)) {
+							m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó la cuenta correctamente.')</script>");
+						}
+						else {
+							m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al modificar el saldo.')</script>");
+						}
 					}
 					else {
 						m.addAttribute("Msg","<script type='text/javascript'>alert('Ocurrió un error al modificar la cuenta.')</script>");

@@ -49,6 +49,8 @@
                   </thead>
                   <tbody>
                   <c:forEach items="${lstAccxUser}" var="accxuser">
+                  	<c:choose>
+                  	<c:when test = "${accxuser.getCuenta().getCBU()!=-1}">
                      <tr>
                         <td><input type="hidden" id="hdnCBU" name="hdnCBU" value="${accxuser.getCuenta().getCBU()}"/>
                         	<input type="hidden" id="hdnUsuario" name="hdnUsuario" value="${accxuser.getUsuario().getUsername()}"/>
@@ -106,6 +108,10 @@
 							</c:choose>
                         </td>
                      </tr>
+                     </c:when> 
+                     <c:otherwise>
+                     </c:otherwise>
+                     </c:choose>
                   </c:forEach>
                   </tbody>
                </table>

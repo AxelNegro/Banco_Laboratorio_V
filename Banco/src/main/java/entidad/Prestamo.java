@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,6 +27,7 @@ public class Prestamo implements Serializable{
 	@JoinColumn(name="CBU")
 	private Cuenta cuenta;
 	@Column(name="Fecha")
+	@Type(type="date")
 	private Date Fecha;
 	@Column(name="Importe")
 	private double Importe;
