@@ -17,7 +17,7 @@ public class LinkController {
 	
 	@RequestMapping("TodosInicio.do")
 	public String TodosInicio(Model m) {
-		//CrearBD();
+		CrearBD();
 		return "index";
 	}
 	
