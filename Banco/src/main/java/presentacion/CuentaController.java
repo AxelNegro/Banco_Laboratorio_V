@@ -109,7 +109,7 @@ public class CuentaController {
 	}
 	
 	@RequestMapping("agregarCuenta.do")
-	public String AgregarCuenta(String User, String txtCBU, String txtNombre, String ddlTipo, String txtSaldo, String hdnUser, Model m) {
+	public String AgregarCuenta(String User, String txtCBU, String txtNombre, String ddlTipo, String hdnUser, Model m) {
 		InicializarEnt();
 		InicializarNeg();
 		Cuenta acc;
@@ -121,9 +121,9 @@ public class CuentaController {
 		
 		int CantCuentas = 0;
 		
-		if(!(txtCBU.trim().isEmpty()||txtNombre.trim().isEmpty()||txtSaldo.trim().isEmpty()||ddlTipo.trim().isEmpty()||hdnUser.trim().isEmpty())) {
-			if(Integer.parseInt(txtCBU)>=0&&Double.parseDouble(txtSaldo)>=0) {
-				acc=EstablecerDatos(txtCBU,txtNombre,ddlTipo,txtSaldo, accNeg.contarTodas());
+		if(!(txtCBU.trim().isEmpty()||txtNombre.trim().isEmpty()||ddlTipo.trim().isEmpty()||hdnUser.trim().isEmpty())) {
+			if(Integer.parseInt(txtCBU)>=0) {
+				acc=EstablecerDatos(txtCBU,txtNombre,ddlTipo,"10000", accNeg.contarTodas());
 				if(acc!=null) {
 					if(accNeg.leerUna(Integer.parseInt(txtCBU))==null) {
 						if(userNeg.leerUno(hdnUser)!=null) {
@@ -134,7 +134,7 @@ public class CuentaController {
 									if(CantCuentas<4||(hdnUser.equals("admin")&&CantCuentas<5)) {
 										if(accNeg.agregarUna(acc)) {
 											if(accxuserNeg.agregarUna(accxuser)){
-												if(CrearMovimientos(Integer.parseInt(txtCBU),Double.parseDouble(txtSaldo),0)) {
+												if(CrearMovimientos(Integer.parseInt(txtCBU),10000.0,0)) {
 													m.addAttribute("Msg","<script type='text/javascript'>alert('Cuenta agregada y vinculada correctamente.');</script>");
 												}
 												else {

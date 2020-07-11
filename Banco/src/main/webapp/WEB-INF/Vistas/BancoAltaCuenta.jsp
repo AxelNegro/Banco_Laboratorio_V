@@ -75,9 +75,6 @@
                   </select>
                   <br>
                   <br>
-                  Saldo: <input type="number" id="txtSaldo" name="txtSaldo" step="0.01"/>
-                  <br>
-                  <br>
                   DNI del cliente seleccionado: <input type="text" id="txtDNICli" name="txtDNICli" disabled/>
                   <input type="hidden" id="hdnDNICli" name="hdnDNICli"/>
                   <br>  
