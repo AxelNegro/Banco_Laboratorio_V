@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 import java.io.Serializable;
 
@@ -25,16 +27,17 @@ public class Movimiento implements Serializable{
 	private int CodMovimiento;
 	@Column(name="Importe")
 	private double Importe;
-	@Column(name="Concepto")
-	private String Concepto;
+	@ManyToOne
+	@PrimaryKeyJoinColumn(name="IdConcepto")
+	private Concepto concepto;
 	@Column(name="Fecha")
 	@Type(type="date")
 	private Date Fecha;
 
-	public Movimiento(int codMovimiento, double importe, String concepto, Date fecha) {
+	public Movimiento(int codMovimiento, double importe, Concepto concepto, Date fecha) {
 		CodMovimiento = codMovimiento;
 		Importe = importe;
-		Concepto = concepto;
+		this.concepto = concepto;
 		Fecha = fecha;
 	}
 
@@ -59,12 +62,12 @@ public class Movimiento implements Serializable{
 		Importe = importe;
 	}
 
-	public String getConcepto() {
-		return Concepto;
+	public Concepto getConcepto() {
+		return concepto;
 	}
 
-	public void setConcepto(String concepto) {
-		Concepto = concepto;
+	public void setConcepto(Concepto concepto) {
+		this.concepto = concepto;
 	}
 
 	public Date getFecha() {

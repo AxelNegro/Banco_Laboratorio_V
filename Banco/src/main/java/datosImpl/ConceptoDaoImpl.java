@@ -1,27 +1,31 @@
 package datosImpl;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.ConfigDao;
-import datos.PrestamoDao;
-import entidad.Prestamo;
+import datos.ConceptoDao;
+import entidad.Concepto;
 
-public class PrestamoDaoImpl implements PrestamoDao{
-	
+public class ConceptoDaoImpl implements ConceptoDao{
+
 	private ApplicationContext appContext;
 	private Conexion con;
 	private Session session;
+	private Query query;
 	
-	public boolean agregarUno(Prestamo prest) {
+	public boolean agregarUno(Concepto concepto) {
 		Inicializar();
 		Boolean res=false;
 		
 		try {
 			session.beginTransaction();
-			session.save(prest);
+			session.save(concepto);
 			session.getTransaction().commit();
 			
 			res=true;
@@ -35,46 +39,48 @@ public class PrestamoDaoImpl implements PrestamoDao{
 		}
 		
 		return res;
-		
 	}
 	
-	public Prestamo leerUno(int CodPrestamo) {
+	public Concepto leerUno(int IdConcepto) {
 		Inicializar();
-		Prestamo prest;
+		Concepto concepto;
 		try {
 			session.beginTransaction();
-			prest=(Prestamo) session.get(Prestamo.class, CodPrestamo);
+			concepto=(Concepto) session.get(Concepto.class, IdConcepto);
 		}
 		catch(Exception e) {
-			prest=null;
+			concepto=null;
 			e.printStackTrace();
 		}
 		finally {
 			Finalizar();
 		}
-		return prest;
+		if(concepto!=null) {
+			return concepto;
+		}
+		else {
+			return null;
+		}
 	}
 
-	public boolean modificarUno(Prestamo prest) {
-		Boolean res=false;
+	@SuppressWarnings("unchecked")
+	public List<Concepto> leerTodosTransferencia() {
 		Inicializar();
-		
+		List<Concepto> lstConceptos;
 		try {
-			session.beginTransaction();
-			session.update(prest);
-			session.getTransaction().commit();
-			res=true;
+		query=session.createQuery("FROM Concepto where IdConcepto not IN (1,2,3,4,5)");
+		lstConceptos=query.list();
 		}
-		catch(Exception e) {
+		catch(Exception e){
+			lstConceptos=null;
 			e.printStackTrace();
-			res=false;
 		}
 		finally {
 			Finalizar();
 		}
-		return res;
+		return lstConceptos;
 	}
-	
+
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");
@@ -85,5 +91,4 @@ public class PrestamoDaoImpl implements PrestamoDao{
 		con.cerrarSession();
 		((ConfigurableApplicationContext)(appContext)).close();
 	}
-	
 }

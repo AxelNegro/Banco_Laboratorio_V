@@ -43,14 +43,18 @@ Consignas faltantes:
 Clases:
 - Cliente: 
   - DNI.
+  - Usuario.
   - Nombre.
   - Apellido.
   - Sexo.
   - Nacionalidad.
   - Fecha de Nacimiento.
-  - Direccion.
-  - Localidad.
   - Provincia.
+  - Localidad.
+  - Direccion.
+- Concepto:
+  - IdConcepto.
+  - Descripción.
 - Cuenta:
   - CBU.
   - Fecha de creación.
@@ -63,10 +67,15 @@ Clases:
   - CBU.
   - Usuario.
 - Cuotas x Prestamo:
+  - IdCuota
   - Cod. Prestamo.
   - Importe Mensual.
   - Fecha de Pago.
   - Estado. (0 - A pagar, 1 - Pagado)
+- Localidad:
+  - IdLocalidad.
+  - IdProvincia.
+  - Descripción.
 - Movimiento:
   - Cod. Movimiento.
   - Importe.
@@ -79,15 +88,18 @@ Clases:
 - Prestamo:
   - Cod. Prestamo.
   - CBU Destino.
-  - Ult. Fecha de cuota Pagada.
-  - Importe prestado.
-  - Cuotas.
+  - Fecha de pedido.
+  - Fecha de respuesta.
+  - Importe bruto
+  - Importe neto.
   - Plazo de Pago en Meses.
-  - Monto a pagar por mes.
   - Estado (-1 - Cancelado, 0 - Pendiente, 1 - Aceptado, 2 - Rechazado).
 - Prestamos x Cliente:
+  - Prestamo.
   - Cliente.
-  - CBU Destino en caso de ser aceptado.
+- Provincia:
+  - IdProvincia.
+  - Descripción
 - Tipo de Cuenta:
   - Cod. de tipo de cuenta.
   - Tipo de Cuenta.
@@ -96,10 +108,5 @@ Clases:
   - Contraseña.
   - Tipo de Usuario (1 - Banco, 0 - Cliente).
   - Estado.
-- Provincia:
-  - IdProvincia.
-  - Descripción
-- Localidad:
-  - IdLocalidad.
-  - IdProvincia.
-  - Descripción.
+
+

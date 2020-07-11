@@ -10,4 +10,6 @@ public interface ClienteDao {
 	public boolean tieneUsuario(String Username);
 	public List<Cliente> leerTodos();
 	public boolean modificar(Cliente cli);
+	public Cliente obtenerCliente(String Username);
+	public List<Cliente> leerTodosSinBanco();
 }

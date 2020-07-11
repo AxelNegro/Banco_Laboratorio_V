@@ -41,7 +41,7 @@ public class CuentaDaoImpl implements CuentaDao{
 	
 	public Cuenta leerUna(int CBU) {
 		Inicializar();
-		Cuenta acc;;
+		Cuenta acc;
 		try {
 			session.beginTransaction();
 			acc=(Cuenta) session.get(Cuenta.class, CBU);
@@ -61,14 +61,15 @@ public class CuentaDaoImpl implements CuentaDao{
 		}
 	}
 	
-	public boolean tipoCuentaUsado(String Username, int codTipo) {
+	public boolean tipoCuentaUsado(String Username, int CBU, int codTipo) {
 		Inicializar();
 		Long contAux;
 		int cont;
 		
 		try {
-		query = session.createQuery("select count(*) from Cuentas_x_Usuario accxuser inner join accxuser.cuenta acc where accxuser.usuario=:Username and acc.CodTipoCuenta=:codTipo");
+		query = session.createQuery("select count(*) from Cuentas_x_Usuario accxuser inner join accxuser.cuenta acc where accxuser.usuario=:Username and acc.CBU!=:CBU and acc.CodTipoCuenta=:codTipo");
 		query.setString("Username", Username);
+		query.setString("CBU", String.valueOf(CBU));
 		query.setString("codTipo", String.valueOf(codTipo));
 		contAux=(Long) query.uniqueResult();
 		}

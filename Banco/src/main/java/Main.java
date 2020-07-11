@@ -68,7 +68,7 @@ public class Main {
 		//InsertarCliente();
 		InsertarTipoCuenta();
 		InsertarCuenta();
-		InsertarMovimientos();
+		//InsertarMovimientos();
 		//InsertarPrestamo();
 	}
 	
@@ -490,7 +490,7 @@ public class Main {
 		
 	}
 	
-	public static void InsertarMovimientos() {
+	/*public static void InsertarMovimientos() {
 		Movimiento movimiento = new Movimiento();
 		Cuenta cuenta1 = new Cuenta();
 		Cuenta cuenta2 = new Cuenta();
@@ -598,7 +598,7 @@ public class Main {
 			InsertarMovimientos_x_Cuenta(movimiento,cuenta1,cuenta2);
 			
 			movimiento = new Movimiento();
-	}
+	}*/
 	
 	public static void InsertarMovimientos_x_Cuenta(Movimiento m, Cuenta CBUDestino, Cuenta CBUOrigen) {
 		Movimientos_x_Cuenta movimientos_x_Cuenta = new Movimientos_x_Cuenta();
@@ -900,8 +900,8 @@ public class Main {
 		Cuotas_x_PrestamoNeg cuotaPrestamoNeg = new Cuotas_x_PrestamoNegImpl();
 
 			cuotas_x_Prestamo.setPrestamo(prestamo);
-			cuotas_x_Prestamo.setImporte_Mensual(2500);
-			cuotas_x_Prestamo.setFecha_Pago(Fecha);
+			cuotas_x_Prestamo.setImporteMensual(2500);
+			cuotas_x_Prestamo.setFechaPago(Fecha);
 			cuotas_x_Prestamo.setEstado(true);
 							
 			

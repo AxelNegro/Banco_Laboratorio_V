@@ -9,4 +9,5 @@ public interface Cuentas_x_UsuarioDao {
 	public int contarCuentas(String username);
 	public List<Cuentas_x_Usuario> leerTodas();
 	public List<Cuentas_x_Usuario> leerCuentasxUsuario(String Username);
+	public Cuentas_x_Usuario obtenerUsuario(int CBU);
 }

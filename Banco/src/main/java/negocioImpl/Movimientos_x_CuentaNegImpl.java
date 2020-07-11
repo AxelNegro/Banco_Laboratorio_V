@@ -1,5 +1,6 @@
 package negocioImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -31,6 +32,10 @@ public class Movimientos_x_CuentaNegImpl implements Movimientos_x_CuentaNeg{
 	
 	public List<Movimientos_x_Cuenta> obtenerHistorialCuenta(List<Cuenta> lstCBUs) {
 		return movxaccDao.obtenerHistorialCuenta(lstCBUs);
+	}
+	
+	public List<Movimientos_x_Cuenta> obtenerHistorialBanco(Date Fecha1, Date Fecha2){
+		return movxaccDao.obtenerHistorialBanco(Fecha1, Fecha2);
 	}
 	
 	public void Inicializar() {

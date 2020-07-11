@@ -26,31 +26,33 @@ public class Prestamo implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="CBU")
 	private Cuenta cuenta;
-	@Column(name="Fecha")
+	@Column(name="FechaPedido")
 	@Type(type="date")
-	private Date Fecha;
-	@Column(name="Importe")
-	private double Importe;
-	@Column(name="Cuotas")
-	private int Cuotas;
-	@Column(name="Plazo_en_Meses")
-	private int Plazo_en_Meses;
-	@Column(name="Importe_x_Mes")
-	private double Importe_x_Mes;
+	private Date FechaPedido;
+	@Column(name="FechaRespuesta")
+	@Type(type="date")
+	private Date FechaRespuesta;
+	@Column(name="ImporteBruto")
+	private double ImporteBruto;
+	@Column(name="ImporteNeto")
+	private double ImporteNeto;
+	@Column(name="PlazoenMeses")
+	private int PlazoenMeses;
 	@Column(name="Estado")
 	private int Estado;
 	
 	public Prestamo() {
 	}
 
-	public Prestamo(int codPrestamo, Date fecha, double importe, int cuotas,
-			int plazo_en_Meses, double importe_x_Mes, int estado) {
+	public Prestamo(int codPrestamo, Cuenta cuenta, Date fechaPedido, Date fechaRespuesta, double importeBruto,
+			double importeNeto, int plazoenMeses, int estado) {
 		CodPrestamo = codPrestamo;
-		Fecha = fecha;
-		Importe = importe;
-		Cuotas = cuotas;
-		Plazo_en_Meses = plazo_en_Meses;
-		Importe_x_Mes = importe_x_Mes;
+		this.cuenta = cuenta;
+		FechaPedido = fechaPedido;
+		FechaRespuesta = fechaRespuesta;
+		ImporteBruto = importeBruto;
+		ImporteNeto = importeNeto;
+		PlazoenMeses = plazoenMeses;
 		Estado = estado;
 	}
 
@@ -62,44 +64,52 @@ public class Prestamo implements Serializable{
 		CodPrestamo = codPrestamo;
 	}
 
-	public Date getFecha() {
-		return Fecha;
+	public Cuenta getCuenta() {
+		return cuenta;
 	}
 
-	public void setFecha(Date fecha) {
-		Fecha = fecha;
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
 
-	public double getImporte() {
-		return Importe;
+	public Date getFechaPedido() {
+		return FechaPedido;
 	}
 
-	public void setImporte(double importe) {
-		Importe = importe;
+	public void setFechaPedido(Date fechaPedido) {
+		FechaPedido = fechaPedido;
 	}
 
-	public int getCuotas() {
-		return Cuotas;
+	public Date getFechaRespuesta() {
+		return FechaRespuesta;
 	}
 
-	public void setCuotas(int cuotas) {
-		Cuotas = cuotas;
+	public void setFechaRespuesta(Date fechaAprobado) {
+		FechaRespuesta = fechaAprobado;
 	}
 
-	public int getPlazo_en_Meses() {
-		return Plazo_en_Meses;
+	public double getImporteBruto() {
+		return ImporteBruto;
 	}
 
-	public void setPlazo_en_Meses(int plazo_en_Meses) {
-		Plazo_en_Meses = plazo_en_Meses;
+	public void setImporteBruto(double importeBruto) {
+		ImporteBruto = importeBruto;
 	}
 
-	public double getImporte_x_Mes() {
-		return Importe_x_Mes;
+	public double getImporteNeto() {
+		return ImporteNeto;
 	}
 
-	public void setImporte_x_Mes(double importe_x_Mes) {
-		Importe_x_Mes = importe_x_Mes;
+	public void setImporteNeto(double importeNeto) {
+		ImporteNeto = importeNeto;
+	}
+
+	public int getPlazoenMeses() {
+		return PlazoenMeses;
+	}
+
+	public void setPlazoenMeses(int plazoenMeses) {
+		PlazoenMeses = plazoenMeses;
 	}
 
 	public int getEstado() {

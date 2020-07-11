@@ -9,7 +9,8 @@
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <jsp:include page="BancoMasterPage.jsp" />
-      <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"></link>
+      <link rel="stylesheet" href="CSS/Formato.css" type="text/css">
+      </link>
       <script type="text/javascript" src="JS/Tablas.js"></script>
       <title>Dar Baja/Modificar Usuarios</title>
       <script>
@@ -31,7 +32,7 @@
       <div class="padre">
          <div class="hijo">
             <form action="modificarUser.do?User=${Username}" method="post">
-            	<input type="hidden" id="hdnId" name="hdnId" value=""/>
+               <input type="hidden" id="hdnId" name="hdnId" value=""/>
                <table style="width:95%" id="tablaUsuarios">
                   <thead>
                      <tr>
@@ -44,47 +45,49 @@
                      </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach items="${lstUsers}" var="user">
-                     <tr>
-                        <td>
-                        	<input type="hidden" name="hdnUser" value="${user.getUsername()}"/>
-                        	<input type="hidden" name="hdnPass" value="${user.getPassword()}"/>
-                        	<input type="hidden" name="hdnTipo" value="${user.getTipoUsuario()}"/>
-                        	<input type="hidden" name="hdnEstado" value="${user.getEstado()}"/>
-                        	${user.getUsername()}</td>
-                        <td> <input type="hidden" name="txtPassword"/> ${user.getPassword()}</td>
-                        <td> <input type="hidden" name="ddlTipo"/>
-                        	<c:choose>
-							    <c:when test = "${user.getTipoUsuario()==true}">
-							        Banco
-							    </c:when>    
-							    <c:otherwise>
-							        Cliente 
-							    </c:otherwise>
-							</c:choose>
-                        </td>
-                        <td>
-                        	<c:choose>
-							    <c:when test = "${user.getEstado()==true}">
-							        Activo
-							    </c:when>    
-							    <c:otherwise>
-							        Inactivo 
-							    </c:otherwise>
-							</c:choose>
-                        </td>
-                        <td style="text-align:center"> <input name="btnModificar" type="button" class="botoncargar" value="Modificar" onclick="Modificar('tablaUsuarios',${lstUsers.indexOf(user)})"/> </td>
-                        <td style="text-align:center"> 
-                        	<c:choose>
-							    <c:when test = "${user.getEstado()==true}">
-							        <input name="btnDesactivar" type="submit" class="botoncargar" value="Desactivar" onclick="document.getElementById('hdnId').value=${lstUsers.indexOf(user)}"/> 
-							    </c:when>    
-							    <c:otherwise>
-							        <input name="btnDesactivar" type="submit" class="botoncargar" value="Activar" onclick="document.getElementById('hdnId').value=${lstUsers.indexOf(user)}"/> 
-							    </c:otherwise>
-							</c:choose>
-                        </td>
-                     </tr>
+                     <c:forEach items="${lstUsers}" var="user">
+                        <tr>
+                           <td>
+                              <input type="hidden" name="hdnUser" value="${user.getUsername()}"/>
+                              <input type="hidden" name="hdnPass" value="${user.getPassword()}"/>
+                              <input type="hidden" name="hdnTipo" value="${user.getTipoUsuario()}"/>
+                              <input type="hidden" name="hdnEstado" value="${user.getEstado()}"/>
+                              ${user.getUsername()}
+                           </td>
+                           <td> <input type="hidden" name="txtPassword"/> ${user.getPassword()}</td>
+                           <td>
+                              <input type="hidden" name="ddlTipo"/>
+                              <c:choose>
+                                 <c:when test = "${user.getTipoUsuario()==true}">
+                                    Banco
+                                 </c:when>
+                                 <c:otherwise>
+                                    Cliente 
+                                 </c:otherwise>
+                              </c:choose>
+                           </td>
+                           <td>
+                              <c:choose>
+                                 <c:when test = "${user.getEstado()==true}">
+                                    Activo
+                                 </c:when>
+                                 <c:otherwise>
+                                    Inactivo 
+                                 </c:otherwise>
+                              </c:choose>
+                           </td>
+                           <td style="text-align:center"> <input name="btnModificar" type="button" class="boton" value="Modificar" onclick="Modificar('tablaUsuarios',this.parentElement.parentElement.rowIndex-1)"/> </td>
+                           <td style="text-align:center">
+                              <c:choose>
+                                 <c:when test = "${user.getEstado()==true}">
+                                    <input name="btnDesactivar" type="submit" class="boton" value="Desactivar" onclick="document.getElementById('hdnId').value=this.parentElement.parentElement.rowIndex-1"/> 
+                                 </c:when>
+                                 <c:otherwise>
+                                    <input name="btnDesactivar" type="submit" class="boton" value="Activar" onclick="document.getElementById('hdnId').value=this.parentElement.parentElement.rowIndex-1"/> 
+                                 </c:otherwise>
+                              </c:choose>
+                           </td>
+                        </tr>
                      </c:forEach>
                   </tbody>
                </table>
@@ -94,4 +97,3 @@
       </div>
    </body>
 </html>
-

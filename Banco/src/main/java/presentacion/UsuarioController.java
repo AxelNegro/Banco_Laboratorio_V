@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.Concepto;
 import entidad.Cuenta;
 import entidad.Cuentas_x_Usuario;
 import entidad.Localidad;
@@ -19,6 +20,7 @@ import entidad.Provincia;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.ConceptoNeg;
 import negocio.CuentaNeg;
 import negocio.Cuentas_x_UsuarioNeg;
 import negocio.LocalidadNeg;
@@ -69,11 +71,11 @@ public class UsuarioController {
 		String User=txtUsuario;
 		String Pass=txtContrasenia;
 		String msg;
-		//InsertarTipoCuenta();
-		//InsertarProvinciasyLocalidades();
-		//AgregarUsuarioAdmin();
-		
-		
+		InsertarTipoCuenta();
+		InsertarProvinciasyLocalidades();
+		InsertarConceptos();
+		AgregarUsuarioAdmin();
+
 		if(!(User.trim().isEmpty()||Pass.trim().isEmpty())) {
 			if(EsCorrecto(User,Pass)) {
 				if(user.getEstado()) {
@@ -195,7 +197,7 @@ public class UsuarioController {
 	public void ObtenerLista(Model m) {
 		UsuarioNeg userNeg = (UsuarioNeg) appContextNeg.getBean("userNeg");
 		List<Usuario> lstUsers=userNeg.leerTodos();
-		
+
 		m.addAttribute("lstUsers", lstUsers);
 		
 		userNeg.Finalizar();
@@ -224,7 +226,12 @@ public class UsuarioController {
 			}
 		}
 		else if(btnDesactivar!=null) {
-			CambiarEstado(user,m);
+			if(!user.getUsername().equals(User)) {
+				CambiarEstado(user,m);
+			}
+			else {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('No puede darse de baja usted mismo.');</script>");
+			}
 		}
 		
 		m.addAttribute("Username",User);
@@ -558,8 +565,130 @@ public class UsuarioController {
 		
 	}
 	
+	public void InsertarConceptos() {
+		Concepto concepto;
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Saldo inicial de la cuenta");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Ajuste de cuentas");
+		
+		AgregarConcepto(concepto);
+
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Transferencia entre cuentas propias");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Prestamo pedido aprobado");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Pago de prestamos");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Alquiler");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Cuota");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Expensas");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Factura");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Operaciones inmobiliarias");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Operaciones inmobiliarias habitualista");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Prestamo");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Seguro");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Honorarios");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Haberes");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Bienes registrables habitualistas");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Bienes registrables no habitualistas");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Suscripcion obligaciones negociables");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Aportes de capital");
+		
+		AgregarConcepto(concepto);
+		
+		concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
+		
+		concepto.setDescripcion("Varios");
+		
+		AgregarConcepto(concepto);
+	}
+	
 	public void AgregarProvincia(Provincia prov) {
-		System.out.println(prov.toString());
 		ProvinciaNeg provNeg = (ProvinciaNeg) appContextNeg.getBean("provNeg");
 		if(provNeg.leerUna(prov.getIdProvincia())==null) {
 			provNeg.agregarUna(prov);
@@ -573,5 +702,13 @@ public class UsuarioController {
 			locNeg.agregarUna(loc);
 		}
 		locNeg.Finalizar();
+	}
+	
+	public void AgregarConcepto(Concepto concepto) {
+		ConceptoNeg conceptoNeg = (ConceptoNeg) appContextNeg.getBean("conceptoNeg");
+		if(conceptoNeg.leerUno(concepto.getIdConcepto())==null) {
+			conceptoNeg.agregarUno(concepto);
+		}
+		conceptoNeg.Finalizar();
 	}
 }

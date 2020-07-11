@@ -40,6 +40,10 @@ public class Cuentas_x_UsuarioNegImpl implements Cuentas_x_UsuarioNeg{
 		return accxuserDao.leerCuentasxUsuario(Username);
 	}
 	
+	public Cuentas_x_Usuario obtenerUsuario(int CBU) {
+		return accxuserDao.obtenerUsuario(CBU);
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		accxuserDao = (Cuentas_x_UsuarioDao) appContext.getBean("accxuserDao");
@@ -48,4 +52,5 @@ public class Cuentas_x_UsuarioNegImpl implements Cuentas_x_UsuarioNeg{
 	public void Finalizar() {
 		((ConfigurableApplicationContext)(appContext)).close();
 	}
+
 }

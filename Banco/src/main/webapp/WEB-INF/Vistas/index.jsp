@@ -9,12 +9,11 @@
 <title>Página principal</title>
 </head>
 <body>
-	<div id="div1">
-		<label id="lbl1">Bienvenidos al Banco "Grupo 8"</label>
-	</div>
-
-	<div id="div2">
-		<label id="lbl2">Para comenzar a operar, ¡Inicía sesión!</label>
-	</div>
+   <div id="div1">
+      <label id="lbl1">Bienvenidos al Banco "Grupo 8"</label>
+   </div>
+   <div id="div2">
+      <label id="lbl2">Para comenzar a operar, ¡Inicía sesión!</label>
+   </div>
 </body>
 </html>

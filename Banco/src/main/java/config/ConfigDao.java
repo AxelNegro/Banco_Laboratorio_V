@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import datos.ClienteDao;
+import datos.ConceptoDao;
 import datos.CuentaDao;
 import datos.Cuentas_x_UsuarioDao;
 import datos.Cuotas_x_PrestamoDao;
@@ -16,6 +17,7 @@ import datos.ProvinciaDao;
 import datos.TipoCuentaDao;
 import datos.UsuarioDao;
 import datosImpl.ClienteDaoImpl;
+import datosImpl.ConceptoDaoImpl;
 import datosImpl.Conexion;
 import datosImpl.CuentaDaoImpl;
 import datosImpl.Cuentas_x_UsuarioDaoImpl;
@@ -107,5 +109,11 @@ public class ConfigDao {
 	public LocalidadDao locDao() {
 		LocalidadDao locDao = new LocalidadDaoImpl();
 		return locDao;
+	}
+	
+	@Bean
+	public ConceptoDao conceptoDao() {
+		ConceptoDao conceptoDao = new ConceptoDaoImpl();
+		return conceptoDao;
 	}
 }

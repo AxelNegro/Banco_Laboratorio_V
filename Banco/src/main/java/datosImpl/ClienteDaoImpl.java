@@ -55,12 +55,7 @@ public class ClienteDaoImpl implements ClienteDao{
 		finally {
 			Finalizar();
 		}
-		if(cli!=null) {
-			return cli;
-		}
-		else {
-			return null;
-		}
+		return cli;
 	}
 	
 	public boolean tieneUsuario(String Username) {
@@ -123,6 +118,43 @@ public class ClienteDaoImpl implements ClienteDao{
 			Finalizar();
 		}
 		return res;
+	}
+	
+	public Cliente obtenerCliente(String Username) {
+		Inicializar();
+		Cliente cli;
+		try {
+		query = session.createQuery("from Cliente where Username=:username");
+		query.setString("username", Username);
+		cli = (Cliente) query.uniqueResult();
+		}
+		catch(Exception e){
+			cli=null;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		
+		return cli;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> leerTodosSinBanco() {
+		Inicializar();
+		List<Cliente> lstClientes;
+		try {
+		query=session.createQuery("select cli FROM Cliente cli inner join cli.usuario user where user.TipoUsuario != 1");
+		lstClientes=query.list();
+		}
+		catch(Exception e){
+			lstClientes=null;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		return lstClientes;
 	}
 	
 	public void Inicializar() {

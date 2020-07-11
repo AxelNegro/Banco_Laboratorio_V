@@ -1,5 +1,7 @@
 package negocioImpl;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,6 +28,17 @@ public class Cuotas_x_PrestamoNegImpl implements Cuotas_x_PrestamoNeg{
 		return cuotxprestDao.agregarUna(cuotxprest);
 	}	
 	
+	public Cuotas_x_Prestamo leerUna(int IdCuota) {
+		return cuotxprestDao.leerUna(IdCuota);
+	}
+	
+	public List<Cuotas_x_Prestamo> leerCuotasxPrestamo(int CodPrestamo) {
+		return cuotxprestDao.leerCuotasxPrestamo(CodPrestamo);
+	}
+	
+	public int pagarCuotasxPrestamo(List<Integer> lstIdCuota) {
+		return cuotxprestDao.pagarCuotasxPrestamo(lstIdCuota);
+	}
 	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);

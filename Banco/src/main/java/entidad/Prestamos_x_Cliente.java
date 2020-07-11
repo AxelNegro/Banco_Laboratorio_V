@@ -46,4 +46,9 @@ public class Prestamos_x_Cliente implements Serializable{
 		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return "Prestamos_x_Cliente [prestamo=" + prestamo + ", cliente=" + cliente + "]";
+	}
+
 }

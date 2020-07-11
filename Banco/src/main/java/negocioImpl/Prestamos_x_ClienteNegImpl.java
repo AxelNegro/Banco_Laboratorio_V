@@ -1,5 +1,8 @@
 package negocioImpl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -26,6 +29,17 @@ public class Prestamos_x_ClienteNegImpl implements Prestamos_x_ClienteNeg{
 		return prestxcliDao.agregarUno(prestxcli);
 	}
 	
+	public List<Prestamos_x_Cliente> leerTodosPendientes() {
+		return prestxcliDao.leerTodosPendientes();
+	}
+	
+	public List<Prestamos_x_Cliente> leerTodosPorCliente(int DNI) {
+		return prestxcliDao.leerTodosPorCliente(DNI);
+	}
+	
+	public List<Prestamos_x_Cliente> obtenerHistorialPrestamos(Date Fecha1, Date Fecha2) {
+		return prestxcliDao.obtenerHistorialPrestamos(Fecha1, Fecha2);
+	}
 	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
@@ -35,4 +49,5 @@ public class Prestamos_x_ClienteNegImpl implements Prestamos_x_ClienteNeg{
 	public void Finalizar() {
 		((ConfigurableApplicationContext)(appContext)).close();
 	}
+
 }

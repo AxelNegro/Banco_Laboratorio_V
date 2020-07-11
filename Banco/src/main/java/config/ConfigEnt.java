@@ -10,11 +10,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
 import entidad.Cliente;
+import entidad.Concepto;
 import entidad.Cuenta;
 import entidad.Cuentas_x_Usuario;
+import entidad.Cuotas_x_Prestamo;
 import entidad.Localidad;
 import entidad.Movimiento;
 import entidad.Movimientos_x_Cuenta;
+import entidad.Prestamo;
+import entidad.Prestamos_x_Cliente;
 import entidad.Provincia;
 import entidad.TipoCuenta;
 import entidad.Usuario;
@@ -77,7 +81,7 @@ public class ConfigEnt {
 		cli.setProvincia(prov);
 		cli.setLocalidad(loc);
 		cli.setSexo("Masculino");
-		cli.setDireccion("Direccion");
+		cli.setDireccion("Chile 3093");
 		cli.setUsuario(user);
 		
 		return cli;
@@ -171,5 +175,53 @@ public class ConfigEnt {
 	public List<Cuenta> LstCuentasDefault(){
 		List<Cuenta> lstCuentas = new ArrayList<Cuenta>();
 		return lstCuentas;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Concepto ConceptoDefault() {
+		Concepto concepto = new Concepto();
+		return concepto;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public List<Cliente> LstClientesDefault() {
+		List<Cliente> lstClientes = new ArrayList<Cliente>();
+		return lstClientes;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Prestamo PrestamoDefault() {
+		Prestamo prest = new Prestamo();
+		return prest;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Prestamos_x_Cliente Prestamos_x_ClienteDefault() {
+		Prestamos_x_Cliente prestxcli = new Prestamos_x_Cliente();
+		return prestxcli;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Cuotas_x_Prestamo Cuotas_x_PrestamoDefault() {
+		Cuotas_x_Prestamo cuotxprest = new Cuotas_x_Prestamo();
+		return cuotxprest;
+	}
+	
+	@Bean
+	public List<Integer> LstIntegersDefault(){
+		List<Integer> lstIntegers = new ArrayList<Integer>();
+		return lstIntegers;
+	}
+	
+	@Bean
+	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public String CadenaDefault() {
+		String cadena = "";
+		return cadena;
 	}
 }

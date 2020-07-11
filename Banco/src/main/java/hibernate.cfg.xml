@@ -23,5 +23,6 @@
         <mapping class="entidad.Usuario"/>
         <mapping class="entidad.Provincia"/>
         <mapping class="entidad.Localidad"/>
+        <mapping class="entidad.Concepto"/>
   </session-factory>
 </hibernate-configuration>

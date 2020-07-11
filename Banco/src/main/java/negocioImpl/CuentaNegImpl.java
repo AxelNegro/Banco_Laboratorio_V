@@ -30,8 +30,8 @@ public class CuentaNegImpl implements CuentaNeg{
 		return cuentaDao.leerUna(CBU);
 	}
 	
-	public boolean tipoCuentaUsado(String Username, int codTipo) {
-		return cuentaDao.tipoCuentaUsado(Username, codTipo);
+	public boolean tipoCuentaUsado(String Username, int CBU, int codTipo) {
+		return cuentaDao.tipoCuentaUsado(Username, CBU, codTipo);
 	}
 	
 	public boolean modificarUna(Cuenta cuenta) {

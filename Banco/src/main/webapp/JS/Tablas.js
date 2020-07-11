@@ -6,7 +6,7 @@ function Modificar(NombreTabla,Fila){
 	case 'tablaUsuarios':
 		Filas.cells[1].innerHTML='<input type="text" id="txtPassword" name="txtPassword" placeholder="Contraseña"/>';
 		Filas.cells[2].innerHTML='<select id="ddlTipo" name="ddlTipo"><option value="true">Banco</option><option value="false">Cliente</option></select>';
-		Filas.cells[4].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
+		Filas.cells[4].innerHTML='<input name="btnModificar" type="submit" class="boton" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
 		LlenarDatos(NombreTabla,Fila);
@@ -21,7 +21,7 @@ function Modificar(NombreTabla,Fila){
 		LlenarDescolgable(Filas.cells[7],'ddlProvincia', Fila);//Filas.cells[7].innerHTML='<input type="text" id="txtProvincia" name="txtProvincia" placeholder="Provincia"/>';
 		LlenarDescolgable(Filas.cells[8],'ddlLocalidad', Fila);//Filas.cells[8].innerHTML='<select id="ddlLocalidad" name="ddlLocalidad" placeholder="Localidad"><option><option></select>';
 		Filas.cells[9].innerHTML='<input type="text" id="txtDireccion" name="txtDireccion" placeholder="Dirección"/>';
-		Filas.cells[10].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
+		Filas.cells[10].innerHTML='<input name="btnModificar" type="submit" class="boton" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
 		LlenarDatos(NombreTabla,Fila);
@@ -29,8 +29,8 @@ function Modificar(NombreTabla,Fila){
 	case 'tablaCuentas':
 		Filas.cells[3].innerHTML='<input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"/>';
 		Filas.cells[4].innerHTML='<select id="ddlTipo" name="ddlTipo"><option value="1">Caja de ahorro en pesos</option><option value="2">Caja de ahorro en dólares</option><option value="3">Cuenta corriente</option><option value="4">Cuenta corriente especial en pesos</option><option value="5">Cuenta corriente especial en dólares</option></select>';
-		Filas.cells[5].innerHTML='<input type="number" id="txtSaldo" name="txtSaldo" placeholder="Saldo"/>';
-		Filas.cells[8].innerHTML='<input name="btnModificar" type="submit" class="botoncargar" value="Aceptar"/>';
+		Filas.cells[5].innerHTML='<input type="number" id="txtSaldo" name="txtSaldo" placeholder="Saldo" step="0.01"/>';
+		Filas.cells[8].innerHTML='<input name="btnModificar" type="submit" class="boton" value="Aceptar"/>';
 		Modificar=document.getElementsByName("btnModificar");
 		Modificar[Fila].setAttribute('onclick','document.getElementById("hdnId").value="'+Fila+'"');
 		LlenarDatos(NombreTabla,Fila);

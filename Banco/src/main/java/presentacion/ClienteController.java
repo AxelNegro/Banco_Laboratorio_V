@@ -156,7 +156,7 @@ public class ClienteController {
 		InicializarNeg();
 		InicializarEnt();
 		
-		ObtenerLista(m);
+		ObtenerLista(origen, m);
 		ObtenerListaUserSinUsar(m);
 		ObtenerProvincias(m);
 		ObtenerLocalidades(m);
@@ -182,9 +182,20 @@ public class ClienteController {
 		return Destino;
 	}
 	
-	public void ObtenerLista(Model m) {
+	@SuppressWarnings("unchecked")
+	public void ObtenerLista(String Origen, Model m) {
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
-		List<Cliente> lstClientes=cliNeg.leerTodos();
+		
+		List<Cliente> lstClientes = (List<Cliente>) appContextEnt.getBean("LstClientesDefault");
+		
+		switch(Integer.parseInt(Origen)) {
+		case 0:
+			lstClientes=cliNeg.leerTodos();
+		break;
+		case 1:
+			lstClientes=cliNeg.leerTodosSinBanco();
+		break;
+		}
 		
 		m.addAttribute("lstClientes", lstClientes);
 		
@@ -245,7 +256,7 @@ public class ClienteController {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 		}
 		
-		ObtenerLista(m);
+		ObtenerLista("0", m);
 		ObtenerListaUserSinUsar(m);
 		ObtenerProvincias(m);
 		ObtenerLocalidades(m);

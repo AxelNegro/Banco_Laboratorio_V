@@ -9,7 +9,8 @@
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <jsp:include page="BancoMasterPage.jsp" />
-      <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css"></link>
+      <link rel="stylesheet" href="CSS/Formato.css" type="text/css">
+      </link>
       <script type="text/javascript" src="JS/Tablas.js"></script>
       <script type="text/javascript" src="JS/Descolgables.js"></script>
       <title>Cargar Clientes</title>
@@ -32,7 +33,7 @@
       <div class="padre">
          <div class="hijo">
             <form action="modificarCliente.do?User=${Username}" method="post">
-            <input type="hidden" id="hdnId" name="hdnId" value=""/>
+               <input type="hidden" id="hdnId" name="hdnId" value=""/>
                <table id=tablaClientes style="width:95%">
                   <thead>
                      <tr>
@@ -50,52 +51,52 @@
                      </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach items="${lstClientes}" var="cli">
-                     <tr>
-                        <td>
-                        	<input type="hidden" name="hdnDNI" value="${cli.getDNI()}"/>
-                        	<input type="hidden" name="hdnUsuario" value="${cli.getUsuario().getUsername()}"/>
-                        	<input type="hidden" name="hdnNombre" value="${cli.getNombre()}"/>
-                        	<input type="hidden" name="hdnApellido" value="${cli.getApellido()}"/>
-                        	<input type="hidden" name="hdnSexo" value="${cli.getSexo()}"/>
-                        	<input type="hidden" name="hdnFecha" value="${cli.getFecha()}"/>
-                        	<input type="hidden" name="hdnNacionalidad" value="${cli.getNacionalidad()}"/>
-                        	<input type="hidden" name="hdnProvincia" value="${cli.getProvincia().getIdProvincia()}"/>
-                        	<input type="hidden" name="hdnLocalidad" value="${cli.getLocalidad().getIdLocalidad()}"/>
-                        	<input type="hidden" name="hdnDireccion" value="${cli.getDireccion()}"/>
-                        	${cli.getDNI()}</td>
-                        <td><input type="hidden" name="ddlUsuario"/>${cli.getUsuario().getUsername()}</td>
-                        <td><input type="hidden" name="txtNombre"/>${cli.getNombre()}</td>
-                        <td><input type="hidden" name="txtApellido"/>${cli.getApellido()}</td>
-                        <td><input type="hidden" name="ddlSexo"/>${cli.getSexo()}</td>
-                        <td style="text-align:center;"><input type="hidden" name="txtFecha"/>${cli.getFecha()}</td>
-                        <td><input type="hidden" name="txtNacionalidad"/>${cli.getNacionalidad()}</td>
-                        <td><input type="hidden" name="ddlProvincia"/>${cli.getProvincia().getDescripcion()}</td>
-                        <td><input type="hidden" name="ddlLocalidad"/>${cli.getLocalidad().getDescripcion()}</td>
-                        <td><input type="hidden" name="txtDireccion"/>${cli.getDireccion()}</td>
-                        <td style="text-align:center"> <input name="btnModificar" type="button" class="botoncargar" value="Modificar" onclick="Modificar('tablaClientes',${lstClientes.indexOf(cli)})"/> </td>
-                     </tr>
+                     <c:forEach items="${lstClientes}" var="cli">
+                        <tr>
+                           <td>
+                              <input type="hidden" name="hdnDNI" value="${cli.getDNI()}"/>
+                              <input type="hidden" name="hdnUsuario" value="${cli.getUsuario().getUsername()}"/>
+                              <input type="hidden" name="hdnNombre" value="${cli.getNombre()}"/>
+                              <input type="hidden" name="hdnApellido" value="${cli.getApellido()}"/>
+                              <input type="hidden" name="hdnSexo" value="${cli.getSexo()}"/>
+                              <input type="hidden" name="hdnFecha" value="${cli.getFecha()}"/>
+                              <input type="hidden" name="hdnNacionalidad" value="${cli.getNacionalidad()}"/>
+                              <input type="hidden" name="hdnProvincia" value="${cli.getProvincia().getIdProvincia()}"/>
+                              <input type="hidden" name="hdnLocalidad" value="${cli.getLocalidad().getIdLocalidad()}"/>
+                              <input type="hidden" name="hdnDireccion" value="${cli.getDireccion()}"/>
+                              ${cli.getDNI()}
+                           </td>
+                           <td><input type="hidden" name="ddlUsuario"/>${cli.getUsuario().getUsername()}</td>
+                           <td><input type="hidden" name="txtNombre"/>${cli.getNombre()}</td>
+                           <td><input type="hidden" name="txtApellido"/>${cli.getApellido()}</td>
+                           <td><input type="hidden" name="ddlSexo"/>${cli.getSexo()}</td>
+                           <td style="text-align:center;"><input type="hidden" name="txtFecha"/>${cli.getFecha()}</td>
+                           <td><input type="hidden" name="txtNacionalidad"/>${cli.getNacionalidad()}</td>
+                           <td><input type="hidden" name="ddlProvincia"/>${cli.getProvincia().getDescripcion()}</td>
+                           <td><input type="hidden" name="ddlLocalidad"/>${cli.getLocalidad().getDescripcion()}</td>
+                           <td><input type="hidden" name="txtDireccion"/>${cli.getDireccion()}</td>
+                           <td style="text-align:center"> <input name="btnModificar" type="button" class="boton" value="Modificar" onclick="Modificar('tablaClientes',this.parentElement.parentElement.rowIndex-1)"/> </td>
+                        </tr>
                      </c:forEach>
                   </tbody>
                </table>
                ${Msg}
-               
                <div id="divHidden">
-               	<div id="hdnUsers">
-               		<c:forEach items="${lstUserSinCli}" var="user">
-               			<input type="hidden" name="hdnUsers" value="${user.getUsername()}"/>
-               		</c:forEach>
-               	</div>
-               	<div id="hdnProvincias">
-	               	<c:forEach items="${lstProv}" var="prov">
-	               			<input type="hidden" name="${prov.getIdProvincia()}" value="${prov.getDescripcion()}"/>
-               		</c:forEach>
-               	</div>
-               	<div id="hdnLocalidades">
-               		<c:forEach items="${lstLoc}" var="loc">
-               			<input type="hidden" name="${loc.getProvincia().getIdProvincia()}" id="${loc.getIdLocalidad()}" value="${loc.getDescripcion()}"/>
-               		</c:forEach>
-               	</div>
+                  <div id="hdnUsers">
+                     <c:forEach items="${lstUserSinCli}" var="user">
+                        <input type="hidden" name="hdnUsers" value="${user.getUsername()}"/>
+                     </c:forEach>
+                  </div>
+                  <div id="hdnProvincias">
+                     <c:forEach items="${lstProv}" var="prov">
+                        <input type="hidden" name="${prov.getIdProvincia()}" value="${prov.getDescripcion()}"/>
+                     </c:forEach>
+                  </div>
+                  <div id="hdnLocalidades">
+                     <c:forEach items="${lstLoc}" var="loc">
+                        <input type="hidden" name="${loc.getProvincia().getIdProvincia()}" id="${loc.getIdLocalidad()}" value="${loc.getDescripcion()}"/>
+                     </c:forEach>
+                  </div>
                </div>
             </form>
          </div>

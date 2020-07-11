@@ -44,6 +44,14 @@ public class ClienteNegImpl implements ClienteNeg{
 		return cliDao.modificar(cli);
 	}
 	
+	public Cliente obtenerCliente(String Username) {
+		return cliDao.obtenerCliente(Username);
+	}
+	
+	public List<Cliente> leerTodosSinBanco(){
+		return cliDao.leerTodosSinBanco();
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		cliDao = (ClienteDao) appContext.getBean("cliDao");

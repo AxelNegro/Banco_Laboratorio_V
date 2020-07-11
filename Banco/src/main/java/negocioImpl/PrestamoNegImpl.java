@@ -26,6 +26,13 @@ public class PrestamoNegImpl implements PrestamoNeg{
 		return prestDao.agregarUno(prest);
 	}
 	
+	public Prestamo leerUno(int CodPrestamo) {
+		return prestDao.leerUno(CodPrestamo);
+	}
+
+	public boolean modificarUno(Prestamo prest) {
+		return prestDao.modificarUno(prest);
+	}
 	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);

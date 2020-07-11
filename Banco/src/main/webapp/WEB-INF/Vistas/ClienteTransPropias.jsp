@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Transferencia bancaria a cuentas propias</title>
       <jsp:include page="ClienteMasterPage.jsp" />
-      <link rel="stylesheet" href="CSS/UsuarioBanco.css" type="text/css">
-      <link>
+      <link rel="stylesheet" href="CSS/Formato.css" type="text/css">
+      </link>
    </head>
    <body>
       <div id="titulo">
@@ -15,29 +16,68 @@
       </div>
       <div class="padre">
          <div class="hijo">
-            <form>
+            <form action="realizarTransProp.do?User=${Username}" method="post">
                Transferencia desde la cuenta origen:
-               <select style="margin-bottom:1%">
-                  <option>Cuenta Corriente - CBU 156871278457</option>
+               <select id="ddlCuentaOrigen" name="ddlCuentaOrigen" style="margin-bottom:1%">
+                  <c:forEach items="${lstAccxUser}" var="accxuser">
+                     <c:if test = "${accxuser.getCuenta().getEstado()}">
+                        <option value="${accxuser.getCuenta().getCBU()}">
+                           <c:choose>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==1}">
+                                 Caja de ahorro en pesos
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==2}">
+                                 Caja de ahorro en dólares
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==3}">
+                                 Cuenta corriente
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==4}">
+                                 Cuenta corriente especial en pesos
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==5}">
+                                 Cuenta corriente especial en dólares
+                              </c:when>
+                           </c:choose>
+                        </option>
+                     </c:if>
+                  </c:forEach>
                </select>
                <br>
                Transferencia hacia la cuenta destino:
-               <select style="margin-bottom:1%">
-                  <option>Caja de ahorro en pesos - CBU 324322313</option>
+               <select id="ddlCuentaDest" name="ddlCuentaDest" style="margin-bottom:1%">
+                  <c:forEach items="${lstAccxUser}" var="accxuser">
+                     <c:if test = "${accxuser.getCuenta().getEstado()}">
+                        <option value="${accxuser.getCuenta().getCBU()}">
+                           <c:choose>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==1}">
+                                 Caja de ahorro en pesos
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==2}">
+                                 Caja de ahorro en dólares
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==3}">
+                                 Cuenta corriente
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==4}">
+                                 Cuenta corriente especial en pesos
+                              </c:when>
+                              <c:when test = "${accxuser.getCuenta().getCodTipoCuenta()==5}">
+                                 Cuenta corriente especial en dólares
+                              </c:when>
+                           </c:choose>
+                        </option>
+                     </c:if>
+                  </c:forEach>
                </select>
                <br>
                Importe a Transferir:
-               <input style="margin-bottom:1%" type="number" min="1000"/>
+               <input type="number" id="txtImporte" name="txtImporte" placeholder="Importe" step="0.01" style="margin-bottom:1%"/>
                <br>
-               Concepto:
-               <select style="margin-bottom:1%">
-                  <option>Varios</option>
-               </select>
-               <br>
-               <input class="botoncargar" type="submit" value="Transferir">
+               <input type="submit" id="btnTransferir" name="btnTransferir" class="boton" value="Transferir">
+               ${Msg}
             </form>
          </div>
       </div>
    </body>
 </html>
-

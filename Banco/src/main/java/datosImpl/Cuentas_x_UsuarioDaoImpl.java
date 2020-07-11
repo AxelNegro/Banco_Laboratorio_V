@@ -99,6 +99,25 @@ public class Cuentas_x_UsuarioDaoImpl implements Cuentas_x_UsuarioDao{
 		return lstAccxUser;
 	}
 	
+	public Cuentas_x_Usuario obtenerUsuario(int CBU) {
+		Inicializar();
+		Cuentas_x_Usuario accxuser;
+		try {
+		query = session.createQuery("select accxuser from Cuentas_x_Usuario accxuser inner join accxuser.cuenta acc where acc.CBU=:CBU");
+		query.setParameter("CBU", CBU);
+		accxuser = (Cuentas_x_Usuario) query.uniqueResult();
+		}
+		catch(Exception e){
+			accxuser=null;
+			e.printStackTrace();
+		}
+		finally {
+			Finalizar();
+		}
+		
+		return accxuser;
+	}
+	
 	public void Inicializar() {
 		appContext=new AnnotationConfigApplicationContext(ConfigDao.class);
 		con = (Conexion) appContext.getBean("ConexionBD");

@@ -9,21 +9,21 @@
 <title>Iniciar sesión</title>
 </head>
 <body>
-	<form action="Login.do" method="post">
-		<div id="divPadre">
-				<label>Iniciar sesión:</label>
-				<br>
-				<br>      
-				Usuario:	<input id="txtUsuario" name="txtUsuario" type="text" placeholder="Usuario"/>
-				<br>
-				<br>
-				Contraseña:	<input id="txtContrasenia" name="txtContrasenia" type="password" placeholder="Contraseña"/>
-				<br>
-				<br>
-				<a href="TodosInicio.do"><input id="btnVolver" type="button" value="Volver"/></a>
-				<input id="btnAceptar" type="submit" value="Aceptar"/>
-				${Msg} 
-		</div>
-	</form>
+   <form action="Login.do" method="post">
+      <div id="divPadre">
+         <label>Iniciar sesión:</label>
+         <br>
+         <br>      
+         Usuario:	<input id="txtUsuario" name="txtUsuario" type="text" placeholder="Usuario"/>
+         <br>
+         <br>
+         Contraseña:	<input id="txtContrasenia" name="txtContrasenia" type="password" placeholder="Contraseña"/>
+         <br>
+         <br>
+         <a href="TodosInicio.do"><input id="btnVolver" type="button" value="Volver"/></a>
+         <input id="btnAceptar" type="submit" value="Aceptar"/>
+         ${Msg} 
+      </div>
+   </form>
 </body>
 </html>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import config.ConfigEnt;
 import config.ConfigNeg;
 import entidad.Cliente;
+import entidad.Concepto;
 import entidad.Cuenta;
 import entidad.Cuentas_x_Usuario;
 import entidad.Movimiento;
@@ -20,6 +21,7 @@ import entidad.Movimientos_x_Cuenta;
 import entidad.TipoCuenta;
 import entidad.Usuario;
 import negocio.ClienteNeg;
+import negocio.ConceptoNeg;
 import negocio.CuentaNeg;
 import negocio.Cuentas_x_UsuarioNeg;
 import negocio.MovimientoNeg;
@@ -28,9 +30,11 @@ import negocio.TipoCuentaNeg;
 import negocio.UsuarioNeg;
 
 @Controller
-public class CuentaBancoController {
+public class CuentaController {
 	private ApplicationContext appContextEnt;
 	private ApplicationContext appContextNeg;
+	
+	//////////////////////////// BANCO ////////////////////////////
 	
 	public void InicializarEnt() {
 		appContextEnt=new AnnotationConfigApplicationContext(ConfigEnt.class);
@@ -58,7 +62,7 @@ public class CuentaBancoController {
 			acc.setFecha(FechaAsig);
 			acc.setNombre(Nombre);
 			acc.setNumeroCuenta(Nro);
-			acc.setSaldo(Double.parseDouble(Saldo));	
+			acc.setSaldo(Math.round(Double.parseDouble(Saldo) * 100.0) / 100.0);	
 			acc.setEstado(true);
 		}
 		catch(Exception e){
@@ -93,7 +97,7 @@ public class CuentaBancoController {
 			acc.setCodTipoCuenta(Integer.parseInt(Tipo));
 			acc.setFecha(new SimpleDateFormat("yyyy-mm-dd").parse(Fecha));
 			acc.setNombre(Nombre);
-			acc.setSaldo(Double.parseDouble(Saldo));	
+			acc.setSaldo(Math.round((Double.parseDouble(Saldo)) * 100.0) / 100.0);	
 			acc.setEstado(Boolean.parseBoolean(Estado));
 		}
 		catch(Exception e){
@@ -125,7 +129,7 @@ public class CuentaBancoController {
 						if(userNeg.leerUno(hdnUser)!=null) {
 							accxuser=EstablecerDatos_2(acc,hdnUser);
 							if(accxuser!=null) {
-								if(!(accNeg.tipoCuentaUsado(hdnUser, Integer.parseInt(ddlTipo)))) {
+								if(!(accNeg.tipoCuentaUsado(hdnUser, Integer.parseInt(txtCBU), Integer.parseInt(ddlTipo)))) {
 									CantCuentas=accxuserNeg.contarCuentas(hdnUser);
 									if(CantCuentas<4||(hdnUser.equals("admin")&&CantCuentas<5)) {
 										if(accNeg.agregarUna(acc)) {
@@ -192,7 +196,7 @@ public class CuentaBancoController {
 	
 	public void ObtenerLista(Model m) {
 		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
-		List<Cliente> lstClientes=cliNeg.leerTodos();
+		List<Cliente> lstClientes=cliNeg.leerTodosSinBanco();
 		
 		m.addAttribute("lstClientes", lstClientes);
 		
@@ -224,23 +228,27 @@ public class CuentaBancoController {
 		Movimientos_x_CuentaNeg movxaccNeg = (Movimientos_x_CuentaNeg) appContextNeg.getBean("movxaccNeg");
 		
 		Date FechaMov = (Date) appContextEnt.getBean("FechaDefault");
+		Concepto concepto = (Concepto) appContextEnt.getBean("ConceptoDefault");
 		Movimiento mov = (Movimiento) appContextEnt.getBean("MovimientoDefault");
 		Cuenta accOrig = (Cuenta) appContextEnt.getBean("CuentaDefault");
 		Cuenta accDest = (Cuenta) appContextEnt.getBean("CuentaDefault");
 		Movimientos_x_Cuenta movxacc = (Movimientos_x_Cuenta) appContextEnt.getBean("Movimientos_x_CuentaDefault");
+		
 		
 		try {
 			accOrig.setCBU(-1);
 			accDest.setCBU(CBU);
 			
 			if(Origen==0) {
-				mov.setConcepto("Saldo inicial de la cuenta.");
+				concepto.setIdConcepto(1);
+				mov.setConcepto(concepto);
 			}
 			else {
-				mov.setConcepto("Ajuste de cuentas.");
+				concepto.setIdConcepto(2);
+				mov.setConcepto(concepto);
 			}
 			mov.setFecha(FechaMov);
-			mov.setImporte(Saldo);
+			mov.setImporte(Math.round(Saldo * 100.0) / 100.0);
 			
 			if(movNeg.agregarUno(mov)) 
 			{
@@ -299,7 +307,7 @@ public class CuentaBancoController {
 		if(btnModificar!=null) {
 			try {
 				if(!(txtNombre[Id].trim().isEmpty()||ddlTipo==null||ddlTipo[Id].trim().isEmpty()||txtSaldo[Id].trim().isEmpty())) {
-					if(Integer.parseInt(txtSaldo[Id])>=0){
+					if(Double.parseDouble(txtSaldo[Id])>=0){
 						Modificar(cuenta, hdnUsuario[Id], txtNombre[Id], ddlTipo[Id], txtSaldo[Id], m);
 					}
 					else {
@@ -311,6 +319,7 @@ public class CuentaBancoController {
 				}
 			}
 			catch(Exception e) {
+				e.printStackTrace();
 				m.addAttribute("Msg","<script type='text/javascript'>alert('Complete todos los datos para continuar.');</script>");
 			}
 		}
@@ -355,10 +364,10 @@ public class CuentaBancoController {
 		CuentaNeg cuentaNeg = (CuentaNeg) appContextNeg.getBean("accNeg");
 		if(!(Nombre.trim().isEmpty()||Saldo.trim().isEmpty())) {
 			if(Double.parseDouble(Saldo)>=0){
-				if(!(cuentaNeg.tipoCuentaUsado(User, Integer.parseInt(Tipo)))) {
+				if(!(cuentaNeg.tipoCuentaUsado(User, cuenta.getCBU(), Integer.parseInt(Tipo)))) {
 					cuenta.setNombre(Nombre);
 					cuenta.setCodTipoCuenta(Integer.parseInt(Tipo));
-					cuenta.setSaldo(Double.parseDouble(Saldo));
+					cuenta.setSaldo(Math.round((Double.parseDouble(Saldo)) * 100.0) / 100.0);
 					if(cuentaNeg.modificarUna(cuenta)) {
 						if(CrearMovimientos(cuenta.getCBU(),Double.parseDouble(Saldo),1)) {
 							m.addAttribute("Msg","<script type='text/javascript'>alert('Se modificó la cuenta correctamente.')</script>");
@@ -382,6 +391,147 @@ public class CuentaBancoController {
 		else {
 			m.addAttribute("Msg","<script type='text/javascript'>alert('No puede insertar datos vacíos.')</script>");
 		}
+	}
+	
+	//////////////////////////// FIN BANCO ////////////////////////////
+	
+	//////////////////////////// CLIENTE ////////////////////////////
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("estadoCuentas.do")
+	public String ObtenerHistorial(String User, Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
+		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
+		Movimientos_x_CuentaNeg movxaccNeg = (Movimientos_x_CuentaNeg) appContextNeg.getBean("movxaccNeg");
+		List<Cuentas_x_Usuario> lstAccxUser=accxuserNeg.leerCuentasxUsuario(User);
+		List<Cuenta> lstCBUs= (List<Cuenta>) appContextEnt.getBean("LstCuentasDefault");
+		
+		for(Cuentas_x_Usuario accxuser : lstAccxUser){
+			lstCBUs.add(accxuser.getCuenta());
+		}
+		
+		List<Movimientos_x_Cuenta> lstMovxAcc = movxaccNeg.obtenerHistorialCuenta(lstCBUs);
+		
+		m.addAttribute("Cantidad",lstAccxUser.size());
+		m.addAttribute("lstAccxUser",lstAccxUser);
+		m.addAttribute("lstMovxAcc",lstMovxAcc);
+		m.addAttribute("Username", User);
+		
+		accxuserNeg.Finalizar();
+		movxaccNeg.Finalizar();
+		FinalizarNeg();
+		FinalizarEnt();
+		
+		return "ClienteMovimientos";
+	}
+	
+	@RequestMapping("leerCuentasxUsuario.do")
+	public String LeerTransPropias(String User, String Origen, Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
+		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
+		
+		List<Cuentas_x_Usuario> lstAccxUser = accxuserNeg.leerCuentasxUsuario(User);
+		
+		m.addAttribute("lstAccxUser",lstAccxUser);
+		m.addAttribute("Username", User);
+		
+		accxuserNeg.Finalizar();
+		FinalizarNeg();
+		FinalizarEnt();
+		
+		if(Origen.equals("0")) {
+			return "ClienteTransPropias";
+		}
+		else {
+			return "ClientePedidoPrestamos";
+		}
+	}
+	
+	@RequestMapping("leerTransTerceros.do")
+	public String LeerTransTerceros(String User, Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
+		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
+		ConceptoNeg conceptoNeg = (ConceptoNeg) appContextNeg.getBean("conceptoNeg");
+		
+		List<Cuentas_x_Usuario> lstAccxUser = accxuserNeg.leerCuentasxUsuario(User);
+		List<Concepto> lstConceptos = conceptoNeg.leerTodosTransferencia();
+		
+		m.addAttribute("lstAccxUser",lstAccxUser);
+		m.addAttribute("lstConceptos",lstConceptos);
+		m.addAttribute("Username", User);
+		
+		accxuserNeg.Finalizar();
+		conceptoNeg.Finalizar();
+
+		FinalizarNeg();
+		FinalizarEnt();
+		
+		return "ClienteTransTerceros";
+	}
+	
+	@RequestMapping("obtenerInfoTransCBU.do")
+	public String ObtenerInfoTransCBU(String User, String CBU, Model m) {
+		InicializarEnt();
+		InicializarNeg();
+		
+		Cuenta acc = (Cuenta) appContextEnt.getBean("CuentaDefault");
+		Cuentas_x_Usuario accxuser = (Cuentas_x_Usuario) appContextEnt.getBean("Cuenta_x_UsuarioDefault");
+		Cliente cli = (Cliente) appContextEnt.getBean("ClienteDefault");
+		
+		CuentaNeg accNeg = (CuentaNeg) appContextNeg.getBean("accNeg");
+		Cuentas_x_UsuarioNeg accxuserNeg = (Cuentas_x_UsuarioNeg) appContextNeg.getBean("accxuserNeg");
+		ClienteNeg cliNeg = (ClienteNeg) appContextNeg.getBean("cliNeg");
+		
+		if(!CBU.trim().isEmpty()&&Integer.parseInt(CBU.trim())!=-1) {
+			acc = accNeg.leerUna(Integer.parseInt(CBU));
+			if(acc!=null) {
+				if(acc.getEstado()) {
+					m.addAttribute("Cuenta",acc);
+					accxuser=accxuserNeg.obtenerUsuario(Integer.parseInt(CBU));
+					if(accxuser!=null) {
+						if(!User.equals(accxuser.getUsuario().getUsername())) {
+							cli = cliNeg.obtenerCliente(accxuser.getUsuario().getUsername());
+							if(cli!=null) {
+								m.addAttribute("Cliente",cli);
+							}
+							else {
+								m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al obtener el cliente.');window.close()</script>");
+							}
+						}
+						else {
+							m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU especificado pertenece a una cuenta propia.');window.close()</script>");
+						}
+					}
+					else {
+						m.addAttribute("Msg","<script type='text/javascript'>alert('Hubo un error al obtener el cliente.');window.close()</script>");
+					}
+				}
+				else {
+					m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU especificado está temporalmente desactivado.');window.close()</script>");
+				}
+			}
+			else {
+				m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU especificado no existe.');window.close()</script>");
+			}
+		}
+		else {
+			m.addAttribute("Msg","<script type='text/javascript'>alert('El CBU está vacío.');window.close()</script>");
+		}
+		
+		accNeg.Finalizar();
+		accxuserNeg.Finalizar();
+		cliNeg.Finalizar();
+		
+		FinalizarNeg();
+		FinalizarEnt();
+		
+		return "ClienteTransInfo";
 	}
 	
 }
